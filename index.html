@@ -1,0 +1,433 @@
+<!doctype html>
+<!--
+  Gestão de Escalas 5×2 — aviso de autoria e direitos autorais.
+  © 2026 Fabiano Inoue - SICOV - Cornélio Procópio - PR.
+  Todos os direitos reservados. A identificação de autoria integra esta distribuição.
+  O uso e a alteração do software devem respeitar os direitos de seus respectivos titulares.
+-->
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Fabiano Inoue - SICOV - Cornélio Procópio - PR">
+<meta name="copyright" content="© 2026 Fabiano Inoue - SICOV - Cornélio Procópio - PR">
+<meta name="application-name" content="Escala Rotativa 5×2"><title>Gestão de Escalas 5×2 • Versão 2.9</title><style>
+:root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#e5ebf5;background:#0b1220}*{box-sizing:border-box}body{margin:0}header{padding:22px max(18px,calc((100vw - 1320px)/2));background:#111c30;border-bottom:1px solid #29364b}h1{font-size:23px;margin:0}h2{font-size:17px;margin:0 0 14px}p{color:#9fb0c9}small,.muted{color:#93a5bf}.wrap{max-width:1320px;margin:auto;padding:22px 18px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}button,.btn{border:0;border-radius:9px;background:#33445e;color:white;padding:10px 13px;font-weight:650;cursor:pointer}button:hover{filter:brightness(1.15)}button.primary{background:#5466e9}button.good{background:#158464}button.danger{background:#8b3342}.tabs button.active{background:#5466e9}.panel{background:#17243a;border:1px solid #2c3a52;border-radius:15px;padding:18px;margin-bottom:16px}.layout{display:grid;grid-template-columns:2fr 1fr;gap:16px}.grid{display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));gap:12px}.grid.two{grid-template-columns:repeat(2,minmax(130px,1fr))}.field label{display:block;color:#aec0d7;font-size:12px;margin:0 0 6px}.field input,.field select{width:100%;background:#0c1729;color:#eff4ff;border:1px solid #41526b;border-radius:9px;padding:10px;min-height:40px}.field input[type=checkbox]{width:auto;min-height:0}.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}.table-scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:10px;border-bottom:1px solid #314059;text-align:left;white-space:nowrap}th{color:#abc0da;background:#101b2d}td:first-child{font-weight:600}td select{background:#1c2b43;color:#fff;border:1px solid #485c79;border-radius:7px;padding:6px;min-width:93px}td.work{background:#12392f}td.off{background:#303658}.badge{display:inline-block;border-radius:50px;padding:5px 9px;font-size:12px;background:#304361}.warn{background:#423225;border:1px solid #9c6f34;border-radius:10px;padding:11px;margin:6px 0}.error{background:#4b2632;border:1px solid #ad485b;border-radius:10px;padding:11px;margin:6px 0}.ok{background:#174034;border:1px solid #368468;border-radius:10px;padding:11px;margin:6px 0}.cards{display:grid;grid-template-columns:repeat(7,minmax(110px,1fr));gap:8px}.daycard{background:#0f1c30;padding:10px;border:1px solid #33445d;border-radius:10px;font-size:12px}.daycard strong{font-size:15px}.hidden{display:none!important}.checkdays{display:flex;gap:13px;flex-wrap:wrap}.checkdays label{font-size:13px}.foot{font-size:12px;border-top:1px solid #34445b;padding-top:12px;margin-top:16px}input[type=number]{max-width:150px}.metrics{display:flex;gap:10px;flex-wrap:wrap}.metric{background:#0e1b2f;border-radius:9px;padding:12px;min-width:155px}.metric strong{display:block;font-size:21px;margin:5px 0}.pill{font-size:11px;color:#a7c6ff}.narrow{max-width:680px}.allow-wrap{white-space:normal} @media(max-width:900px){.layout{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(120px,1fr))}.cards{grid-template-columns:repeat(2,1fr)}}@media print{body{background:white;color:black}header,.tabs,.no-print,.panel.settings{display:none!important}.panel{border:1px solid #aaa;background:white;color:black}th{background:#eee;color:black}td{color:black}td.work{background:#daf4e4}td.off{background:#e9e9ef}.wrap{max-width:100%;padding:0}.hidden{display:none!important}}
+
+.role-form{display:flex;gap:14px;align-items:end;flex-wrap:wrap;margin:12px 0}
+.role-form .field{flex:1;min-width:225px;max-width:440px}
+.role-form .actions{margin:0}.role-form button{min-height:41px;padding:10px 20px}
+.role-list-title{font-weight:700;font-size:13px;color:#dce6f5;margin:16px 0 9px}
+.role-list{display:flex;gap:8px;flex-wrap:wrap}.role-chip{border:1px solid #46597a;background:#0e1b30;padding:7px 8px 7px 12px;border-radius:10px;display:inline-flex;gap:12px;align-items:center}
+.role-chip button{font-size:12px;padding:5px 9px}.feedback{padding:10px 13px;border-radius:10px;margin-top:11px;border:1px solid #368468;background:#174034;font-size:13px;color:#e8fff3}
+.feedback.err{border-color:#c25a6c;background:#4b2632;color:#ffdae0}
+@media(max-width:600px){.role-form{display:block}.role-form .actions{margin-top:10px}.role-form .field{max-width:none}.grid{grid-template-columns:1fr}}
+
+.storage-panel{border-color:#5568d3;background:linear-gradient(135deg,#1b2b48,#14283c)}
+.storage-bar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.storage-panel .storage-state{padding:10px 12px;border:1px solid #6978aa;border-radius:10px;color:#e9eefc;background:#182440;font-size:13px}
+.storage-state.ok-state{background:#173f34;border-color:#398b6e;color:#e2fff2}
+.storage-state.bad-state{background:#48282e;border-color:#c77a81;color:#ffe6e8}
+.storage-details{font-size:12px;color:#c2cde0}
+.storage-panel button{min-height:42px}
+.role-form button{min-width:178px}
+
+/* v2.8 — mobile-first: toque, safe areas, calendário de um dia, largura fluida */
+html{width:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{min-width:0;width:100%;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom,0px)}
+button,select,input{font:inherit}button{touch-action:manipulation}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #a9b7ff;outline-offset:2px}
+.wrap{width:100%;max-width:1320px;padding-left:clamp(12px,2vw,24px);padding-right:clamp(12px,2vw,24px)}
+.layout > *, .layout > * > *, .panel, .field{min-width:0}
+.tabs{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;padding:4px 0 10px;scrollbar-width:thin}
+.tabs button{white-space:nowrap;flex-shrink:0;min-height:46px}
+button{min-height:44px}
+.field input,.field select{min-width:0;min-height:46px;font-size:16px}
+.field input[type=checkbox],.checkdays input{width:20px;height:20px;vertical-align:middle}
+.checkdays{gap:10px 16px}.checkdays label{display:inline-flex;align-items:center;gap:5px;min-height:38px}
+.table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.storage-bar button{min-height:48px}
+.storage-panel h2{margin-bottom:8px}
+.role-form .field{flex-basis:245px}
+.role-chip{max-width:100%;overflow-wrap:anywhere}
+.mobile-day-toolbar{display:none;align-items:center;gap:8px;background:#101c31;border:1px solid #3a4a67;padding:10px 12px;border-radius:12px;margin:12px 0}
+.mobile-day-toolbar label{font-size:12px;color:#b6c7de}
+.mobile-day-toolbar select{flex:1;min-width:0;padding:11px 7px;min-height:45px;border-radius:8px;background:#162842;color:#f7faff;border:1px solid #64799d;font-size:16px}
+.mobile-day-toolbar button{flex-shrink:0;padding:10px;min-width:45px}
+.small-device-tip{display:none;font-size:12px;line-height:1.45;color:#a7c4ec;margin:6px 0 10px}
+.schedule-matrix th:first-child,.schedule-matrix td:first-child{position:sticky;left:0;z-index:2;background:#142039;box-shadow:2px 0 0 #33465d}
+.schedule-matrix th:first-child{z-index:3;background:#101b2d}
+.schedule-matrix td:first-child{white-space:normal;min-width:145px;max-width:200px}
+.schedule-matrix td select{min-height:43px;min-width:93px;font-size:13px}
+.schedule-matrix td{min-width:105px}
+.schedule-matrix td:last-child,.schedule-matrix th:last-child{min-width:90px}
+@media(max-width:1060px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.cards{grid-template-columns:repeat(3,minmax(0,1fr))}.panel{padding:15px}.layout{grid-template-columns:1fr}header{padding:18px 16px}}
+@media(max-width:700px){
+  header{padding:16px 14px}header h1{font-size:20px;line-height:1.3}header .muted{font-size:12px;line-height:1.45;margin-top:6px}
+  .wrap{padding:12px 10px}.panel{padding:14px 12px;margin-bottom:12px;border-radius:12px}
+  .grid,.grid.two{grid-template-columns:1fr;gap:11px}
+  .actions{align-items:stretch}.actions button{flex:1 1 145px;line-height:1.35}
+  .storage-bar{display:grid;grid-template-columns:1fr;gap:8px}.storage-bar button{width:100%}.storage-bar #connectDataFile{display:none}
+  .role-form{display:block}.role-form .field{max-width:unset}.role-form .actions{margin-top:10px}.role-form button{width:100%}
+  .role-list{display:flex;gap:8px}.role-chip{flex:1 1 100%;justify-content:space-between}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.metric{min-width:0;padding:10px}.metric strong{font-size:18px;overflow-wrap:anywhere}
+  .mobile-day-toolbar{display:flex}.small-device-tip{display:block}
+  .schedule-matrix{overflow:visible}.schedule-matrix table{table-layout:fixed;width:100%;min-width:0;font-size:12px}
+  .schedule-matrix th,.schedule-matrix td{padding:8px 5px;min-width:0!important;white-space:normal;overflow-wrap:anywhere}
+  .schedule-matrix th:first-child,.schedule-matrix td:first-child{position:static;width:42%;max-width:none;min-width:0;box-shadow:none}
+  .schedule-matrix th:last-child,.schedule-matrix td:last-child{width:23%;font-size:11px}
+  .schedule-matrix .schedule-day-cell{display:none}
+  .schedule-matrix .schedule-day-cell.active-day{display:table-cell;width:35%}
+  .schedule-matrix td select{width:100%;min-width:0;min-height:46px;font-size:13px;padding:6px 1px}
+  .employee-table thead{display:none}.employee-table,.employee-table tbody,.employee-table tr,.employee-table td{display:block;width:100%}
+  .employee-table tr{margin-bottom:12px;padding:11px;background:#0f1c30;border:1px solid #344664;border-radius:11px}
+  .employee-table td{display:flex;gap:8px;justify-content:space-between;align-items:flex-start;white-space:normal;padding:7px 2px;border:0;text-align:right;overflow-wrap:anywhere}
+  .employee-table td::before{content:attr(data-label);color:#acbfdd;flex:0 0 35%;text-align:left;font-size:12px;font-weight:500}
+  .employee-table td:last-child button{width:100%}
+  .employee-table td[colspan]::before{display:none}.employee-table td[colspan]{display:block;text-align:center}
+}
+@media(max-width:385px){.cards,.metrics{grid-template-columns:1fr}.schedule-matrix th:first-child,.schedule-matrix td:first-child{width:39%}.schedule-matrix .schedule-day-cell.active-day{width:38%}}
+@media print{.mobile-day-toolbar,.small-device-tip{display:none!important}.schedule-matrix .schedule-day-cell{display:table-cell!important}.schedule-matrix table{width:100%!important;table-layout:auto!important}.schedule-matrix td,.schedule-matrix th{min-width:0!important;font-size:9px!important;padding:4px!important}.schedule-matrix th:first-child,.schedule-matrix td:first-child{position:static!important}.employee-table thead{display:table-header-group!important}.employee-table,.employee-table tbody{display:table!important}.employee-table tr{display:table-row!important;background:white!important}.employee-table td{display:table-cell!important}.employee-table td::before{display:none!important}}
+
+/* Identificação de autoria fixa; não é um campo editável na aplicação.
+   A proteção jurídica do aviso não impede alguém de alterar uma cópia do HTML. */
+:root{--copyright-height:46px}
+body{padding-bottom:calc(var(--copyright-height) + env(safe-area-inset-bottom,0px))}
+.copyright-line{
+  position:fixed;z-index:1000;bottom:0;left:0;right:0;
+  min-height:var(--copyright-height);display:flex;justify-content:center;align-items:center;
+  text-align:center;padding:9px 14px calc(9px + env(safe-area-inset-bottom,0px));
+  background:#101b2df5;border-top:1px solid #435472;
+  color:#d7e3f8;font-size:12px;font-weight:550;line-height:1.35;
+  box-shadow:0 -4px 14px #0003;
+}
+@media(max-width:600px){
+  :root{--copyright-height:58px}
+  .copyright-line{font-size:11px;padding:8px 11px calc(8px + env(safe-area-inset-bottom,0px))}
+}
+@media print{
+  body{padding-bottom:22px!important}
+  .copyright-line{position:fixed!important;bottom:0;left:0;right:0;
+    display:block!important;min-height:unset;border-top:1px solid #888;
+    background:white!important;color:black!important;font-size:9px!important;
+    box-shadow:none!important;padding:4px!important;z-index:1000}
+}
+</style></head><body>
+<header><h1>▦ Gestão de Escalas 5×2 <span class="pill">versão 2.9 • Celular, tablet e computador</span></h1><div class="muted">Rodízio domingo + segunda, cobertura por cargo, planejamento de jornada • funciona sem internet e sem servidor</div></header>
+<main class="wrap"><nav class="tabs no-print" aria-label="Seções da aplicação"><button class="active" data-tab="team">Equipe e cargos</button><button data-tab="scale">Escala inteligente</button><button data-tab="hours">Simulador de jornada</button><button data-tab="rules">Regras & orientações</button></nav>
+<section id="team"><div class="panel storage-panel no-print"><h2>Dados locais neste dispositivo</h2><p>O sistema grava automaticamente no armazenamento local deste navegador, quando disponível. <strong>Nada é enviado para a internet.</strong> Cada celular, tablet ou computador mantém seus próprios dados. Faça cópias JSON para proteger seus cadastros ou transportá-los entre aparelhos.</p><div id="storageStatus" class="storage-state" role="status" aria-live="polite">Verificando armazenamento…</div><div class="storage-bar"><button class="primary" type="button" id="connectDataFile">💾 Vincular arquivo (Chrome/Edge no PC)</button><button type="button" id="openDataFile">📂 Abrir dados já salvos</button><button type="button" id="quickBackup">⬇ Baixar cópia de segurança</button></div><div class="storage-details">No celular/tablet, use <b>Baixar cópia de segurança</b> e <b>Abrir dados já salvos</b>. O arquivo JSON fica no aparelho. Evite modo anônimo/privado e não limpe os dados do navegador. Em navegadores móveis, o vínculo automático a um arquivo pode não estar disponível; não é necessário para usar o armazenamento local.</div><input id="dataFileInput" type="file" accept=".json,application/json" class="hidden"></div><div class="layout"><div><div class="panel"><h2>Cadastrar cargos e funções</h2><p>Crie seus próprios cargos antes de adicionar colaboradores. Cadastre o nome de cada função. Depois clique em <strong>Salvar cargo</strong>. Os cargos aparecerão automaticamente na lista e no cadastro dos funcionários.</p><form id="roleForm" class="role-form"><div class="field"><label for="newRoleName">Nome do cargo</label><input id="newRoleName" name="cargo" required maxlength="70" autocomplete="off" placeholder="Ex.: Gerente, Caixa, Vendedor, Consultor..."></div><div class="actions"><button class="good" id="saveRoleBtn" type="submit">💾 Salvar cargo</button></div></form><div id="roleNotice" role="status" aria-live="polite"></div><div class="role-list-title">Cargos salvos <span id="roleCount" class="badge">0</span></div><div id="roleList" class="role-list"></div></div><div class="panel"><h2>Cadastro de colaborador</h2><form id="employeeForm" class="grid"><div class="field"><label>Nome</label><input id="empName" required placeholder="Nome completo" maxlength="90"></div><div class="field"><label>Cargo</label><select id="empRole" required><option value="">Cadastre um cargo primeiro</option></select></div><div class="field"><label>Horas contratuais por semana</label><input id="empHours" type="number" min="1" max="44" step="0.5" value="42"></div><div class="field"><label>Dias trabalhados / semana</label><input id="empDays" type="number" min="1" max="7" value="5"></div><div class="field"><label>Entrada</label><input id="empIn" type="time" value="08:00"></div><div class="field"><label>Saída</label><input id="empOut" type="time" value="18:00"></div><div class="field"><label>Intervalo (minutos)</label><input id="empBreak" type="number" min="0" max="240" value="96"></div><div id="empHoursPreview" class="field" style="grid-column:1/-1"></div><div class="actions"><button class="primary" type="submit">💾 Salvar funcionário</button></div></form><div id="empNotice" role="status" aria-live="polite"></div></div><div class="panel"><h2>Quadro de funcionários <span id="headcount" class="badge">0</span></h2><div class="table-scroll"><table class="employee-table"><thead><tr><th>Funcionário</th><th>Cargo</th><th>Regime</th><th>Rodízio</th><th>Ações</th></tr></thead><tbody id="rosterBody"></tbody></table></div></div></div>
+<div><div class="panel settings"><h2>Funcionamento e cobertura mínima</h2><p>Selecione os dias em que o estabelecimento abre:</p><div class="checkdays" id="openDays"></div><p>Quantidade mínima em serviço por dia aberto:</p><div id="minimumFields" class="grid two"></div><p class="muted">Informe quantas pessoas de cada cargo devem estar trabalhando em cada dia aberto. Exemplo: 1 gerente e 1 caixa. A aplicação alerta quando algum cargo fica sem cobertura.</p><div class="field"><label>Limite de funcionários simultaneamente de folga (0 = sem limite)</label><input type="number" min="0" max="99" id="maxOff" value="0"></div><div class="actions"><button id="saveConfig" class="primary">Salvar regras</button></div></div><div id="staffDiagnostic" class="panel"></div></div></div></section>
+<section id="scale" class="hidden"><div class="panel"><h2>Gerar escala semanal</h2><div class="grid"><div class="field"><label>Semana iniciada na segunda-feira</label><input id="weekStart" type="date"></div><div class="field"><label>Carga máxima de referência (h/semana)</label><select id="weekLimit"><option value="44">44 h • histórico</option><option value="42" selected>42 h • transição 2026</option><option value="40">40 h • etapa 2027</option></select></div></div><div class="actions no-print"><button class="good" id="generate">✦ Gerar / recalcular</button><button id="saveWeek" class="primary">Salvar semana</button><button id="nextWeek">Próxima semana →</button><button id="printBtn">Imprimir</button><button id="csvBtn">Exportar CSV</button></div><p class="muted">Clique no estado de cada célula para editar. Toda edição é validada. Salve a semana para manter o histórico do rodízio. A geração prioriza folgas duplas no domingo e na segunda, alternando os beneficiados a cada semana segundo o histórico salvo. Não atribui preferências fixas. Quando a cobertura impedir a folga dupla para todos, o sistema sinaliza conflitos.</p></div><div class="panel"><h2>Escala: <span id="weekTitle">Selecione a semana</span></h2><div class="metrics" id="scheduleMetrics"></div><div id="alerts"></div><div class="mobile-day-toolbar no-print"><button type="button" id="mobilePrevDay" aria-label="Dia anterior">‹</button><label for="mobileScheduleDay">Dia</label><select id="mobileScheduleDay" aria-label="Selecionar dia da semana"><option value="0">Segunda</option><option value="1">Terça</option><option value="2">Quarta</option><option value="3">Quinta</option><option value="4">Sexta</option><option value="5">Sábado</option><option value="6">Domingo</option></select><button type="button" id="mobileNextDay" aria-label="Dia seguinte">›</button></div><p class="small-device-tip">No celular, veja e altere um dia por vez. As sete jornadas continuam na escala e aparecem juntas na impressão.</p><div class="table-scroll schedule-matrix"><table><thead id="scheduleHead"></thead><tbody id="scheduleBody"></tbody></table></div></div><div class="panel"><h2>Cobertura por dia e cargo</h2><div id="coverage" class="cards"></div></div><div class="panel"><h2>Histórico de folgas especiais</h2><div id="history"></div></div></section>
+<section id="hours" class="hidden"><div class="panel narrow"><h2>Simulador de jornada</h2><div class="grid two"><div class="field"><label>Entrada</label><input type="time" id="calcIn" value="08:00"></div><div class="field"><label>Saída</label><input type="time" id="calcOut" value="18:00"></div><div class="field"><label>Intervalo (min)</label><input type="number" id="calcBreak" min="0" max="240" value="96"></div><div class="field"><label>Dias trabalhados</label><input type="number" id="calcDays" min="1" max="7" value="5"></div><div class="field"><label>Meta semanal (horas)</label><select id="calcTarget"><option>44</option><option selected>42</option><option>40</option></select></div></div><div class="actions"><button id="autoBreak" type="button" class="good">Calcular intervalo para atingir a meta</button><button id="apply42" type="button">Sugestão 42h • 8h às 18h</button><button id="apply40" type="button">Sugestão 40h • 8h às 18h</button></div><p class="muted">Para 42h em cinco dias, das 8h às 18h: intervalo de 96 minutos (1h36). Para 40h: 120 minutos (2h). São horários sugeridos e sujeitos às normas e acordos aplicáveis.</p><div id="calcResult" class="panel" style="margin-top:15px"></div><p class="muted">Simulação aritmética, não constitui validação jurídica. Horas efetivamente trabalhadas e intervalos precisam ser conferidos na execução da escala.</p></div></section>
+<section id="rules" class="hidden"><div class="panel"><h2>Regras de gestão e conformidade</h2><p>A aplicação gera escala-modelo de dois descansos semanais e registra a quantidade de dias trabalhados definida para cada colaborador. O planejamento toma como referência as etapas de 42 h em dezembro de 2026 e 40 h em dezembro de 2027. Exemplo de 42h em cinco dias: entrada 8h, saída 18h, intervalo 1h36; na fase de 40h, intervalo 2h. Confirme a convenção coletiva e os limites diários. Escolha o limite aplicável à semana e confira as regras coletivas específicas.</p><p>Na geração automática, a cobertura mínima por função, as restrições entre gerência e caixa e a distribuição de folgas são objetivos de otimização. Quando incompatíveis, os conflitos permanecem visíveis e a escala não é marcada como aprovada.</p><p>O domingo de folga, as segundas-feiras, as cargas horárias e a igualdade do rodízio são monitorados; feriados, domingos efetivamente autorizados, acordos coletivos, descanso interjornada e regras especiais devem passar por conferência do RH/contador antes da publicação.</p><p class="warn">Importante: há armazenamento local neste dispositivo (IndexedDB e/ou armazenamento do navegador), além de backup JSON ou arquivo vinculado, quando compatível. Sem arquivo vinculado, dados de diferentes cópias do HTML podem não ser compartilhados. Não há servidor, sincronização de rede nem controle de login. Faça backups regularmente.</p><div class="actions no-print"><button id="exportBackup">Exportar backup JSON</button><button id="importBackupBtn">Importar backup JSON</button><input type="file" id="importBackup" accept="application/json,.json" class="hidden"><button id="resetData" class="danger">Limpar dados locais</button></div></div></section></main>
+<footer class="copyright-line" id="copyrightNotice" aria-label="Aviso de direitos autorais">© 2026 Fabiano Inoue - SICOV - Cornélio Procópio - PR • Todos os direitos reservados.</footer>
+<script>
+'use strict';
+const DAYS=['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo']; let ROLES=[];
+const baseConfig=()=>({open:[true,true,true,true,true,true,false],minimum:{'Gerência':1,Caixa:1,Vendedor:2,Estoquista:0,'Ótico':0,Relojoeiro:0,Ourives:0,Assistência:0,Financeiro:0},maxOff:0,block:true});
+const STORE='Local';
+const defaultState=()=>({employees:[],roles:[],configs:{[STORE]:baseConfig()},weeks:{}});
+let state;try{state=JSON.parse(localStorage.getItem('mundial_escalas_v2'))||defaultState()}catch{state=defaultState()};if(!state.employees||!state.configs||!state.weeks)state=defaultState();
+// Converter versões antigas de duas lojas para uma instância independente sem apagar colaboradores.
+function migrateOneStore(){
+ if(!state.configs[STORE]){
+  let old=state.configs['Loja 1']||state.configs['Loja 2']||baseConfig();
+  state.configs={[STORE]:old};
+  const weeks={};
+  for(const w of Object.values(state.weeks||{})){if(w&&w.week&&!weeks[STORE+'|'+w.week])weeks[STORE+'|'+w.week]={...w,store:STORE};}
+  state.weeks=weeks;
+ }
+ state.employees.forEach(e=>e.store=STORE);
+}
+migrateOneStore();
+const $=id=>document.getElementById(id), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const STORAGE_KEY='mundial_escalas_v2';
+let dbSupported=null; // atualizado após conferência real de escrita IndexedDB
+const DB_NAME='escala_rotativa_dados_local_2_8';
+let activeDataFile=null;
+let fileLabel='';
+let lastSaved='';
+const save=(silent=false)=>{
+ try{
+  const payload=JSON.stringify(state);
+  localStorage.setItem(STORAGE_KEY,payload);
+  if(localStorage.getItem(STORAGE_KEY)!==payload)throw new Error('Não foi possível conferir a gravação');
+  lastSaved='navegador';return true;
+ }catch(err){
+  if(!silent)console.warn('Navegador não permitiu salvar:',err);
+  return false;
+ }
+};
+
+// Persistência local adicional compatível com Chrome/Edge/Safari: IndexedDB.
+// O armazenamento é isolado por navegador/perfil/dispositivo; o backup JSON é portátil.
+function openLocalDb(){return new Promise((resolve,reject)=>{
+ if(!('indexedDB' in window))return reject(new Error('IndexedDB não disponível'));
+ let req;try{req=indexedDB.open(DB_NAME,1)}catch(e){return reject(e)}
+ req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains('dados'))req.result.createObjectStore('dados')};
+ req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error||new Error('Falha na abertura do banco'));
+ req.onblocked=()=>reject(new Error('Banco de dados ocupado por outra aba'));
+})}
+async function readLocalDb(){const db=await openLocalDb();try{return await new Promise((resolve,reject)=>{
+ const req=db.transaction('dados','readonly').objectStore('dados').get('principal');
+ req.onsuccess=()=>{try{resolve(req.result?JSON.parse(req.result):null)}catch(e){reject(e)}};req.onerror=()=>reject(req.error);
+})}finally{db.close()}}
+async function writeLocalDb(){const db=await openLocalDb();try{
+ const payload=JSON.stringify(state);
+ await new Promise((resolve,reject)=>{const tx=db.transaction('dados','readwrite');tx.objectStore('dados').put(payload,'principal');tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('Gravação cancelada'))});
+ const confirmed=await readLocalDb();if(JSON.stringify(confirmed)!==payload)throw new Error('Falha ao conferir os dados locais');
+ dbSupported=true;return true
+}finally{db.close()}}
+async function clearLocalDb(){try{const db=await openLocalDb();try{await new Promise((resolve,reject)=>{const tx=db.transaction('dados','readwrite');tx.objectStore('dados').delete('principal');tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)})}finally{db.close()}}catch(e){console.warn('Não foi possível limpar banco local',e)}}
+function storageAvailable(){try{const k='escala_rotativa_teste_de_gravacao';localStorage.setItem(k,'ok');const ok=localStorage.getItem(k)==='ok';localStorage.removeItem(k);return ok}catch{return false}}
+function setStorageStatus(message,isOk){
+ const el=$('storageStatus');if(!el)return;
+ el.textContent=message;el.className='storage-state '+(isOk?'ok-state':'bad-state');
+}
+function refreshStorageStatus(){
+ const localOK=storageAvailable();
+ const enabled=dbSupported===true||localOK;
+ const where=[dbSupported===true?'banco de dados local (IndexedDB)':'',localOK?'armazenamento do navegador':''].filter(Boolean).join(' e ');
+ if(activeDataFile)setStorageStatus('Dados neste dispositivo: '+(where||'arquivo vinculado')+'. Arquivo vinculado: '+fileLabel+'.',true);
+ else if(enabled)setStorageStatus('Salvamento local ativo: '+where+'. Sem servidor e sem sincronização entre dispositivos. Faça backup JSON regularmente.',true);
+ else setStorageStatus('ATENÇÃO: este navegador não permitiu salvar localmente. Abra no Chrome, Edge ou Safari normal (sem aba privada) e use um arquivo JSON de backup.',false);
+}
+async function writeFile(handle){
+ const writable=await handle.createWritable();
+ try{await writable.write(JSON.stringify(state,null,2));await writable.close()}catch(err){try{await writable.abort()}catch{}throw err}
+ // conferir o arquivo após a escrita
+ const file=await handle.getFile();const saved=JSON.parse(await file.text());
+ if(JSON.stringify(saved)!==JSON.stringify(state))throw Error('Arquivo de dados não corresponde ao cadastro atual');
+}
+async function savePersistent({offerPicker=true}={}){
+ state._savedAt=new Date().toISOString();
+ const localOK=save(true);
+ let dbOK=false;
+ try{dbOK=await writeLocalDb()}catch(e){dbSupported=false;console.warn('IndexedDB indisponível, usando armazenamento alternativo:',e)}
+ if(dbOK)lastSaved='banco de dados local';
+ let fileOK=false,err='';
+ if(activeDataFile){
+  try{await writeFile(activeDataFile);fileOK=true;lastSaved='arquivo de dados'}
+  catch(e){err=e.message||String(e)}
+ }else if(!localOK&&!dbOK&&offerPicker&&typeof window.showSaveFilePicker==='function'){
+  try{
+   // O seletor é aberto dentro do clique real do botão de salvar.
+   const handle=await window.showSaveFilePicker({suggestedName:'Escala_Rotativa_Dados.json',types:[{description:'Dados da escala (JSON)',accept:{'application/json':['.json']}}]});
+   await writeFile(handle);activeDataFile=handle;fileLabel=handle.name||'Escala_Rotativa_Dados.json';fileOK=true;lastSaved='arquivo de dados';
+   rememberFileHandle(handle).catch(()=>{});
+  }catch(e){err=e.name==='AbortError'?'A escolha do arquivo foi cancelada':(e.message||String(e))}
+ }
+ refreshStorageStatus();
+ if(fileOK||localOK||dbOK){
+  if(err&&(localOK||dbOK))setStorageStatus('Dados salvos localmente, mas não foi possível atualizar o arquivo vinculado: '+err,false);
+  return true;
+ }
+ setStorageStatus('NÃO SALVO. '+(err||'Este navegador bloqueou os dois tipos de armazenamento local.')+' Use outro navegador ou vincule um arquivo no computador.',false);
+ return false;
+}
+function storageDb(){return new Promise((resolve,reject)=>{
+ if(!window.indexedDB)return reject(Error('IndexedDB indisponível'));
+ const req=indexedDB.open('escala_rotativa_handles_v1',1);
+ req.onupgradeneeded=()=>req.result.createObjectStore('settings');
+ req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)
+})}
+async function rememberFileHandle(handle){
+ const db=await storageDb();try{await new Promise((resolve,reject)=>{const tx=db.transaction('settings','readwrite');tx.objectStore('settings').put(handle,'datafile');tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)})}finally{db.close()}
+}
+async function forgetFileHandle(){
+ try{const db=await storageDb();try{await new Promise((resolve,reject)=>{const tx=db.transaction('settings','readwrite');tx.objectStore('settings').delete('datafile');tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)})}finally{db.close()}}catch{}
+}
+async function recallFileHandle(){
+ try{const db=await storageDb();let handle;try{handle=await new Promise((resolve,reject)=>{const req=db.transaction('settings').objectStore('settings').get('datafile');req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}finally{db.close()}
+ if(!handle)return;
+ const permission=typeof handle.queryPermission==='function'?await handle.queryPermission({mode:'readwrite'}):'prompt';
+ if(permission==='granted'){
+  const json=JSON.parse(await (await handle.getFile()).text());
+  if(validImportedState(json)){state=json;migrateOneStore();rebuildUI();activeDataFile=handle;fileLabel=handle.name||'Arquivo de dados';refreshStorageStatus()}
+ }else setStorageStatus('Um arquivo de dados antigo está vinculado, mas o navegador requer autorização. Clique em “Abrir dados já salvos” para acessá-lo.',false)
+ }catch(e){console.warn('Não foi possível reabrir automaticamente o arquivo:',e);refreshStorageStatus()}
+}
+function validImportedState(data){return data&&Array.isArray(data.employees)&&data.configs&&typeof data.configs==='object'&&data.weeks&&typeof data.weeks==='object'&&(!data.roles||Array.isArray(data.roles))}
+function rebuildUI(){if(!Array.isArray(state.roles))state.roles=[];for(const e of state.employees)if(e.role&&!state.roles.some(r=>r.name===e.role))state.roles.push({name:e.role,group:'individual'});syncRoles();renderRoles();renderRoster();renderConfig();loadWeek()}
+async function loadExternalData(data,handle){
+ if(!validImportedState(data))throw Error('Arquivo inválido. Escolha um backup JSON gerado pela aplicação.');
+ if((state.employees.length||state.roles.length||Object.keys(state.weeks).length)&&!confirm('Abrir este arquivo substituirá os dados atualmente exibidos. Deseja continuar?'))return false;
+ const oldState=state,oldFile=activeDataFile,oldLabel=fileLabel;
+ state=data;migrateOneStore();rebuildUI();if(handle){activeDataFile=handle;fileLabel=handle.name||'Dados da escala'}
+ if(!await savePersistent({offerPicker:false})){state=oldState;activeDataFile=oldFile;fileLabel=oldLabel;rebuildUI();throw Error('O backup foi lido, mas NÃO pôde ser salvo neste dispositivo. Verifique o armazenamento local.')};
+ if(handle)rememberFileHandle(handle).catch(()=>{});refreshStorageStatus();return true
+}
+const iso=d=>[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+const dateAt=s=>new Date(s+'T12:00:00');const move=(s,n)=>{let d=dateAt(s);d.setDate(d.getDate()+n);return iso(d)};
+const mon=s=>{let d=dateAt(s);d.setDate(d.getDate()-((d.getDay()+6)%7));return iso(d)};
+const weekKey=(store,week)=>STORE+'|'+week;
+const roleOf=e=>e.role; // cobertura agora usa o cargo cadastrado, sem grupos técnicos.
+const minute=t=>{const [h,m]=t.split(':').map(Number);return h*60+m};
+const spanMinutes=(a,b)=>{if(!a||!b)return NaN;let n=minute(b)-minute(a);if(n<0)n+=1440;return n};
+const validBreak=(span,rest)=>Number.isFinite(rest)&&rest>=0&&rest<span;
+const formatMinutes=n=>`${Math.floor(Math.abs(n)/60)}h${String(Math.round(Math.abs(n)%60)).padStart(2,'0')}`;
+const workMinutes=e=>{let span=spanMinutes(e.in,e.out);return validBreak(span,Number(e.break))?span-Number(e.break):NaN};
+
+// Migração segura: preservar cargos de colaboradores já existentes.
+if(!Array.isArray(state.roles))state.roles=[];
+for(let e of state.employees){if(e.role&&!state.roles.some(r=>r.name===e.role))state.roles.push({name:e.role,group:['Gerente','Subgerente'].includes(e.role)?'Gerência':e.role==='Caixa'?'Caixa':'individual'})}
+function syncRoles(){
+ ROLES=[...new Set(state.roles.map(r=>r.name).filter(Boolean))];
+ for(let c of Object.values(state.configs)){
+  const old=c.minimum||{}, minimum={},usedGroups=new Set();
+  for(let r of state.roles){
+   if(Object.prototype.hasOwnProperty.call(minimum,r.name))continue;
+   if(Object.prototype.hasOwnProperty.call(old,r.name))minimum[r.name]=Number(old[r.name])||0;
+   else if(r.group && r.group!=='individual' && !usedGroups.has(r.group)){
+    minimum[r.name]=Number(old[r.group])||0;usedGroups.add(r.group);
+   }else minimum[r.name]=0;
+  }
+  c.minimum=minimum;
+ }
+}
+function showNotice(message,ok=true,target='roleNotice'){
+ const el=$(target);el.innerHTML=`<div class="feedback${ok?'':' err'}">${ok?'✓ ': '⚠ '}${esc(message)}</div>`;
+}
+function renderRoles(){
+ syncRoles();
+ const selected=$('empRole').value;
+ $('empRole').innerHTML='<option value="">Selecione o cargo</option>'+state.roles.map(r=>`<option value="${esc(r.name)}">${esc(r.name)}</option>`).join('');
+ if(state.roles.some(r=>r.name===selected))$('empRole').value=selected;
+ $('roleCount').textContent=state.roles.length;
+ $('roleList').innerHTML=state.roles.length?
+  state.roles.map(r=>`<span class="role-chip"><strong>${esc(r.name)}</strong><button type="button" class="danger" data-delrole="${esc(r.name)}" title="Excluir cargo">Excluir</button></span>`).join(''):
+  '<p class="muted">Nenhum cargo salvo ainda. Preencha o nome acima e clique em Salvar cargo.</p>';
+ document.querySelectorAll('[data-delrole]').forEach(b=>b.onclick=async()=>{
+  const name=b.dataset.delrole;
+  if(state.employees.some(e=>e.role===name))return showNotice('Este cargo já está vinculado a funcionários e não pode ser excluído.',false);
+  if(!confirm('Excluir o cargo '+name+'?'))return;
+  const old=state.roles.slice();state.roles=old.filter(r=>r.name!==name);
+  if(!await savePersistent()){state.roles=old;return showNotice('O cargo não foi excluído porque o salvamento não foi confirmado.',false)}
+  renderRoles();renderConfig();showNotice('Cargo excluído: '+name);
+ });
+}
+$('roleForm').addEventListener('submit',async e=>{
+ e.preventDefault();
+ const name=$('newRoleName').value.trim().replace(/\s+/g,' ');
+ if(!name)return showNotice('Digite o nome do cargo antes de salvar.',false);
+ if(state.roles.some(r=>r.name.toLocaleLowerCase('pt-BR')===name.toLocaleLowerCase('pt-BR')))
+  return showNotice('Este cargo já está cadastrado. Ele aparece na lista abaixo.',false);
+ state.roles.push({name,group:'individual'});
+ if(!await savePersistent()){state.roles.pop();return showNotice('Cargo NÃO SALVO. Vincule um arquivo de dados ou habilite o armazenamento do navegador.',false)}
+ $('newRoleName').value='';
+ renderRoles();renderConfig();$('empRole').value=name;
+ showNotice('Cargo “'+name+'” SALVO e conferido ('+lastSaved+'). Ele já está disponível no cadastro de funcionários.');
+ $('newRoleName').focus();
+});
+
+function renderEmployeePreview(){let span=spanMinutes($('empIn').value,$('empOut').value),rest=Number($('empBreak').value),days=Number($('empDays').value),target=Number($('empHours').value)*60,el=$('empHoursPreview');if(!Number.isFinite(span)||!validBreak(span,rest)||!Number.isInteger(days)||days<1||days>7){el.innerHTML='<div class="error">Confira os horários, os dias e o intervalo: o intervalo deve ser menor que a permanência.</div>';return}let daily=span-rest,week=daily*days,diff=week-target;el.innerHTML=`<div class="${diff===0?'ok':'warn'}">Conferência: ${formatMinutes(span)} de permanência − ${formatMinutes(rest)} de intervalo = <b>${formatMinutes(daily)} trabalhadas/dia</b> × ${days} dias = <b>${formatMinutes(week)} na semana</b>. Meta contratual: ${formatMinutes(target)}. Diferença: ${diff>0?'+':diff<0?'-':''}${formatMinutes(diff)}.</div>`}
+['empIn','empOut','empBreak','empDays','empHours'].forEach(id=>$(id).addEventListener('input',renderEmployeePreview));
+const showTab=id=>{document.querySelectorAll('main > section').forEach(x=>x.classList.toggle('hidden',x.id!==id));document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));if(id==='scale')loadWeek();if(id==='hours')calculate()};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+
+$('employeeForm').onsubmit=async e=>{e.preventDefault();let emp={id:(typeof crypto!=='undefined'&&typeof crypto.randomUUID==='function')?crypto.randomUUID():String(Date.now())+'-'+Math.random().toString(36).slice(2),name:$('empName').value.trim(),store:STORE,role:$('empRole').value,hours:Number($('empHours').value),days:Number($('empDays').value),in:$('empIn').value,out:$('empOut').value,break:Number($('empBreak').value)};if(!emp.role)return alert('Cadastre e selecione um cargo antes de salvar.');if(!emp.name||!Number.isInteger(emp.days)||emp.days<1||emp.days>7||!emp.in||!emp.out||!validBreak(spanMinutes(emp.in,emp.out),emp.break)||!Number.isFinite(emp.hours)||emp.hours<=0)return alert('Confira os dados do colaborador: horários, intervalo e dias inválidos.');if(!Number.isFinite(workMinutes(emp)))return alert('Jornada inválida.');state.employees.push(emp);if(!await savePersistent()){state.employees.pop();showNotice('Funcionário NÃO SALVO. Configure um arquivo de dados.',false,'empNotice');return}e.target.reset();showNotice('Funcionário “'+emp.name+'” salvo com sucesso.',true,'empNotice');$('empHours').value=42;$('empDays').value=5;$('empIn').value='08:00';$('empOut').value='18:00';$('empBreak').value=96;renderRoster();renderEmployeePreview()};
+function renderRoster(){$('headcount').textContent=state.employees.length;$('rosterBody').innerHTML=state.employees.map(e=>`<tr><td data-label="Nome">${esc(e.name)}</td><td data-label="Cargo">${esc(e.role)}</td><td data-label="Jornada">${e.days} dias • meta ${e.hours}h • calculado ${Number.isFinite(workMinutes(e))?formatMinutes(e.days*workMinutes(e)):'inválido'}</td><td data-label="Rodízio">Automático</td><td data-label="Ações"><button data-remove="${esc(e.id)}" class="danger">Excluir</button></td></tr>`).join('')||'<tr><td colspan="5">Cadastre colaboradores para começar.</td></tr>';document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=async()=>{if(confirm('Excluir colaborador e suas futuras participações na escala?')){const old=state.employees;state.employees=old.filter(x=>x.id!==b.dataset.remove);if(!await savePersistent()){state.employees=old;alert('Exclusão não salva.');return}renderRoster()}});diagnostic()}
+function config(){return state.configs[STORE]};
+function renderConfig(){let c=config();syncRoles();$('openDays').innerHTML=DAYS.map((d,i)=>`<label><input type="checkbox" data-day="${i}" ${c.open[i]?'checked':''}> ${d}</label>`).join('');$('minimumFields').innerHTML=ROLES.map(r=>`<div class="field"><label>${esc(r)}</label><input type="number" min="0" max="99" data-min="${r}" value="${c.minimum[r]||0}"></div>`).join('');$('maxOff').value=c.maxOff;diagnostic()}
+$('saveConfig').onclick=async()=>{let c=config();c.open=[...document.querySelectorAll('[data-day]')].map(i=>i.checked);document.querySelectorAll('[data-min]').forEach(i=>c.minimum[i.dataset.min]=Math.max(0,Number(i.value)||0));c.maxOff=Math.max(0,Number($('maxOff').value)||0);if(!await savePersistent())return alert('Regras NÃO SALVAS. Verifique o painel de armazenamento.');renderConfig();alert('Regras salvas. Recalcule a escala para aplicar alterações.')};
+function diagnostic(){let store=STORE,c=config(),people=state.employees.filter(e=>e.store===store),open=c.open.filter(Boolean).length,needed=Object.values(c.minimum).reduce((a,b)=>a+b,0),capacity=people.reduce((a,e)=>a+Math.min(7,e.days),0),demand=needed*open;let messages=[];for(let r of ROLES){let n=people.filter(e=>roleOf(e)===r).reduce((a,e)=>a+e.days,0),target=(c.minimum[r]||0)*open;if(n<target)messages.push(`${r}: ${n} plantões disponíveis / ${target} necessários`)}$('staffDiagnostic').innerHTML=`<h2>Dimensionamento da equipe</h2><p>${people.length} colaboradores | ${open} dias abertos | ${capacity} jornadas disponíveis | ${demand} necessárias</p>${messages.length?messages.map(x=>`<div class="warn">${esc(x)}</div>`).join(''):'<div class="ok">Capacidade semanal por cargo aparentemente suficiente. Verifique a distribuição diária na escala.</div>'}`}
+const stats=(store,excludeWeek)=>{let o={};for(let e of state.employees.filter(x=>x.store===store))o[e.id]={sun:0,mon:0,double:0};for(let [key,w] of Object.entries(state.weeks)){if(w.store!==store||w.week===excludeWeek)continue;for(let [id,arr] of Object.entries(w.rows||{}))if(o[id]){if(arr[6]==='F')o[id].sun++;if(arr[0]==='F')o[id].mon++;if(arr[0]==='F'&&arr[6]==='F')o[id].double++}}return o};
+function evaluate(rows,store,week){let c=state.configs[store],emps=state.employees.filter(x=>x.store===store),issues=[],coverage=[];for(let e of emps){let arr=rows[e.id]||[],n=arr.filter(x=>x==='T').length,off=7-n;if(n!==e.days)issues.push(`${e.name}: ${n} dias trabalhados, previsto ${e.days}.`);if(e.days===5&&off!==2)issues.push(`${e.name}: precisa de duas folgas na escala 5×2.`);let mins=n*workMinutes(e),limit=Number($('weekLimit').value)*60;if(!Number.isFinite(mins)){issues.push(`${e.name}: horários ou intervalo inválidos; corrija o cadastro.`);continue}if(mins>limit)issues.push(`${e.name}: ${Math.floor(mins/60)}h${String(mins%60).padStart(2,'0')} excedem o limite selecionado de ${limit/60}h.`);if(mins>e.hours*60)issues.push(`${e.name}: jornada calculada supera suas ${e.hours}h contratuais.`)}
+for(let d=0;d<7;d++){let working=emps.filter(e=>rows[e.id]?.[d]==='T'),off=emps.length-working.length,counts={};ROLES.forEach(r=>counts[r]=working.filter(e=>roleOf(e)===r).length);let errors=[];if(c.open[d]){for(let r of ROLES)if(counts[r]<(c.minimum[r]||0))errors.push(`${r}: ${counts[r]}/${c.minimum[r]}`);}else if(working.length)errors.push(`${working.length} trabalhando em dia marcado como fechado`);if(c.maxOff&&off>c.maxOff&&c.open[d])errors.push(`${off} folgas excedem máximo de ${c.maxOff}`);if(errors.length)issues.push(DAYS[d]+': '+errors.join('; '));coverage.push({working,counts,errors})}return {issues,coverage}}
+function generate(){
+ const store=STORE,week=mon($('weekStart').value),emps=state.employees.filter(e=>e.store===store),c=state.configs[store],hist=stats(store,week);
+ if(!emps.length)return alert('Cadastre os colaboradores primeiro.');
+ const rows={},taken=Array(7).fill(0);
+ // Cada colaborador recebe inicialmente as folgas dos dias em que a loja fecha.
+ for(const e of emps){rows[e.id]=Array(7).fill('T');let rest=Math.max(0,7-e.days);for(let d=0;d<7&&rest;d++)if(!c.open[d]){rows[e.id][d]='F';taken[d]++;rest--}}
+ // O rodízio da folga dupla é decidido antes de distribuir as demais folgas.
+ // Prioriza quem menos recebeu domingo + segunda, sem ignorar a cobertura obrigatória.
+ let candidates=emps.filter(e=>e.days<=5).sort((a,b)=>hist[a.id].double-hist[b.id].double||hist[a.id].mon-hist[b.id].mon||hist[a.id].sun-hist[b.id].sun||a.name.localeCompare(b.name));
+ for(const e of candidates){
+   let needed=7-e.days-rows[e.id].filter(x=>x==='F').length;
+   let pair=[0,6].filter(d=>rows[e.id][d]==='T');
+   if(pair.length>needed)continue;
+   for(const d of pair)rows[e.id][d]='F';
+   let result=evaluate(rows,store,week);
+   // Aceita a dupla somente se não gerar novos erros de cobertura nesses dois dias.
+   let safe=pair.every(d=>result.coverage[d].errors.length===0);
+   if(safe)for(const d of pair)taken[d]++;
+   else for(const d of pair)rows[e.id][d]='T';
+ }
+ // Completa as folgas restantes, minimizando lacunas de equipe e desequilíbrio.
+ let pending=emps.map(e=>({e,need:Math.max(0,7-e.days-rows[e.id].filter(x=>x==='F').length)}));
+ let count=0;
+ while(pending.some(x=>x.need>0)&&count++<500){
+   pending.sort((a,b)=>b.need-a.need||hist[a.e.id].double-hist[b.e.id].double);
+   let p=pending.find(x=>x.need>0);
+   const choices=DAYS.map((_,d)=>d).filter(d=>rows[p.e.id][d]==='T').map(d=>{
+     rows[p.e.id][d]='F';let result=evaluate(rows,store,week);rows[p.e.id][d]='T';
+     let score=result.coverage[d].errors.length*10000+taken[d]*25;
+     if(d===0)score+=hist[p.e.id].mon*30-80;
+     else if(d===6)score+=hist[p.e.id].sun*30-70;
+     else score+=60;
+     // Evita folgas isoladas se for possível dar dois dias consecutivos.
+     if(d>0&&rows[p.e.id][d-1]==='F'||d<6&&rows[p.e.id][d+1]==='F')score-=35;
+     return {d,score};
+   }).sort((a,b)=>a.score-b.score);
+   if(!choices.length){p.need=0;continue}
+   rows[p.e.id][choices[0].d]='F';taken[choices[0].d]++;p.need--;
+ }
+ current={store,week,rows};draw();
+}
+let current=null;
+function loadWeek(){let store=STORE,week=mon($('weekStart').value);$('weekStart').value=week;let saved=state.weeks[weekKey(store,week)];current=saved?JSON.parse(JSON.stringify(saved)):null;if(!current){$('weekTitle').textContent=week+' (não gerada)';$('scheduleBody').innerHTML='<tr><td>Use “Gerar / recalcular” para criar a escala desta semana.</td></tr>';$('alerts').innerHTML='';$('coverage').innerHTML='';$('history').innerHTML='';$('scheduleMetrics').innerHTML=''}else draw()}
+let mobileDayIndex=0;
+function applyMobileDayView(){
+ const sel=$('mobileScheduleDay');if(!sel)return;
+ sel.value=String(mobileDayIndex);
+ document.querySelectorAll('.schedule-day-cell').forEach(el=>el.classList.toggle('active-day',Number(el.dataset.weekday)===mobileDayIndex));
+}
+$('mobileScheduleDay').onchange=e=>{mobileDayIndex=Number(e.target.value);applyMobileDayView()};
+$('mobilePrevDay').onclick=()=>{mobileDayIndex=(mobileDayIndex+6)%7;applyMobileDayView()};
+$('mobileNextDay').onclick=()=>{mobileDayIndex=(mobileDayIndex+1)%7;applyMobileDayView()};
+function draw(){if(!current)return;let {rows,store,week}=current,emps=state.employees.filter(e=>e.store===store),res=evaluate(rows,store,week);$('weekTitle').textContent=`${week} a ${move(week,6)}`;$('scheduleHead').innerHTML='<tr><th>Colaborador / cargo</th>'+DAYS.map((d,i)=>`<th class="schedule-day-cell" data-weekday="${i}">${d}<div class="muted">${move(week,i).slice(5).split('-').reverse().join('/')}</div></th>`).join('')+'<th>Horas</th></tr>';$('scheduleBody').innerHTML=emps.map(e=>{let a=rows[e.id]||Array(7).fill('F'),worked=a.filter(x=>x==='T').length,mins=worked*workMinutes(e);return `<tr><td>${esc(e.name)}<div class="muted">${esc(e.role)} · ${e.days} dias</div></td>${a.map((v,d)=>`<td data-weekday="${d}" class="schedule-day-cell ${v==='T'?'work':'off'}"><select aria-label="${esc(e.name)}: ${DAYS[d]}" data-id="${esc(e.id)}" data-d="${d}"><option value="T" ${v==='T'?'selected':''}>Trabalha</option><option value="F" ${v==='F'?'selected':''}>Folga</option></select></td>`).join('')}<td>${Math.floor(mins/60)}h${String(mins%60).padStart(2,'0')}</td></tr>`}).join('');document.querySelectorAll('#scheduleBody select').forEach(el=>el.onchange=()=>{current.rows[el.dataset.id][Number(el.dataset.d)]=el.value;draw()});applyMobileDayView();$('alerts').innerHTML=res.issues.length?`<div class="error"><strong>${res.issues.length} alerta(s) • escala requer revisão</strong>${res.issues.map(i=>`<div>• ${esc(i)}</div>`).join('')}</div>`:'<div class="ok">Nenhum conflito detectado pelas regras configuradas. Conferência jurídica e de horários ainda necessária.</div>';$('coverage').innerHTML=res.coverage.map((x,d)=>`<div class="daycard"><strong>${DAYS[d]}</strong><p>${x.working.length} trabalhando</p>${ROLES.filter(r=>state.configs[store].minimum[r]).map(r=>`<div>${r}: ${x.counts[r]}/${state.configs[store].minimum[r]}</div>`).join('')}<div style="margin-top:7px">${x.errors.length?'⚠ Conflito':'✓ Coberto'}</div></div>`).join('');let h=stats(store,week);$('history').innerHTML='<div class="table-scroll"><table><thead><tr><th>Colaborador</th><th>Domingos anteriores</th><th>Segundas anteriores</th><th>Duplas anteriores</th><th>Dupla atual</th><th>Domingo atual</th><th>Segunda atual</th></tr></thead><tbody>'+emps.map(e=>`<tr><td>${esc(e.name)}</td><td>${h[e.id].sun}</td><td>${h[e.id].mon}</td><td>${h[e.id].double}</td><td>${rows[e.id]?.[0]==='F'&&rows[e.id]?.[6]==='F'?'Sim':'Não'}</td><td>${rows[e.id]?.[6]==='F'?'Folga':'Trabalha'}</td><td>${rows[e.id]?.[0]==='F'?'Folga':'Trabalha'}</td></tr>`).join('')+'</tbody></table></div>';$('scheduleMetrics').innerHTML=`<div class="metric">Funcionários<strong>${emps.length}</strong></div><div class="metric">Dias abertos<strong>${state.configs[store].open.filter(Boolean).length}</strong></div><div class="metric">Alertas<strong>${res.issues.length}</strong></div><div class="metric">Status<strong>${res.issues.length?'Revisar':'Verificada'}</strong></div>`}
+$('generate').onclick=()=>{if(current&&state.weeks[weekKey(current.store,current.week)]&& !confirm('Recalcular substituirá a escala exibida. A semana salva só será alterada ao clicar em Salvar. Continuar?'))return;generate()};$('saveWeek').onclick=async()=>{if(!current)return alert('Gere uma escala antes de salvar.');let res=evaluate(current.rows,current.store,current.week);if(res.issues.length&&!confirm(`A escala possui ${res.issues.length} alerta(s). Salvar mesmo assim como rascunho com pendências?`))return;state.weeks[weekKey(current.store,current.week)]={...current,issues:res.issues,savedAt:new Date().toISOString()};if(!await savePersistent())return alert('Semana NÃO SALVA. Verifique o armazenamento.');draw();alert(res.issues.length?'Rascunho salvo com pendências.':'Semana salva com sucesso.')};$('weekStart').onchange=loadWeek;$('weekLimit').onchange=()=>current&&draw();$('nextWeek').onclick=()=>{$('weekStart').value=move(mon($('weekStart').value),7);loadWeek()};$('printBtn').onclick=()=>window.print();
+function download(name,content,type){let blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),500)}
+$('csvBtn').onclick=()=>{if(!current)return alert('Gere uma escala antes.');let rows=[['Colaborador','Cargo',...DAYS,'Dias trabalhados','Horas programadas']];state.employees.filter(e=>e.store===current.store).forEach(e=>{let a=current.rows[e.id]||[],n=a.filter(v=>v==='T').length;rows.push([e.name,e.role,...a.map(v=>v==='T'?'Trabalha':'Folga'),n,(n*workMinutes(e)/60).toFixed(2)])});download(`escala-${current.week}.csv`,'\ufeff'+rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n'),'text/csv;charset=utf-8')};
+function applySuggestedSchedule(hours){$('calcIn').value='08:00';$('calcOut').value='18:00';$('calcDays').value=5;$('calcTarget').value=String(hours);$('calcBreak').value=hours===42?96:120;calculate()}
+$('apply42').onclick=()=>applySuggestedSchedule(42);
+$('apply40').onclick=()=>applySuggestedSchedule(40);
+$('autoBreak').onclick=()=>{let span=minute($('calcOut').value)-minute($('calcIn').value);if(span<0)span+=1440;let days=Number($('calcDays').value),target=Number($('calcTarget').value);if(!days||days<1)return alert('Defina dias trabalhados válidos.');let ideal=span-target*60/days;if(ideal<0||ideal>240)return alert('Não é possível atingir a meta com o expediente e intervalo permitidos nesta configuração.');if(!Number.isInteger(ideal))return alert('O intervalo ideal tem fração de minuto. Ajuste os horários ou a distribuição diária.');$('calcBreak').value=ideal;calculate()};
+function calculate(){
+ const span=spanMinutes($('calcIn').value,$('calcOut').value),rest=Number($('calcBreak').value),days=Number($('calcDays').value),target=Number($('calcTarget').value)*60;
+ const el=$('calcResult');
+ if(!Number.isFinite(span)||span===0||!validBreak(span,rest)||!Number.isInteger(days)||days<1||days>7){el.innerHTML='<div class="error">Cálculo inválido: informe entrada e saída diferentes, intervalo não negativo e menor que a permanência, e 1 a 7 dias inteiros.</div>';return}
+ const daily=span-rest,weekly=daily*days,diff=weekly-target;
+ const dailySplit=`${formatMinutes(span)} − ${formatMinutes(rest)} = ${formatMinutes(daily)}`;
+ const restWeekly=rest*days,spanWeekly=span*days;
+ el.innerHTML=`<h2>Conferência detalhada dos horários</h2><div class="metrics"><div class="metric">Permanência diária<strong>${formatMinutes(span)}</strong></div><div class="metric">Almoço / descanso diário<strong>${formatMinutes(rest)}</strong></div><div class="metric">Trabalho diário<strong>${formatMinutes(daily)}</strong></div><div class="metric">Permanência semanal<strong>${formatMinutes(spanWeekly)}</strong></div><div class="metric">Intervalos na semana<strong>${formatMinutes(restWeekly)}</strong></div><div class="metric">Trabalho na semana<strong>${formatMinutes(weekly)}</strong></div><div class="metric">Diferença para meta<strong>${diff>0?'+':diff<0?'-':''}${formatMinutes(diff)}</strong></div></div><div class="${diff===0?'ok':'warn'}" style="margin-top:12px"><strong>Conferência:</strong> ${dailySplit} por dia.<br>${formatMinutes(spanWeekly)} de permanência − ${formatMinutes(restWeekly)} de intervalos = <b>${formatMinutes(weekly)} efetivas</b> em ${days} dias.<br>Meta: ${formatMinutes(target)}. ${diff===0?'Total exato.':'Ajuste os horários ou intervalos para atingir a meta.'}</div>${daily>600?'<div class="warn">Alerta: mais de 10 horas efetivas no dia. Verifique limites legais e acordos.</div>':''}${rest<60&&daily>360?'<div class="warn">Alerta: intervalo inferior a 1h em jornada acima de 6h; depende das hipóteses legais aplicáveis.</div>':''}`;
+}
+['calcIn','calcOut','calcBreak','calcDays','calcTarget'].forEach(id=>$(id).oninput=calculate);
+$('exportBackup').onclick=()=>download('Escala_Rotativa_Dados_backup.json',JSON.stringify(state,null,2),'application/json');$('importBackupBtn').onclick=()=>$('importBackup').click();$('importBackup').onchange=async e=>{try{let data=JSON.parse(await e.target.files[0].text());if(!validImportedState(data))throw Error('Estrutura incompatível');if(!confirm('Substituir todos os dados locais pelo backup importado?'))return;state=data;migrateOneStore();rebuildUI();if(!await savePersistent())return alert('Backup aberto, mas não foi possível gravar. Vincule um arquivo de dados.');alert('Backup importado e gravado.')}catch(err){alert('Falha na importação: '+err.message)}};$('resetData').onclick=async()=>{if(confirm('Limpar os dados exibidos e o armazenamento deste navegador? O arquivo JSON externo, se existir, NÃO será apagado.')){activeDataFile=null;fileLabel='';state=defaultState();try{localStorage.removeItem(STORAGE_KEY)}catch{}await clearLocalDb();await forgetFileHandle();rebuildUI();refreshStorageStatus()}};
+// Controles explícitos para o arquivo de dados. Evita depender só do localStorage.
+$('connectDataFile').onclick=async()=>{
+ if(typeof window.showSaveFilePicker!=='function'){
+  setStorageStatus('Este dispositivo não permite vincular um arquivo automaticamente. Os dados continuam salvos localmente; use “Baixar cópia de segurança” para criar um JSON que poderá abrir depois.',false);return;
+ }
+ try{const handle=await window.showSaveFilePicker({suggestedName:'Escala_Rotativa_Dados.json',types:[{description:'Dados da escala (JSON)',accept:{'application/json':['.json']}}]});await writeFile(handle);activeDataFile=handle;fileLabel=handle.name||'Arquivo de dados';await rememberFileHandle(handle).catch(()=>{});refreshStorageStatus();showNotice('Arquivo de dados criado e salvo com sucesso. Os próximos cadastros atualizarão esse arquivo.')}
+ catch(e){if(e.name!=='AbortError')setStorageStatus('Falha ao criar arquivo de dados: '+e.message,false)}
+};
+$('openDataFile').onclick=async()=>{
+ if(typeof window.showOpenFilePicker==='function'){
+  try{const [handle]=await window.showOpenFilePicker({multiple:false,types:[{description:'Dados da escala (JSON)',accept:{'application/json':['.json']}}]});const file=await handle.getFile();await loadExternalData(JSON.parse(await file.text()),handle)}catch(e){if(e.name!=='AbortError')alert('Não foi possível abrir o arquivo: '+e.message)}
+ }else $('dataFileInput').click();
+};
+$('dataFileInput').onchange=async e=>{try{const file=e.target.files&&e.target.files[0];if(!file)return;await loadExternalData(JSON.parse(await file.text()),null)}catch(err){alert('Arquivo inválido: '+err.message)}finally{e.target.value=''}};
+$('quickBackup').onclick=()=>download('Escala_Rotativa_Dados_backup.json',JSON.stringify(state,null,2),'application/json');
+let today=mon(iso(new Date()));$('weekStart').value=today;
+async function initialize(){
+ try{
+  const snapshot=await readLocalDb();dbSupported=true;
+  if(validImportedState(snapshot)){
+   const localTs=Date.parse(state._savedAt||'')||0;
+   const dbTs=Date.parse(snapshot._savedAt||'')||0;
+   if(dbTs>=localTs){state=snapshot;migrateOneStore()}
+  }
+ }catch(e){dbSupported=false;console.warn('Banco local indisponível:',e)}
+ rebuildUI();renderEmployeePreview();calculate();refreshStorageStatus();await recallFileHandle();
+}
+initialize();
+</script></body></html>
