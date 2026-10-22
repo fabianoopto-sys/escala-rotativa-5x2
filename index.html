@@ -1022,7 +1022,7 @@ function drawMonth(){
  const repairBtn=$('updateMonthRoster');
  if(repairBtn)repairBtn.onclick=async()=>{
   const month=monthShown,bounds=monthBounds(month),end=month+'-'+String(bounds.length).padStart(2,'0');
-  if(!confirm('Recalcular '+MONTH_NAMES[bounds.month-1]+' de '+bounds.year+' para TODOS os '+activeStaff+' funcionários atuais? Semanas anteriores serão preservadas em backup local. Escalas históricas serão substituídas somente neste período.'))return;
+  // A confirmação única sobre substituir semanas existentes é feita no gerador.
   $('periodStart').value=brDate(bounds.first);$('rangeEnd').value=brDate(end);
   showTab('scale');
   await generateAndSavePeriod({start:bounds.first,end});
