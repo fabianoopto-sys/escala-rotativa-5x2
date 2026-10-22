@@ -8,7 +8,7 @@
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="author" content="Fabiano Inoue - SICOV - Cornélio Procópio - PR">
 <meta name="copyright" content="© 2026 Fabiano Inoue - SICOV - Cornélio Procópio - PR">
-<meta name="application-name" content="Escala Rotativa 5×2"><title>Gestão de Escalas 5×2 • Versão 2.11</title><style>
+<meta name="application-name" content="Escala Rotativa 5×2"><title>Gestão de Escalas 5×2 • Versão 2.12</title><style>
 :root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#e5ebf5;background:#0b1220}*{box-sizing:border-box}body{margin:0}header{padding:22px max(18px,calc((100vw - 1320px)/2));background:#111c30;border-bottom:1px solid #29364b}h1{font-size:23px;margin:0}h2{font-size:17px;margin:0 0 14px}p{color:#9fb0c9}small,.muted{color:#93a5bf}.wrap{max-width:1320px;margin:auto;padding:22px 18px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}button,.btn{border:0;border-radius:9px;background:#33445e;color:white;padding:10px 13px;font-weight:650;cursor:pointer}button:hover{filter:brightness(1.15)}button.primary{background:#5466e9}button.good{background:#158464}button.danger{background:#8b3342}.tabs button.active{background:#5466e9}.panel{background:#17243a;border:1px solid #2c3a52;border-radius:15px;padding:18px;margin-bottom:16px}.layout{display:grid;grid-template-columns:2fr 1fr;gap:16px}.grid{display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));gap:12px}.grid.two{grid-template-columns:repeat(2,minmax(130px,1fr))}.field label{display:block;color:#aec0d7;font-size:12px;margin:0 0 6px}.field input,.field select{width:100%;background:#0c1729;color:#eff4ff;border:1px solid #41526b;border-radius:9px;padding:10px;min-height:40px}.field input[type=checkbox]{width:auto;min-height:0}.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}.table-scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:10px;border-bottom:1px solid #314059;text-align:left;white-space:nowrap}th{color:#abc0da;background:#101b2d}td:first-child{font-weight:600}td select{background:#1c2b43;color:#fff;border:1px solid #485c79;border-radius:7px;padding:6px;min-width:93px}td.work{background:#12392f}td.off{background:#303658}.badge{display:inline-block;border-radius:50px;padding:5px 9px;font-size:12px;background:#304361}.warn{background:#423225;border:1px solid #9c6f34;border-radius:10px;padding:11px;margin:6px 0}.error{background:#4b2632;border:1px solid #ad485b;border-radius:10px;padding:11px;margin:6px 0}.ok{background:#174034;border:1px solid #368468;border-radius:10px;padding:11px;margin:6px 0}.cards{display:grid;grid-template-columns:repeat(7,minmax(110px,1fr));gap:8px}.daycard{background:#0f1c30;padding:10px;border:1px solid #33445d;border-radius:10px;font-size:12px}.daycard strong{font-size:15px}.hidden{display:none!important}.checkdays{display:flex;gap:13px;flex-wrap:wrap}.checkdays label{font-size:13px}.foot{font-size:12px;border-top:1px solid #34445b;padding-top:12px;margin-top:16px}input[type=number]{max-width:150px}.metrics{display:flex;gap:10px;flex-wrap:wrap}.metric{background:#0e1b2f;border-radius:9px;padding:12px;min-width:155px}.metric strong{display:block;font-size:21px;margin:5px 0}.pill{font-size:11px;color:#a7c6ff}.narrow{max-width:680px}.allow-wrap{white-space:normal} @media(max-width:900px){.layout{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(120px,1fr))}.cards{grid-template-columns:repeat(2,1fr)}}@media print{body{background:white;color:black}header,.tabs,.no-print,.panel.settings{display:none!important}.panel{border:1px solid #aaa;background:white;color:black}th{background:#eee;color:black}td{color:black}td.work{background:#daf4e4}td.off{background:#e9e9ef}.wrap{max-width:100%;padding:0}.hidden{display:none!important}}
 
 .role-form{display:flex;gap:14px;align-items:end;flex-wrap:wrap;margin:12px 0}
@@ -92,49 +92,6 @@ button{min-height:44px}
 .date-notice.invalid{color:#ffd0d8;font-weight:650}
 #weekStart[aria-invalid="true"]{border-color:#f17e90;box-shadow:0 0 0 1px #f17e90}
 #weekStart,#weekPicker{width:100%}
-
-/* v2.11 — calendário mensal referenciado nas semanas efetivamente salvas */
-.calendar-controls{display:flex;align-items:end;flex-wrap:wrap;gap:10px;margin-top:10px}
-.calendar-controls .field{min-width:180px;max-width:260px}
-.calendar-layout{display:grid;grid-template-columns:minmax(0,1.27fr) minmax(0,1fr);gap:16px;align-items:start}
-.calendar-title{font-weight:800;font-size:19px;margin:0 0 12px;text-transform:capitalize}
-.calendar-legend{font-size:12px;color:#afc1d9;line-height:1.6;margin:6px 0 13px}
-.calendar-weekdays,.month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
-.calendar-weekdays{margin-bottom:6px}
-.calendar-weekdays span{text-align:center;color:#b9c8de;font-weight:700;font-size:12px;padding:6px 1px}
-.month-cell{border:1px solid #344963;background:#1b304a;color:#f7faff;border-radius:10px;min-height:110px;padding:9px 7px;text-align:left;display:flex;flex-direction:column;justify-content:flex-start;gap:5px;overflow:hidden;min-width:0;align-items:stretch;box-shadow:none}
-.month-cell:hover{background:#263f5d}
-.month-cell.is-closed{background:#202b3a;color:#9fb0c3}
-.month-cell.no-schedule{background:#15243a}
-.month-cell.is-selected{border:2px solid #a2b0ff;box-shadow:0 0 0 2px #616ed888}
-.month-cell.is-holiday{outline:2px solid #e78195;outline-offset:-4px}
-.month-cell.is-empty{visibility:hidden;pointer-events:none}
-.month-cell .date-number{font-size:12px;font-weight:750;color:#cfdaea}
-.month-cell .staff-count{font-size:27px;font-weight:850;line-height:1}
-.month-cell .cell-note{font-size:11px;color:#bed1df;overflow-wrap:anywhere;line-height:1.35}
-.month-cell .cell-small{font-size:10px;color:#90abc3}
-.day-detail{margin-top:14px;border:1px solid #425777;border-radius:12px;background:#112137;padding:14px;min-height:118px}
-.day-detail h3{font-size:15px;margin:0 0 7px}
-.day-detail p{font-size:13px;line-height:1.5;margin:7px 0}
-.day-detail .actions{margin-top:8px}
-.individual-board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
-.person-card{border:1px solid #31465d;background:#112138;border-radius:12px;padding:11px 10px;min-width:0}
-.person-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;min-width:0}
-.person-badge{flex:0 0 30px;display:grid;place-items:center;background:#176c69;border-radius:8px;color:white;font-weight:800;height:30px}
-.person-meta{min-width:0;line-height:1.4}.person-meta strong{display:block;font-size:13px;overflow-wrap:anywhere}.person-meta small{font-size:10px;color:#a9bad0;display:block}
-.person-days-head,.person-week{display:grid;grid-template-columns:40px repeat(7,minmax(0,1fr));gap:3px;align-items:center;margin-bottom:4px}
-.person-days-head{font-size:10px;text-align:center;color:#a8bad4}
-.person-week-date{font-size:10px;color:#b2c4dc}
-.person-day{display:grid;place-items:center;border-radius:5px;min-height:25px;background:#1e3547;color:#b7d5d6;font-size:11px;font-weight:700;min-width:0}
-.person-day.at-work{background:#176e6a;color:#fff}
-.person-day.off-duty{background:#435065;color:#edf0f5}
-.person-day.unknown{background:#18263a;color:#627b98}
-.person-day.is-holiday{outline:1.5px solid #ed8a9c;outline-offset:-1px}
-.calendar-empty{padding:14px;background:#243349;border-radius:10px;font-size:13px;color:#c3d1e6}
-@media(max-width:1100px){.calendar-layout{grid-template-columns:minmax(0,1fr)}.individual-board{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:650px){.calendar-title{font-size:17px}.calendar-weekdays,.month-grid{gap:3px}.month-cell{min-height:88px;border-radius:7px;padding:6px 3px;gap:4px}.month-cell .date-number{font-size:11px}.month-cell .staff-count{font-size:19px}.month-cell .cell-note{font-size:9px}.month-cell .cell-small{font-size:9px}.calendar-weekdays span{font-size:10px}.individual-board{grid-template-columns:1fr}.person-week-date{font-size:11px}.person-day{min-height:29px;font-size:12px}.calendar-controls .field{flex:1;max-width:none}}
-@media print{#calendar .calendar-layout{display:block!important}#calendar .person-card{break-inside:avoid}#calendar .individual-board{grid-template-columns:repeat(2,minmax(0,1fr))}#calendar .month-cell{break-inside:avoid;background:white!important;color:black!important;border-color:#888!important}#calendar .calendar-weekdays span,#calendar .month-cell .cell-note,#calendar .month-cell .date-number{color:black!important}#calendar .calendar-controls{display:none!important}#calendar .person-day.at-work{background:#d1ece4!important;color:#172c27!important}#calendar .person-day.off-duty{background:#ddd!important;color:black!important}}
-
 /* Identificação de autoria fixa; não é um campo editável na aplicação.
    A proteção jurídica do aviso não impede alguém de alterar uma cópia do HTML. */
 :root{--copyright-height:46px}
@@ -158,46 +115,147 @@ body{padding-bottom:calc(var(--copyright-height) + env(safe-area-inset-bottom,0p
     background:white!important;color:black!important;font-size:9px!important;
     box-shadow:none!important;padding:4px!important;z-index:1000}
 }
+
+/* v2.11 - calendário mensal inspirado na referência, sem registros de exemplo */
+.month-board{background:#eef3f8;color:#172c3a;border-color:#d8e3ea}
+.month-board p,.month-board .muted{color:#607383}
+.month-board h2,.month-board h3{color:#223a47}
+.month-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.month-head h2{font-size:20px;margin:0 0 5px}
+.month-head p{margin:0;font-size:12px;max-width:620px;line-height:1.5}
+.month-navigation{display:flex;align-items:center;gap:7px}
+.month-navigation button{background:#dfebf3;color:#264455;border:1px solid #c7d9e5;font-size:21px;min-width:42px}
+.month-navigation input{font:inherit;border:1px solid #c8d7e1;background:white;color:#283e4c;border-radius:9px;padding:10px 7px;min-height:44px;max-width:180px}
+.month-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:20px}
+.month-main,.month-people{min-width:0}
+.month-title,.month-people-header h3{font-size:16px;font-weight:800;margin:12px 0 16px}
+.month-weekdays,.month-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.month-weekdays span{color:#486274;text-align:center;font-size:12px;font-weight:650;padding:5px 0 9px}
+.month-day{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;width:100%;height:105px;min-height:105px;text-align:left;border:1px solid #dbe7eb;background:#ecf5f0;color:#1b3743;border-radius:9px;padding:9px 7px;overflow:hidden;position:relative;font-size:12px}
+.month-day:hover{filter:brightness(.98);outline:2px solid #a8cdd2;outline-offset:0}
+.month-day:focus-visible{outline:3px solid #5066d8;outline-offset:-3px}
+.month-day.empty{visibility:hidden;pointer-events:none}
+.month-day.is-closed{background:#e6e8ed;color:#61727e}
+.month-day.is-pending{background:#f0f4f7;color:#536e80}
+.month-day.is-selected{outline:3px solid #5564c8;outline-offset:-3px}
+.month-day.is-special{border:2px solid #bc5262}
+.month-day.is-special:after{content:'⚑';position:absolute;right:7px;top:5px;color:#ab394b;font-size:13px}
+.month-day .date-num{font-size:12px;line-height:1.2;font-weight:700}
+.month-day .staff-num{font-size:22px;line-height:1.4;font-weight:850;letter-spacing:-.02em}
+.month-day .day-sub{font-size:10px;line-height:1.35;word-break:break-word;overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+.month-day .day-sub.is-off{color:#607487}
+.month-legend{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 8px;color:#556b7d;font-size:11px}
+.month-legend span{display:inline-flex;align-items:center;gap:5px}
+.legend-dot{display:inline-block;width:11px;height:11px;border-radius:3px;border:1px solid #c5d4da}
+.work-dot{background:#e5f3eb}.off-dot{background:#e6e8ed}.special-dot{background:#fbe7e9;border:2px solid #bc5262}
+.month-people-header h3{margin-top:12px;margin-bottom:5px}.month-people-header p{font-size:11px;line-height:1.5;margin:0 0 14px}
+.legend-square{display:inline-block;width:10px;height:10px;border-radius:3px}.work-square{background:#07505b}.off-square{background:#cfd7dc}.no-data-square{background:white;border:1px solid #bacbd6}
+.month-people-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.month-person{background:#fff;border:1px solid #dce6ec;border-radius:12px;padding:12px 9px;min-width:0}
+.month-person .person-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.month-person .person-symbol{width:28px;height:28px;border-radius:7px;background:#07505b;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:750;font-size:12px;flex-shrink:0}
+.month-person .person-head strong{font-size:12px;color:#253f4b;word-break:break-word}
+.month-person .person-head small{display:block;font-size:10px;color:#738899;line-height:1.4}
+.month-person .person-row{display:grid;grid-template-columns:38px repeat(7,minmax(0,1fr));gap:3px;align-items:center;margin:4px 0}
+.month-person .person-date{font-size:9px;color:#8194a3;letter-spacing:-.2px}
+.month-person .person-day{display:flex;justify-content:center;align-items:center;min-height:25px;border-radius:5px;font-size:10px;font-weight:750;background:#edf1f5;color:#96a4b2;padding:1px}
+.month-person .person-day.is-work{background:#07505b;color:#fff}
+.month-person .person-day.is-off{background:#dae0e5;color:#6c7c88}
+.month-person .person-day.is-empty{background:#fff;color:#c1ccd3;border:1px solid #e4eaf0}
+.month-person .person-day.is-special{outline:2px solid #bc5262;outline-offset:-2px}
+.month-person .person-day.day-selected{outline:2px solid #5366d6;outline-offset:-2px}
+.month-person .person-dow{font-size:9px;font-weight:600;color:#7e91a0;background:transparent}
+.month-detail{background:white;border:1px solid #dae5ec;padding:13px;border-radius:12px;margin:12px 0;color:#28404c}
+.month-detail h3{margin:0 0 8px;font-size:14px}.month-detail .detail-columns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.month-detail .detail-columns p{font-size:12px;line-height:1.55;margin:5px 0;overflow-wrap:anywhere}
+.month-detail .detail-label{font-size:11px;font-weight:700;color:#36576b}
+.month-detail .detail-alert{color:#a74854}
+.month-detail button,.month-special button,.month-date-lookup button{background:#5466e9;color:white}
+.month-date-lookup{display:flex;flex-wrap:wrap;align-items:end;gap:8px;margin-top:14px}
+.month-date-lookup .field{flex:1 1 140px;max-width:230px}
+.month-board .field label{color:#506979}.month-board .field input{background:white;color:#1e3547;border-color:#c2d5df}
+.month-jump-msg{font-size:12px;color:#ba4153;margin:4px 0}
+.month-stats{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.month-stat{background:#fff;border:1px solid #d5e5ec;border-radius:10px;padding:8px 12px;font-size:11px;color:#627c8a}.month-stat b{font-size:17px;display:block;color:#1f4354}
+.month-special{background:#f9fbfd;border:1px solid #dbe5ed;border-radius:11px;padding:13px;margin-top:14px}.month-special h3{font-size:13px;margin:0 0 5px}.month-special p{font-size:11px;margin:0 0 10px}.month-special-actions{display:flex;gap:8px;align-items:end;flex-wrap:wrap}.month-special-actions .field{flex:1 1 220px}.month-special-actions button{font-size:12px}
+@media(max-width:1130px){.month-layout{grid-template-columns:1fr}.month-people-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.month-board{padding:11px}.month-head{align-items:stretch}.month-head h2{font-size:18px}.month-navigation{justify-content:space-between}.month-navigation input{flex:1;max-width:none}.month-weekdays,.month-days{gap:3px}.month-weekdays span{font-size:10px}.month-day{padding:5px 3px;min-height:76px;height:82px;border-radius:6px}.month-day .date-num{font-size:10px}.month-day .staff-num{font-size:18px}.month-day .day-sub{font-size:9px}.month-people-cards{grid-template-columns:1fr}.month-person .person-row{grid-template-columns:40px repeat(7,minmax(0,1fr));gap:4px}.month-person .person-day{min-height:29px}.month-special-actions button{flex:1}.month-detail .detail-columns{grid-template-columns:1fr}}
+@media(max-width:365px){.month-day{height:74px;min-height:74px}.month-day .staff-num{font-size:16px}.month-day .day-sub{font-size:8px}}
+@media print{.month-board{background:white!important;color:black!important;break-inside:avoid}.month-layout{grid-template-columns:1.2fr 1fr}.month-day{height:70px;min-height:70px;padding:4px}.month-person{break-inside:avoid}.month-people-cards{grid-template-columns:1fr 1fr}.month-day .staff-num{font-size:18px}.month-head,.month-board h2,.month-board h3{color:black}.month-special,.month-date-lookup{display:none!important}}
+
+/* v2.12 */
+.period-box{border:1px solid #3d5068;border-radius:12px;padding:16px;margin:16px 0;background:#0f1c30}
+.period-box h3{font-size:15px;margin:0 0 6px}.period-box p{font-size:12px;line-height:1.6;margin:5px 0 12px}
+.period-box .field{max-width:250px}.period-weeks{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}
+.period-weeks button{border:1px solid #50607b;background:#253750;font-size:12px;padding:7px 10px}
+.period-weeks .has-issues{border-color:#d28a53;color:#ffe2af}.blocked-dates{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.blocked-dates button{border:1px solid #8e6470;background:#3c2738;font-size:12px}
+#periodNotice{font-size:13px;margin:10px 0;line-height:1.5}
+#monthDays .month-day{min-height:137px;height:147px}
+.month-day .day-sub{display:block!important;-webkit-line-clamp:unset!important;overflow:auto!important;line-height:1.4!important;font-size:10px!important;white-space:normal!important;word-break:break-word!important}
+.month-day .staff-num{line-height:1.12}
+.month-day .staff-label{color:#50717b;font-size:9px}
+.print-report{display:none}
+@media(max-width:700px){#monthDays .month-day{height:126px;min-height:126px;padding:4px 3px}.month-day .day-sub{font-size:8px!important;line-height:1.15!important}.month-day .staff-label{display:none}}
+@media print{
+ @page{size:A4 landscape;margin:12mm}
+ body.report-mode header,body.report-mode main{display:none!important}
+ body.report-mode #printReport{display:block!important;position:static!important;color:#172c3a!important;background:#fff!important;padding:0!important}
+ .report-page{page-break-after:always;break-after:page;margin-bottom:10px}
+ .report-title{font-size:20px;font-weight:750;margin-bottom:5px}
+ .report-sub{font-size:11px;margin:6px 0 12px}
+ .report-month-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+ .report-cell{border:1px solid #c8d4dc;min-height:90px;padding:6px;font-size:10px;overflow-wrap:anywhere}
+ .report-cell.empty{border:0}
+ .report-cell.closed{background:#e9edf1!important}
+ .report-cell .report-day{font-weight:bold;font-size:13px}
+ .report-cell .report-staff{font-weight:bold;font-size:17px;margin:5px 0}
+ .report-cell .report-off{font-size:10px;line-height:1.45}
+ .report-weekday{text-align:center;font-weight:bold;background:#eef3f6;font-size:11px;padding:6px}
+ .report-table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:10px;margin-top:12px}
+ .report-table td,.report-table th{white-space:normal!important;overflow-wrap:anywhere;border:1px solid #ced6dd;padding:6px}
+ .report-table th{background:#e6eff5!important;color:#253c4a!important}
+ .report-page:last-child{page-break-after:auto;break-after:auto}
+ .copyright-line{position:fixed;bottom:0}
+}
 </style></head><body>
-<header><h1>▦ Gestão de Escalas 5×2 <span class="pill">versão 2.11 • Celular, tablet e computador</span></h1><div class="muted">Rodízio domingo + segunda, cobertura por cargo, planejamento de jornada • funciona sem internet e sem servidor</div></header>
-<main class="wrap"><nav class="tabs no-print" aria-label="Seções da aplicação"><button class="active" data-tab="team">Equipe e cargos</button><button data-tab="scale">Escala inteligente</button><button data-tab="calendar">Calendário mensal</button><button data-tab="hours">Simulador de jornada</button><button data-tab="rules">Regras & orientações</button></nav>
+<header><h1>▦ Gestão de Escalas 5×2 <span class="pill">versão 2.12 • Escala por período e calendário com nomes</span></h1><div class="muted">Rodízio domingo + segunda, cobertura por cargo, planejamento de jornada • funciona sem internet e sem servidor</div></header>
+<main class="wrap"><nav class="tabs no-print" aria-label="Seções da aplicação"><button class="active" data-tab="team">Equipe e cargos</button><button data-tab="scale">Escala inteligente</button><button data-tab="month">Calendário mensal</button><button data-tab="hours">Simulador de jornada</button><button data-tab="rules">Regras & orientações</button></nav>
 <section id="team"><div class="panel storage-panel no-print"><h2>Dados locais neste dispositivo</h2><p>O sistema grava automaticamente no armazenamento local deste navegador, quando disponível. <strong>Nada é enviado para a internet.</strong> Cada celular, tablet ou computador mantém seus próprios dados. Faça cópias JSON para proteger seus cadastros ou transportá-los entre aparelhos.</p><div id="storageStatus" class="storage-state" role="status" aria-live="polite">Verificando armazenamento…</div><div class="storage-bar"><button class="primary" type="button" id="connectDataFile">💾 Vincular arquivo (Chrome/Edge no PC)</button><button type="button" id="openDataFile">📂 Abrir dados já salvos</button><button type="button" id="quickBackup">⬇ Baixar cópia de segurança</button></div><div class="storage-details">No celular/tablet, use <b>Baixar cópia de segurança</b> e <b>Abrir dados já salvos</b>. O arquivo JSON fica no aparelho. Evite modo anônimo/privado e não limpe os dados do navegador. Em navegadores móveis, o vínculo automático a um arquivo pode não estar disponível; não é necessário para usar o armazenamento local.</div><input id="dataFileInput" type="file" accept=".json,application/json" class="hidden"></div><div class="layout"><div><div class="panel"><h2>Cadastrar cargos e funções</h2><p>Crie seus próprios cargos antes de adicionar colaboradores. Cadastre o nome de cada função. Depois clique em <strong>Salvar cargo</strong>. Os cargos aparecerão automaticamente na lista e no cadastro dos funcionários.</p><form id="roleForm" class="role-form"><div class="field"><label for="newRoleName">Nome do cargo</label><input id="newRoleName" name="cargo" required maxlength="70" autocomplete="off" placeholder="Ex.: Gerente, Caixa, Vendedor, Consultor..."></div><div class="actions"><button class="good" id="saveRoleBtn" type="submit">💾 Salvar cargo</button></div></form><div id="roleNotice" role="status" aria-live="polite"></div><div class="role-list-title">Cargos salvos <span id="roleCount" class="badge">0</span></div><div id="roleList" class="role-list"></div></div><div class="panel"><h2>Cadastro de colaborador</h2><form id="employeeForm" class="grid"><div class="field"><label>Nome</label><input id="empName" required placeholder="Nome completo" maxlength="90"></div><div class="field"><label>Cargo</label><select id="empRole" required><option value="">Cadastre um cargo primeiro</option></select></div><div class="field"><label>Horas contratuais por semana</label><input id="empHours" type="number" min="1" max="44" step="0.5" value="42"></div><div class="field"><label>Dias trabalhados / semana</label><input id="empDays" type="number" min="1" max="7" value="5"></div><div class="field"><label>Entrada</label><input id="empIn" type="time" value="08:00"></div><div class="field"><label>Saída</label><input id="empOut" type="time" value="18:00"></div><div class="field"><label>Intervalo (minutos)</label><input id="empBreak" type="number" min="0" max="240" value="96"></div><div id="empHoursPreview" class="field" style="grid-column:1/-1"></div><div class="actions"><button class="primary" type="submit">💾 Salvar funcionário</button></div></form><div id="empNotice" role="status" aria-live="polite"></div></div><div class="panel"><h2>Quadro de funcionários <span id="headcount" class="badge">0</span></h2><div class="table-scroll"><table class="employee-table"><thead><tr><th>Funcionário</th><th>Cargo</th><th>Regime</th><th>Rodízio</th><th>Ações</th></tr></thead><tbody id="rosterBody"></tbody></table></div></div></div>
 <div><div class="panel settings"><h2>Funcionamento e cobertura mínima</h2><p>Selecione os dias em que o estabelecimento abre:</p><div class="checkdays" id="openDays"></div><p>Quantidade mínima em serviço por dia aberto:</p><div id="minimumFields" class="grid two"></div><p class="muted">Informe quantas pessoas de cada cargo devem estar trabalhando em cada dia aberto. Exemplo: 1 gerente e 1 caixa. A aplicação alerta quando algum cargo fica sem cobertura.</p><div class="field"><label>Limite de funcionários simultaneamente de folga (0 = sem limite)</label><input type="number" min="0" max="99" id="maxOff" value="0"></div><div class="actions"><button id="saveConfig" class="primary">Salvar regras</button></div></div><div id="staffDiagnostic" class="panel"></div></div></div></section>
-<section id="scale" class="hidden"><div class="panel"><h2>Gerar escala semanal</h2><div class="grid"><div class="field"><label for="weekStart">Data da semana (DD/MM/AAAA)</label><input id="weekStart" type="text" inputmode="numeric" maxlength="10" autocomplete="off" placeholder="01/11/2026" aria-describedby="weekDateNotice"><div id="weekDateNotice" class="date-notice" role="status" aria-live="polite">Digite uma data; a escala considera de segunda a domingo.</div></div><div class="field"><label for="weekPicker">Ou escolha uma data no calendário</label><input id="weekPicker" type="date" aria-label="Selecionar data no calendário"></div><div class="field"><label>Carga máxima de referência (h/semana)</label><select id="weekLimit"><option value="44">44 h • histórico</option><option value="42" selected>42 h • transição 2026</option><option value="40">40 h • etapa 2027</option></select></div></div><div class="actions no-print"><button class="good" id="generate">✦ Gerar / recalcular</button><button id="saveWeek" class="primary">Salvar semana</button><button id="nextWeek">Próxima semana →</button><button id="printBtn">Imprimir</button><button id="csvBtn">Exportar CSV</button></div><p class="muted">Clique no estado de cada célula para editar. Toda edição é validada. Salve a semana para manter o histórico do rodízio. A geração prioriza folgas duplas no domingo e na segunda, alternando os beneficiados a cada semana segundo o histórico salvo. Não atribui preferências fixas. Quando a cobertura impedir a folga dupla para todos, o sistema sinaliza conflitos.</p></div><div class="panel"><h2>Escala: <span id="weekTitle">Selecione a semana</span></h2><div class="metrics" id="scheduleMetrics"></div><div id="alerts"></div><div class="mobile-day-toolbar no-print"><button type="button" id="mobilePrevDay" aria-label="Dia anterior">‹</button><label for="mobileScheduleDay">Dia</label><select id="mobileScheduleDay" aria-label="Selecionar dia da semana"><option value="0">Segunda</option><option value="1">Terça</option><option value="2">Quarta</option><option value="3">Quinta</option><option value="4">Sexta</option><option value="5">Sábado</option><option value="6">Domingo</option></select><button type="button" id="mobileNextDay" aria-label="Dia seguinte">›</button></div><p class="small-device-tip">No celular, veja e altere um dia por vez. As sete jornadas continuam na escala e aparecem juntas na impressão.</p><div class="table-scroll schedule-matrix"><table><thead id="scheduleHead"></thead><tbody id="scheduleBody"></tbody></table></div></div><div class="panel"><h2>Cobertura por dia e cargo</h2><div id="coverage" class="cards"></div></div><div class="panel"><h2>Histórico de folgas especiais</h2><div id="history"></div></div></section>
+<section id="scale" class="hidden"><div class="panel"><h2>Gerar escala por período (várias semanas)</h2><div class="grid"><div class="field"><label for="weekStart">Semana para consultar / editar (DD/MM/AAAA)</label><input id="weekStart" type="text" inputmode="numeric" maxlength="10" autocomplete="off" placeholder="01/11/2026" aria-describedby="weekDateNotice"><div id="weekDateNotice" class="date-notice" role="status" aria-live="polite">Digite uma data; a escala considera de segunda a domingo.</div></div><div class="field"><label for="periodStart">Data inicial do período (DD/MM/AAAA)</label><input id="periodStart" type="text" inputmode="numeric" maxlength="10" autocomplete="off" placeholder="01/11/2026"></div><div class="field"><label for="rangeEnd">Data final do período (DD/MM/AAAA)</label><input id="rangeEnd" type="text" inputmode="numeric" maxlength="10" autocomplete="off" placeholder="30/11/2026" aria-describedby="rangeDateNotice"><div id="rangeDateNotice" class="date-notice" role="status" aria-live="polite">Período até 366 dias. Inclui as semanas completas que cruzam as datas.</div></div><div class="field"><label for="weekPicker">Calendário para data inicial</label><input id="weekPicker" type="date" aria-label="Selecionar data inicial"></div><div class="field"><label>Carga máxima de referência (h/semana)</label><select id="weekLimit"><option value="44">44 h • histórico</option><option value="42" selected>42 h • transição 2026</option><option value="40">40 h • etapa 2027</option></select></div></div><div class="actions no-print"><button class="good" id="generatePeriod">✦ Gerar período completo</button><button class="primary" id="savePeriod" disabled>💾 Salvar todas as semanas</button><button id="generate">Gerar somente a semana</button><button id="saveWeek">Salvar semana</button><button id="nextWeek">Próxima semana →</button><button id="printBtn">Imprimir</button><button id="csvBtn">Exportar CSV</button></div><div class="period-box no-print"><h3>Datas em que NÃO serão permitidas folgas</h3><p>Marque dias da semana (bloqueio recorrente) e/ou datas específicas de maior movimento. Nos dias bloqueados, a geração não concederá folgas se o estabelecimento estiver aberto. Se faltar capacidade para conceder as folgas restantes, haverá alerta para revisão.</p><div id="noOffWeekdays" class="checkdays"></div><div class="actions"><div class="field"><label for="noOffExactDate">Bloquear data específica (DD/MM/AAAA)</label><input id="noOffExactDate" placeholder="20/11/2026" inputmode="numeric" maxlength="10"></div><button id="addNoOffDate" type="button">Adicionar data</button></div><div id="noOffDateList" class="blocked-dates"></div><div class="actions"><button id="saveNoOff" class="primary" type="button">Salvar dias sem folga</button></div><div id="noOffFeedback" role="status" aria-live="polite"></div></div><div id="periodNotice" role="status" aria-live="polite"></div><div id="periodWeeks" class="period-weeks no-print"></div><p class="muted">Clique no estado de cada célula para editar. Toda edição é validada. Salve a semana para manter o histórico do rodízio. A geração prioriza folgas duplas no domingo e na segunda, alternando os beneficiados a cada semana segundo o histórico salvo. Não atribui preferências fixas. Quando a cobertura impedir a folga dupla para todos, o sistema sinaliza conflitos.</p></div><div class="panel"><h2>Escala: <span id="weekTitle">Selecione a semana</span></h2><div class="metrics" id="scheduleMetrics"></div><div id="alerts"></div><div class="mobile-day-toolbar no-print"><button type="button" id="mobilePrevDay" aria-label="Dia anterior">‹</button><label for="mobileScheduleDay">Dia</label><select id="mobileScheduleDay" aria-label="Selecionar dia da semana"><option value="0">Segunda</option><option value="1">Terça</option><option value="2">Quarta</option><option value="3">Quinta</option><option value="4">Sexta</option><option value="5">Sábado</option><option value="6">Domingo</option></select><button type="button" id="mobileNextDay" aria-label="Dia seguinte">›</button></div><p class="small-device-tip">No celular, veja e altere um dia por vez. As sete jornadas continuam na escala e aparecem juntas na impressão.</p><div class="table-scroll schedule-matrix"><table><thead id="scheduleHead"></thead><tbody id="scheduleBody"></tbody></table></div></div><div class="panel"><h2>Cobertura por dia e cargo</h2><div id="coverage" class="cards"></div></div><div class="panel"><h2>Histórico de folgas especiais</h2><div id="history"></div></div></section>
 
-<section id="calendar" class="hidden">
- <div class="panel">
-  <h2>Calendário mensal e folgas por pessoa</h2>
-  <p>O número grande indica quantos colaboradores estão trabalhando no dia. As letras identificam quem folga. Clique em uma data para ver nomes e detalhes. <strong>Somente semanas salvas</strong> aparecem com contagem; dias sem planejamento mostram “Sem escala”.</p>
-  <div class="calendar-controls no-print">
-   <button id="monthPrev" type="button" aria-label="Mês anterior">‹ Mês anterior</button>
-   <div class="field"><label for="monthPicker">Selecionar mês</label><input id="monthPicker" type="month"></div>
-   <button id="monthNext" type="button" aria-label="Próximo mês">Próximo mês ›</button>
-   <button id="printMonth" type="button">Imprimir calendário</button>
+<section id="month" class="hidden">
+  <div class="panel month-board">
+    <div class="month-head">
+      <div><h2>Calendário mensal da equipe</h2><p>O número grande indica quantas pessoas estão trabalhando. Os <strong>nomes</strong> identificam quem está de folga. Selecione um dia para ver os detalhes.</p></div>
+      <div class="month-navigation no-print"><button id="monthPrev" type="button" aria-label="Mês anterior">‹</button><input id="monthInput" type="month" aria-label="Mês do calendário"><button id="monthNext" type="button" aria-label="Próximo mês">›</button></div>
+    </div>
+    <div class="month-stats" id="monthStats"></div><div class="actions no-print"><button type="button" class="primary" id="printMonthReport">🖨 Relatório do mês: calendário + folgas</button><button type="button" id="printRangeReport">🖨 Relatório do período selecionado</button></div>
+    <div class="month-layout">
+      <div class="month-main">
+        <h3 id="monthTitle" class="month-title">Calendário</h3>
+        <div class="month-weekdays" aria-hidden="true"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
+        <div class="month-days" id="monthDays" aria-label="Calendário mensal"></div>
+        <div class="month-legend"><span><i class="legend-dot work-dot"></i> Equipe presente</span><span><i class="legend-dot off-dot"></i> Fechado/folga</span><span><i class="legend-dot special-dot"></i> Data especial cadastrada</span></div>
+        <div class="month-date-lookup no-print"><div class="field"><label for="monthJump">Ir para data (DD/MM/AAAA)</label><input id="monthJump" inputmode="numeric" maxlength="10" placeholder="01/11/2026" autocomplete="off"></div><button id="monthGo" type="button">Ir para data</button></div>
+        <div id="monthJumpMsg" class="month-jump-msg" role="status" aria-live="polite"></div>
+        <div id="monthDayDetails" class="month-detail" aria-live="polite"></div>
+      </div>
+      <div class="month-people"><div class="month-people-header"><h3>Folgas por pessoa</h3><p><span class="legend-square work-square"></span> Trabalha &nbsp; <span class="legend-square off-square"></span> Folga &nbsp; <span class="legend-square no-data-square"></span> Não programado</p></div><div id="monthPeopleCards" class="month-people-cards"></div></div>
+    </div>
+    <div class="month-special no-print"><h3>Identificação de feriados e datas especiais</h3><p>Selecione um dia no calendário e informe o nome da data especial. O destaque visual não altera automaticamente a escala de trabalho.</p><div class="month-special-actions"><div class="field"><label for="monthSpecialName">Descrição</label><input id="monthSpecialName" maxlength="75" placeholder="Ex.: Feriado municipal"></div><button type="button" id="saveSpecialDate">Salvar data especial</button><button type="button" id="removeSpecialDate">Remover destaque</button></div><div id="monthSpecialFeedback" role="status" aria-live="polite"></div></div>
   </div>
- </div>
- <div class="calendar-layout">
-  <div>
-   <div class="panel">
-    <h2 id="monthHeading" class="calendar-title">Calendário mensal</h2>
-    <div class="calendar-weekdays" aria-hidden="true"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
-    <div class="month-grid" id="monthlyGrid" aria-label="Dias do mês"></div>
-    <div class="calendar-legend">Número grande = funcionários trabalhando · Letras = colaboradores de folga · Contorno rosa = feriado informado manualmente.</div>
-    <div id="calendarDayDetail" class="day-detail" aria-live="polite">Selecione um dia para visualizar os detalhes.</div>
-   </div>
-  </div>
-  <div class="panel"><h2>Folgas por pessoa</h2><p class="calendar-legend">Verde = trabalha · Cinza = folga · Traço = semana sem escala salva. Os quadros mostram oito semanas, a partir do início do mês selecionado.</p><div id="monthlyPeople" class="individual-board"></div></div>
- </div>
 </section>
 <section id="hours" class="hidden"><div class="panel narrow"><h2>Simulador de jornada</h2><div class="grid two"><div class="field"><label>Entrada</label><input type="time" id="calcIn" value="08:00"></div><div class="field"><label>Saída</label><input type="time" id="calcOut" value="18:00"></div><div class="field"><label>Intervalo (min)</label><input type="number" id="calcBreak" min="0" max="240" value="96"></div><div class="field"><label>Dias trabalhados</label><input type="number" id="calcDays" min="1" max="7" value="5"></div><div class="field"><label>Meta semanal (horas)</label><select id="calcTarget"><option>44</option><option selected>42</option><option>40</option></select></div></div><div class="actions"><button id="autoBreak" type="button" class="good">Calcular intervalo para atingir a meta</button><button id="apply42" type="button">Sugestão 42h • 8h às 18h</button><button id="apply40" type="button">Sugestão 40h • 8h às 18h</button></div><p class="muted">Para 42h em cinco dias, das 8h às 18h: intervalo de 96 minutos (1h36). Para 40h: 120 minutos (2h). São horários sugeridos e sujeitos às normas e acordos aplicáveis.</p><div id="calcResult" class="panel" style="margin-top:15px"></div><p class="muted">Simulação aritmética, não constitui validação jurídica. Horas efetivamente trabalhadas e intervalos precisam ser conferidos na execução da escala.</p></div></section>
 <section id="rules" class="hidden"><div class="panel"><h2>Regras de gestão e conformidade</h2><p>A aplicação gera escala-modelo de dois descansos semanais e registra a quantidade de dias trabalhados definida para cada colaborador. O planejamento toma como referência as etapas de 42 h em dezembro de 2026 e 40 h em dezembro de 2027. Exemplo de 42h em cinco dias: entrada 8h, saída 18h, intervalo 1h36; na fase de 40h, intervalo 2h. Confirme a convenção coletiva e os limites diários. Escolha o limite aplicável à semana e confira as regras coletivas específicas.</p><p>Na geração automática, a cobertura mínima por função, as restrições entre gerência e caixa e a distribuição de folgas são objetivos de otimização. Quando incompatíveis, os conflitos permanecem visíveis e a escala não é marcada como aprovada.</p><p>O domingo de folga, as segundas-feiras, as cargas horárias e a igualdade do rodízio são monitorados; feriados, domingos efetivamente autorizados, acordos coletivos, descanso interjornada e regras especiais devem passar por conferência do RH/contador antes da publicação.</p><p class="warn">Importante: há armazenamento local neste dispositivo (IndexedDB e/ou armazenamento do navegador), além de backup JSON ou arquivo vinculado, quando compatível. Sem arquivo vinculado, dados de diferentes cópias do HTML podem não ser compartilhados. Não há servidor, sincronização de rede nem controle de login. Faça backups regularmente.</p><div class="actions no-print"><button id="exportBackup">Exportar backup JSON</button><button id="importBackupBtn">Importar backup JSON</button><input type="file" id="importBackup" accept="application/json,.json" class="hidden"><button id="resetData" class="danger">Limpar dados locais</button></div></div></section></main>
+<section id="printReport" class="print-report" aria-label="Relatório de escalas"></section>
 <footer class="copyright-line" id="copyrightNotice" aria-label="Aviso de direitos autorais">© 2026 Fabiano Inoue - SICOV - Cornélio Procópio - PR • Todos os direitos reservados.</footer>
 <script>
 'use strict';
 const DAYS=['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo']; let ROLES=[];
 const baseConfig=()=>({open:[true,true,true,true,true,true,false],minimum:{'Gerência':1,Caixa:1,Vendedor:2,Estoquista:0,'Ótico':0,Relojoeiro:0,Ourives:0,Assistência:0,Financeiro:0},maxOff:0,block:true});
 const STORE='Local';
-const defaultState=()=>({employees:[],roles:[],configs:{[STORE]:baseConfig()},weeks:{},holidays:[]});
+const defaultState=()=>({employees:[],roles:[],configs:{[STORE]:baseConfig()},weeks:{}});
 let state;try{state=JSON.parse(localStorage.getItem('mundial_escalas_v2'))||defaultState()}catch{state=defaultState()};if(!state.employees||!state.configs||!state.weeks)state=defaultState();
 // Converter versões antigas de duas lojas para uma instância independente sem apagar colaboradores.
 function migrateOneStore(){
@@ -209,6 +267,9 @@ function migrateOneStore(){
   state.weeks=weeks;
  }
  state.employees.forEach(e=>e.store=STORE);
+ // Compatibilidade com calendário publicado anteriormente: conservar feriados e rascunhos.
+ if(!state.specialDays||typeof state.specialDays!=='object')state.specialDays={};
+ for(const day of (Array.isArray(state.holidays)?state.holidays:[]))if(/^\d{4}-\d{2}-\d{2}$/.test(day)&&!state.specialDays[day])state.specialDays[day]='Feriado';
 }
 migrateOneStore();
 const $=id=>document.getElementById(id), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -319,7 +380,7 @@ async function recallFileHandle(){
  }catch(e){console.warn('Não foi possível reabrir automaticamente o arquivo:',e);refreshStorageStatus()}
 }
 function validImportedState(data){return data&&Array.isArray(data.employees)&&data.configs&&typeof data.configs==='object'&&data.weeks&&typeof data.weeks==='object'&&(!data.roles||Array.isArray(data.roles))}
-function rebuildUI(){if(!Array.isArray(state.holidays))state.holidays=[];if(!Array.isArray(state.roles))state.roles=[];for(const e of state.employees)if(e.role&&!state.roles.some(r=>r.name===e.role))state.roles.push({name:e.role,group:'individual'});syncRoles();renderRoles();renderRoster();renderConfig();loadWeek()}
+function rebuildUI(){if(!Array.isArray(state.roles))state.roles=[];for(const e of state.employees)if(e.role&&!state.roles.some(r=>r.name===e.role))state.roles.push({name:e.role,group:'individual'});syncRoles();renderRoles();renderRoster();renderConfig();loadWeek();drawNoOff();if(!$('month').classList.contains('hidden'))drawMonth()}
 async function loadExternalData(data,handle){
  if(!validImportedState(data))throw Error('Arquivo inválido. Escolha um backup JSON gerado pela aplicação.');
  if((state.employees.length||state.roles.length||Object.keys(state.weeks).length)&&!confirm('Abrir este arquivo substituirá os dados atualmente exibidos. Deseja continuar?'))return false;
@@ -415,7 +476,7 @@ $('roleForm').addEventListener('submit',async e=>{
 
 function renderEmployeePreview(){let span=spanMinutes($('empIn').value,$('empOut').value),rest=Number($('empBreak').value),days=Number($('empDays').value),target=Number($('empHours').value)*60,el=$('empHoursPreview');if(!Number.isFinite(span)||!validBreak(span,rest)||!Number.isInteger(days)||days<1||days>7){el.innerHTML='<div class="error">Confira os horários, os dias e o intervalo: o intervalo deve ser menor que a permanência.</div>';return}let daily=span-rest,week=daily*days,diff=week-target;el.innerHTML=`<div class="${diff===0?'ok':'warn'}">Conferência: ${formatMinutes(span)} de permanência − ${formatMinutes(rest)} de intervalo = <b>${formatMinutes(daily)} trabalhadas/dia</b> × ${days} dias = <b>${formatMinutes(week)} na semana</b>. Meta contratual: ${formatMinutes(target)}. Diferença: ${diff>0?'+':diff<0?'-':''}${formatMinutes(diff)}.</div>`}
 ['empIn','empOut','empBreak','empDays','empHours'].forEach(id=>$(id).addEventListener('input',renderEmployeePreview));
-const showTab=id=>{document.querySelectorAll('main > section').forEach(x=>x.classList.toggle('hidden',x.id!==id));document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));if(id==='scale')loadWeek();if(id==='calendar')renderMonthly();if(id==='hours')calculate()};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+const showTab=id=>{document.querySelectorAll('main > section').forEach(x=>x.classList.toggle('hidden',x.id!==id));document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));if(id==='scale')loadWeek();if(id==='hours')calculate();if(id==='month')drawMonth()};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
 
 $('employeeForm').onsubmit=async e=>{e.preventDefault();let emp={id:(typeof crypto!=='undefined'&&typeof crypto.randomUUID==='function')?crypto.randomUUID():String(Date.now())+'-'+Math.random().toString(36).slice(2),name:$('empName').value.trim(),store:STORE,role:$('empRole').value,hours:Number($('empHours').value),days:Number($('empDays').value),in:$('empIn').value,out:$('empOut').value,break:Number($('empBreak').value)};if(!emp.role)return alert('Cadastre e selecione um cargo antes de salvar.');if(!emp.name||!Number.isInteger(emp.days)||emp.days<1||emp.days>7||!emp.in||!emp.out||!validBreak(spanMinutes(emp.in,emp.out),emp.break)||!Number.isFinite(emp.hours)||emp.hours<=0)return alert('Confira os dados do colaborador: horários, intervalo e dias inválidos.');if(!Number.isFinite(workMinutes(emp)))return alert('Jornada inválida.');state.employees.push(emp);if(!await savePersistent()){state.employees.pop();showNotice('Funcionário NÃO SALVO. Configure um arquivo de dados.',false,'empNotice');return}e.target.reset();showNotice('Funcionário “'+emp.name+'” salvo com sucesso.',true,'empNotice');$('empHours').value=42;$('empDays').value=5;$('empIn').value='08:00';$('empOut').value='18:00';$('empBreak').value=96;renderRoster();renderEmployeePreview()};
 function renderRoster(){$('headcount').textContent=state.employees.length;$('rosterBody').innerHTML=state.employees.map(e=>`<tr><td data-label="Nome">${esc(e.name)}</td><td data-label="Cargo">${esc(e.role)}</td><td data-label="Jornada">${e.days} dias • meta ${e.hours}h • calculado ${Number.isFinite(workMinutes(e))?formatMinutes(e.days*workMinutes(e)):'inválido'}</td><td data-label="Rodízio">Automático</td><td data-label="Ações"><button data-remove="${esc(e.id)}" class="danger">Excluir</button></td></tr>`).join('')||'<tr><td colspan="5">Cadastre colaboradores para começar.</td></tr>';document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=async()=>{if(confirm('Excluir colaborador e suas futuras participações na escala?')){const old=state.employees;state.employees=old.filter(x=>x.id!==b.dataset.remove);if(!await savePersistent()){state.employees=old;alert('Exclusão não salva.');return}renderRoster()}});diagnostic()}
@@ -423,148 +484,80 @@ function config(){return state.configs[STORE]};
 function renderConfig(){let c=config();syncRoles();$('openDays').innerHTML=DAYS.map((d,i)=>`<label><input type="checkbox" data-day="${i}" ${c.open[i]?'checked':''}> ${d}</label>`).join('');$('minimumFields').innerHTML=ROLES.map(r=>`<div class="field"><label>${esc(r)}</label><input type="number" min="0" max="99" data-min="${r}" value="${c.minimum[r]||0}"></div>`).join('');$('maxOff').value=c.maxOff;diagnostic()}
 $('saveConfig').onclick=async()=>{let c=config();c.open=[...document.querySelectorAll('[data-day]')].map(i=>i.checked);document.querySelectorAll('[data-min]').forEach(i=>c.minimum[i.dataset.min]=Math.max(0,Number(i.value)||0));c.maxOff=Math.max(0,Number($('maxOff').value)||0);if(!await savePersistent())return alert('Regras NÃO SALVAS. Verifique o painel de armazenamento.');renderConfig();alert('Regras salvas. Recalcule a escala para aplicar alterações.')};
 function diagnostic(){let store=STORE,c=config(),people=state.employees.filter(e=>e.store===store),open=c.open.filter(Boolean).length,needed=Object.values(c.minimum).reduce((a,b)=>a+b,0),capacity=people.reduce((a,e)=>a+Math.min(7,e.days),0),demand=needed*open;let messages=[];for(let r of ROLES){let n=people.filter(e=>roleOf(e)===r).reduce((a,e)=>a+e.days,0),target=(c.minimum[r]||0)*open;if(n<target)messages.push(`${r}: ${n} plantões disponíveis / ${target} necessários`)}$('staffDiagnostic').innerHTML=`<h2>Dimensionamento da equipe</h2><p>${people.length} colaboradores | ${open} dias abertos | ${capacity} jornadas disponíveis | ${demand} necessárias</p>${messages.length?messages.map(x=>`<div class="warn">${esc(x)}</div>`).join(''):'<div class="ok">Capacidade semanal por cargo aparentemente suficiente. Verifique a distribuição diária na escala.</div>'}`}
-const stats=(store,excludeWeek)=>{let o={};for(let e of state.employees.filter(x=>x.store===store))o[e.id]={sun:0,mon:0,double:0};for(let [key,w] of Object.entries(state.weeks)){if(w.store!==store||w.week===excludeWeek)continue;for(let [id,arr] of Object.entries(w.rows||{}))if(o[id]){if(arr[6]==='F')o[id].sun++;if(arr[0]==='F')o[id].mon++;if(arr[0]==='F'&&arr[6]==='F')o[id].double++}}return o};
+const stats=(store,excludeWeek)=>fairTotals(excludeWeek,{});
 function evaluate(rows,store,week){let c=state.configs[store],emps=state.employees.filter(x=>x.store===store),issues=[],coverage=[];for(let e of emps){let arr=rows[e.id]||[],n=arr.filter(x=>x==='T').length,off=7-n;if(n!==e.days)issues.push(`${e.name}: ${n} dias trabalhados, previsto ${e.days}.`);if(e.days===5&&off!==2)issues.push(`${e.name}: precisa de duas folgas na escala 5×2.`);let mins=n*workMinutes(e),limit=Number($('weekLimit').value)*60;if(!Number.isFinite(mins)){issues.push(`${e.name}: horários ou intervalo inválidos; corrija o cadastro.`);continue}if(mins>limit)issues.push(`${e.name}: ${Math.floor(mins/60)}h${String(mins%60).padStart(2,'0')} excedem o limite selecionado de ${limit/60}h.`);if(mins>e.hours*60)issues.push(`${e.name}: jornada calculada supera suas ${e.hours}h contratuais.`)}
-for(let d=0;d<7;d++){let working=emps.filter(e=>rows[e.id]?.[d]==='T'),off=emps.length-working.length,counts={};ROLES.forEach(r=>counts[r]=working.filter(e=>roleOf(e)===r).length);let errors=[];if(c.open[d]){if(emps.length&&!working.length)errors.push("Nenhum funcionário escalado em dia aberto");for(let r of ROLES)if(counts[r]<(c.minimum[r]||0))errors.push(`${r}: ${counts[r]}/${c.minimum[r]}`);}else if(working.length)errors.push(`${working.length} trabalhando em dia marcado como fechado`);if(c.maxOff&&off>c.maxOff&&c.open[d])errors.push(`${off} folgas excedem máximo de ${c.maxOff}`);if(errors.length)issues.push(DAYS[d]+': '+errors.join('; '));coverage.push({working,counts,errors})}return {issues,coverage}}
-function generate(){
- const chosen=getSelectedDate();if(!chosen)return;const store=STORE,week=mon(chosen),emps=state.employees.filter(e=>e.store===store),c=state.configs[store],hist=stats(store,week);
- if(!emps.length)return alert('Cadastre os colaboradores primeiro.');
- const rows={},taken=Array(7).fill(0);
- // Cada colaborador recebe inicialmente as folgas dos dias em que a loja fecha.
- for(const e of emps){rows[e.id]=Array(7).fill('T');let rest=Math.max(0,7-e.days);for(let d=0;d<7&&rest;d++)if(!c.open[d]){rows[e.id][d]='F';taken[d]++;rest--}}
- // O rodízio da folga dupla é decidido antes de distribuir as demais folgas.
- // Prioriza quem menos recebeu domingo + segunda, sem ignorar a cobertura obrigatória.
- let candidates=emps.filter(e=>e.days<=5).sort((a,b)=>hist[a.id].double-hist[b.id].double||hist[a.id].mon-hist[b.id].mon||hist[a.id].sun-hist[b.id].sun||a.name.localeCompare(b.name));
- for(const e of candidates){
-   let needed=7-e.days-rows[e.id].filter(x=>x==='F').length;
-   let pair=[0,6].filter(d=>rows[e.id][d]==='T');
-   if(pair.length>needed)continue;
-   for(const d of pair)rows[e.id][d]='F';
-   let result=evaluate(rows,store,week);
-   // Aceita a dupla somente se não gerar novos erros de cobertura nesses dois dias.
-   let safe=pair.every(d=>result.coverage[d].errors.length===0);
-   if(safe)for(const d of pair)taken[d]++;
-   else for(const d of pair)rows[e.id][d]='T';
- }
- // Completa as folgas restantes, minimizando lacunas de equipe e desequilíbrio.
- let pending=emps.map(e=>({e,need:Math.max(0,7-e.days-rows[e.id].filter(x=>x==='F').length)}));
- let count=0;
- while(pending.some(x=>x.need>0)&&count++<500){
-   pending.sort((a,b)=>b.need-a.need||hist[a.e.id].double-hist[b.e.id].double);
-   let p=pending.find(x=>x.need>0);
-   const choices=DAYS.map((_,d)=>d).filter(d=>rows[p.e.id][d]==='T').map(d=>{
-     rows[p.e.id][d]='F';let result=evaluate(rows,store,week);rows[p.e.id][d]='T';
-     let score=result.coverage[d].errors.length*10000+taken[d]*25;
-     if(d===0)score+=hist[p.e.id].mon*30-80;
-     else if(d===6)score+=hist[p.e.id].sun*30-70;
-     else score+=60;
-     // Evita folgas isoladas se for possível dar dois dias consecutivos.
-     if(d>0&&rows[p.e.id][d-1]==='F'||d<6&&rows[p.e.id][d+1]==='F')score-=35;
-     return {d,score};
-   }).sort((a,b)=>a.score-b.score);
-   if(!choices.length){p.need=0;continue}
-   rows[p.e.id][choices[0].d]='F';taken[choices[0].d]++;p.need--;
- }
- current={store,week,rows};draw();
-}
-let current=null;
-
-// Calendário mensal: os dados são derivados APENAS de semanas efetivamente salvas.
-let calendarMonth=iso(new Date()).slice(0,7);
-let calendarSelectedDay=null;
-const MONTHS=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-function changeMonth(amount){
- const [year,month]=calendarMonth.split('-').map(Number);
- const shifted=new Date(year,month-1+amount,1,12);
- calendarMonth=iso(shifted).slice(0,7);
- calendarSelectedDay=null;
- renderMonthly();
-}
-function codeForIndex(i){let code='';for(let n=i+1;n>0;n=Math.floor((n-1)/26))code=String.fromCharCode(65+(n-1)%26)+code;return code}
-function currentCodes(){const codes=new Map();state.employees.forEach((e,i)=>codes.set(String(e.id),codeForIndex(i)));return codes}
-function savedRoster(week){
- if(!week||!week.rows)return [];
- const snap=Array.isArray(week.rosterSnapshot)?week.rosterSnapshot:state.employees;
- const codes=currentCodes();
- return snap.filter(e=>Object.prototype.hasOwnProperty.call(week.rows,String(e.id))).map((e,i)=>({...e,code:e.code||codes.get(String(e.id))||codeForIndex(i)}));
-}
-function calendarDatum(day){
- const idx=(dateAt(day).getDay()+6)%7;
- const week=state.weeks[weekKey(STORE,mon(day))];
- const open=!!((week&&Array.isArray(week.openSnapshot)?week.openSnapshot:config().open)[idx]);
- const holiday=Array.isArray(state.holidays)&&state.holidays.includes(day);
- if(!week||!week.rows)return {date:day,idx,week:null,open,holiday,working:[],off:[]};
- const roster=savedRoster(week);
- return {date:day,idx,week,open,holiday,working:roster.filter(e=>week.rows[e.id]?.[idx]==='T'),off:roster.filter(e=>week.rows[e.id]?.[idx]==='F')};
-}
-function dayCodeSummary(people){return people.length?'folga '+people.map(e=>e.code).join(' · '):'sem folgas'}
-function renderCalendarDetail(){
- const el=$('calendarDayDetail');
- if(!calendarSelectedDay){el.innerHTML='<h3>Selecione uma data</h3><p>Toque em um dia do calendário para ver quem trabalha e quem folga.</p>';return}
- const info=calendarDatum(calendarSelectedDay);
- const title=brDate(info.date),holiday=info.holiday?' (feriado marcado)':'';
- const body=info.week
-  ?`<p><strong>${info.working.length} trabalhando:</strong> ${info.working.length?info.working.map(e=>esc(e.name)+' ('+esc(e.code)+')').join(', '):'ninguém'}</p><p><strong>${info.off.length} de folga:</strong> ${info.off.length?info.off.map(e=>esc(e.name)+' ('+esc(e.code)+')').join(', '):'ninguém'}</p>${info.week.issues?.length?'<p class="warn">Esta semana foi salva com pendências; revise a escala.</p>':''}`
-  :'<p>Sem escala salva para esta semana. Não é possível informar a quantidade de funcionários presentes.</p>';
- el.innerHTML=`<h3>${title}${holiday}</h3>${info.open?'':'<p><strong>Estabelecimento configurado como fechado.</strong></p>'}${body}<div class="actions no-print"><button id="openSelectedWeek" type="button" class="primary">Abrir na Escala Inteligente</button><button id="toggleHoliday" type="button">${info.holiday?'Remover marcação de feriado':'Marcar como feriado'}</button></div>`;
- $('openSelectedWeek').onclick=()=>{setSelectedDate(info.date);showTab('scale')};
- $('toggleHoliday').onclick=async()=>{
-  const old=[...state.holidays];
-  state.holidays=info.holiday?old.filter(x=>x!==info.date):[...old,info.date].sort();
-  if(!await savePersistent()){state.holidays=old;alert('Não foi possível salvar a marcação de feriado neste dispositivo.');return}
-  renderMonthly();
+for(let d=0;d<7;d++){let working=emps.filter(e=>rows[e.id]?.[d]==='T'),off=emps.length-working.length,counts={};ROLES.forEach(r=>counts[r]=working.filter(e=>roleOf(e)===r).length);let errors=[];if(c.open[d]){for(let r of ROLES)if(counts[r]<(c.minimum[r]||0))errors.push(`${r}: ${counts[r]}/${c.minimum[r]}`);if(isNoOffDay(move(week,d))&&off>0)errors.push(`Dia sem folga: ${off} colaborador(es) de folga`);}else if(working.length)errors.push(`${working.length} trabalhando em dia marcado como fechado`);if(c.maxOff&&off>c.maxOff&&c.open[d])errors.push(`${off} folgas excedem máximo de ${c.maxOff}`);if(errors.length)issues.push(DAYS[d]+': '+errors.join('; '));coverage.push({working,counts,errors})}return {issues,coverage}}
+// Regras locais: dias sem folga e datas específicas de maior movimento.
+function assureNoOff(){if(!Array.isArray(state.noOffWeekdays))state.noOffWeekdays=Array(7).fill(false);if(!state.noOffDates||typeof state.noOffDates!=='object')state.noOffDates={}}
+function isNoOffDay(date){assureNoOff();const d=(dateAt(date).getDay()+6)%7;return !!(state.noOffWeekdays[d]||state.noOffDates[date])}
+function drawNoOff(){assureNoOff();$('noOffWeekdays').innerHTML=DAYS.map((d,i)=>`<label><input type="checkbox" data-nooff-weekday="${i}" ${state.noOffWeekdays[i]?'checked':''}> ${d}</label>`).join('');
+ $('noOffDateList').innerHTML=Object.keys(state.noOffDates).filter(x=>state.noOffDates[x]).sort().map(x=>`<button type="button" data-remove-nooff="${x}" title="Remover bloqueio">${brDate(x)} ×</button>`).join('')||'<span class="muted">Nenhuma data específica bloqueada</span>';
+ document.querySelectorAll('[data-remove-nooff]').forEach(b=>b.onclick=async()=>{const before={...state.noOffDates};delete state.noOffDates[b.dataset.removeNooff];if(!await savePersistent({offerPicker:false})){state.noOffDates=before;return $('noOffFeedback').textContent='Não foi possível salvar o desbloqueio.'}drawNoOff();$('noOffFeedback').textContent='Bloqueio removido e salvo.'})}
+$('noOffExactDate').addEventListener('input',e=>{e.target.value=maskDateText(e.target.value)});
+$('addNoOffDate').onclick=async()=>{const date=parseDateInput($('noOffExactDate').value);if(!date)return $('noOffFeedback').textContent='Data inválida. Use DD/MM/AAAA.';assureNoOff();const old={...state.noOffDates};state.noOffDates[date]=true;if(!await savePersistent({offerPicker:false})){state.noOffDates=old;return $('noOffFeedback').textContent='NÃO SALVO. Verifique o armazenamento.'}$('noOffExactDate').value='';drawNoOff();$('noOffFeedback').textContent='Data bloqueada e salva: '+brDate(date)};
+$('saveNoOff').onclick=async()=>{assureNoOff();const before=[...state.noOffWeekdays];state.noOffWeekdays=[...document.querySelectorAll('[data-nooff-weekday]')].map(e=>e.checked);if(!await savePersistent({offerPicker:false})){state.noOffWeekdays=before;return $('noOffFeedback').textContent='NÃO SALVO. Verifique o armazenamento.'}$('noOffFeedback').textContent='Dias da semana bloqueados e salvos.'};
+function periodDates(){const start=parseDateInput($('periodStart').value),end=parseDateInput($('rangeEnd').value);if(!start||!end){$('rangeDateNotice').textContent='Informe datas reais no formato DD/MM/AAAA.';return null}const days=Math.round((dateAt(end)-dateAt(start))/86400000)+1;if(days<1||days>366){$('rangeDateNotice').textContent='A data final deve ser igual ou posterior à inicial. Limite: 366 dias.';return null}$('rangeDateNotice').textContent=`${days} dia(s) selecionado(s), com semanas completas de segunda a domingo.`;return {start,end}}
+['periodStart','rangeEnd'].forEach(id=>$(id).addEventListener('input',e=>{e.target.value=maskDateText(e.target.value);if(e.target.value.length===10)periodDates()}));
+function weeksInPeriod(start,end){const out=[];for(let w=mon(start);w<=end;w=move(w,7))out.push(w);return out}
+function historicalPlans(week,plans){let previous={};for(const [key,w] of Object.entries({...state.weeks,...plans})){if(w.store!==STORE||w.week>=week)continue;previous[key]=w}return previous}
+function fairTotals(week,plans){const saved=historicalPlans(week,plans),hist={};for(const e of state.employees)hist[e.id]={sun:0,mon:0,double:0};for(const w of Object.values(saved))for(const e of state.employees){const arr=w.rows?.[e.id];if(!arr)continue;if(arr[6]==='F')hist[e.id].sun++;if(arr[0]==='F')hist[e.id].mon++;const earlier=saved[weekKey(STORE,move(w.week,-7))]?.rows?.[e.id];if(arr[0]==='F'&&earlier?.[6]==='F')hist[e.id].double++}return hist}
+function makeWeek(week,previousPlans={}){
+ const store=STORE,emps=state.employees.filter(e=>e.store===store),c=config(),hist=fairTotals(week,previousPlans),rows={},totals=Array(7).fill(0);
+ if(!emps.length)return null;
+ const blocked=DAYS.map((_,d)=>isNoOffDay(move(week,d)));
+ for(const e of emps){rows[e.id]=c.open.map(open=>open?'T':'F');for(let d=0;d<7;d++)if(!c.open[d])totals[d]++}
+ const previous=historicalPlans(week,previousPlans)[weekKey(STORE,move(week,-7))];
+ const needs=emps.map(e=>({e,need:Math.max(0,7-e.days-rows[e.id].filter(x=>x==='F').length)}));
+ const canTake=(e,d)=>{
+  if(!c.open[d]||blocked[d]||rows[e.id][d]==='F')return false;
+  if(c.maxOff&&totals[d]>=c.maxOff)return false;
+  const remaining=emps.filter(p=>p.role===e.role&&rows[p.id][d]==='T').length;
+  return remaining-1>=Number(c.minimum[e.role]||0);
  };
-}
-function renderMonthly(){
- const control=$('monthPicker'); if(!control)return;
- let match=/^(\d{4})-(\d{2})$/.exec(calendarMonth);
- if(!match||Number(match[2])<1||Number(match[2])>12){calendarMonth=iso(new Date()).slice(0,7);match=/^(\d{4})-(\d{2})$/.exec(calendarMonth)}
- const year=Number(match[1]),month=Number(match[2]);
- control.value=calendarMonth;
- $('monthHeading').textContent=`${MONTHS[month-1]} ${year}`;
- const first=new Date(year,month-1,1,12),days=new Date(year,month,0,12).getDate();
- const blanks=first.getDay(),cellCount=Math.ceil((blanks+days)/7)*7;
- const cells=[];
- for(let i=0;i<cellCount;i++){
-  const num=i-blanks+1;
-  if(num<1||num>days){cells.push('<span class="month-cell is-empty" aria-hidden="true"></span>');continue}
-  const date=iso(new Date(year,month-1,num,12)),d=calendarDatum(date),off=dayCodeSummary(d.off);
-  const visibleText=!d.open?'Fechado':d.week?off:'Sem escala';
-  const classes=['month-cell',!d.open?'is-closed':'',!d.week?'no-schedule':'',d.holiday?'is-holiday':'',date===calendarSelectedDay?'is-selected':''].filter(Boolean).join(' ');
-  const counter=d.week&&d.open?`<span class="staff-count">${d.working.length}</span>`:'';
-  const small=d.week&&!d.open?'<span class="cell-small">Dia sem expediente</span>':'';
-  const title=`${brDate(date)}: ${!d.open?'fechado':d.week?d.working.length+' trabalhando; '+off:'sem escala salva'}`;
-  cells.push(`<button type="button" class="${classes}" data-calendar-day="${date}" title="${esc(title)}" aria-label="${esc(title)}"><span class="date-number">${num}${d.holiday?' ⚑':''}</span>${counter}<span class="cell-note">${esc(visibleText)}</span>${small}</button>`);
+ // Prioriza quem tem maior restrição de vagas e dá equilíbrio de segundas e domingos.
+ let tick=0;
+ while(needs.some(n=>n.need>0)&&tick++<1000){
+   const p=needs.filter(n=>n.need>0).sort((a,b)=>{
+     const av=x=>DAYS.filter((_,d)=>canTake(x.e,d)).length;
+     return (av(a)-a.need)-(av(b)-b.need)||hist[a.e.id].double-hist[b.e.id].double||a.e.name.localeCompare(b.e.name);
+   })[0];if(!p)break;
+   const choices=DAYS.map((_,d)=>d).filter(d=>canTake(p.e,d)).map(d=>{
+     let score=totals[d]*55+(d===0?hist[p.e.id].mon*85-95:d===6?hist[p.e.id].sun*85-65:50);
+     if(d===0&&previous?.rows?.[p.e.id]?.[6]==='F')score-=hist[p.e.id].double*75+125;
+     if(d===0&&rows[p.e.id][6]==='F')score-=25;
+     if(d===6&&rows[p.e.id][0]==='F')score-=10;
+     return {d,score};
+   }).sort((a,b)=>a.score-b.score||a.d-b.d);
+   if(!choices.length){p.need=0;continue}
+   const d=choices[0].d;rows[p.e.id][d]='F';totals[d]++;p.need--;
  }
- $('monthlyGrid').innerHTML=cells.join('');
- document.querySelectorAll('[data-calendar-day]').forEach(b=>b.onclick=()=>{calendarSelectedDay=b.dataset.calendarDay;renderMonthly()});
- renderCalendarDetail();
- const all=state.employees;
- if(!all.length){$('monthlyPeople').innerHTML='<div class="calendar-empty">Cadastre funcionários na aba Equipe e cargos para visualizar os quadros individuais.</div>';return}
- const firstSunday=new Date(year,month-1,1,12);firstSunday.setDate(firstSunday.getDate()-firstSunday.getDay());
- const sundays=Array.from({length:8},(_,i)=>iso(new Date(firstSunday.getFullYear(),firstSunday.getMonth(),firstSunday.getDate()+i*7,12)));
- const codes=currentCodes();
- $('monthlyPeople').innerHTML=all.map(e=>{
-  const code=codes.get(String(e.id));
-  const head='<div class="person-days-head"><span></span>'+['D','S','T','Q','Q','S','S'].map(d=>`<span>${d}</span>`).join('')+'</div>';
-  const weeks=sundays.map(sunday=>{
-   const cells=Array.from({length:7},(_,i)=>{
-    const date=move(sunday,i),data=calendarDatum(date);
-    const status=data.week?.rows?.[e.id]?.[data.idx];
-    const label=status==='T'?'T':status==='F'?'F':'–';
-    const cls=status==='T'?'at-work':status==='F'?'off-duty':'unknown';
-    return `<span class="person-day ${cls}${data.holiday?' is-holiday':''}" title="${esc(brDate(date)+': '+(status==='T'?'trabalha':status==='F'?'folga':'sem escala salva'))}">${label}</span>`;
-   }).join('');
-   return `<div class="person-week"><span class="person-week-date">${sunday.slice(8)}/${sunday.slice(5,7)}</span>${cells}</div>`;
-  }).join('');
-  return `<article class="person-card"><div class="person-head"><span class="person-badge">${code}</span><div class="person-meta"><strong>${esc(e.name)}</strong><small>${esc(e.role)} · ${esc(e.in)}–${esc(e.out)} · ${e.hours}h/semana</small></div></div>${head}${weeks}</article>`;
- }).join('');
+ const result=evaluate(rows,store,week);
+ for(let d=0;d<7;d++)if(blocked[d]&&!c.open[d])result.issues.push(`${brDate(move(week,d))}: bloqueio de folgas não pode ser cumprido porque o estabelecimento está fechado.`);
+ return {store,week,rows,issues:[...new Set(result.issues)],savedAt:null,rosterSnapshot:emps.map(e=>({...e})),openSnapshot:[...c.open]};
 }
-$('monthPrev').onclick=()=>changeMonth(-1);
-$('monthNext').onclick=()=>changeMonth(1);
-$('monthPicker').onchange=e=>{const str=String(e.target.value);if(/^\d{4}-(0[1-9]|1[0-2])$/.test(str)){calendarMonth=str;calendarSelectedDay=null;renderMonthly()}};
-$('printMonth').onclick=()=>window.print();
+let periodDraft=null;
+function renderPeriodDraft(){if(!periodDraft){$('savePeriod').disabled=true;$('periodWeeks').innerHTML='';return}
+ const w=periodDraft.weeks;
+ $('savePeriod').disabled=false;
+ $('periodWeeks').innerHTML=Object.values(w).map(p=>`<button type="button" data-preview-week="${p.week}" class="${p.issues.length?'has-issues':''}">${brDate(p.week)}–${brDate(move(p.week,6))}${p.issues.length?' ⚠ '+p.issues.length:''}</button>`).join('');
+ document.querySelectorAll('[data-preview-week]').forEach(btn=>btn.onclick=()=>{let w=btn.dataset.previewWeek;current=JSON.parse(JSON.stringify(periodDraft.weeks[weekKey(STORE,w)]));setSelectedDate(w);draw()});
+}
+function generate(){const chosen=getSelectedDate();if(!chosen)return;const week=mon(chosen),saved=state.weeks[weekKey(STORE,week)];if(saved&&!confirm('Recalcular esta semana? A semana salva só será alterada ao clicar em Salvar.'))return;const made=makeWeek(week);if(!made)return alert('Cadastre funcionários primeiro.');current=made;periodDraft=null;renderPeriodDraft();draw()}
+$('generatePeriod').onclick=()=>{const period=periodDates();if(!period)return;const list=weeksInPeriod(period.start,period.end);if(!state.employees.length)return alert('Cadastre funcionários primeiro.');const existing=list.filter(w=>state.weeks[weekKey(STORE,w)]).length;
+ if(existing&&!confirm(`${existing} semana(s) do período já estão salvas. Gerar novamente criará uma proposta de substituição. Nenhuma será alterada até confirmar Salvar todas. Continuar?`))return;
+ const drafts={};for(const w of list){const made=makeWeek(w,drafts);if(made)drafts[weekKey(STORE,w)]=made}
+ periodDraft={...period,weeks:drafts};const issueCount=Object.values(drafts).reduce((a,w)=>a+w.issues.length,0);
+ $('periodNotice').innerHTML=`<div class="${issueCount?'warn':'ok'}">${list.length} semana(s) gerada(s) para ${brDate(period.start)}–${brDate(period.end)}. ${issueCount} alerta(s). <strong>Nada foi salvo ainda.</strong> Revise as semanas e clique em Salvar todas as semanas. Incluem-se as semanas completas que cruzam as datas escolhidas.</div>`;
+ current=JSON.parse(JSON.stringify(drafts[weekKey(STORE,list[0])])) ;setSelectedDate(list[0]);renderPeriodDraft();draw();
+};
+$('savePeriod').onclick=async()=>{if(!periodDraft)return;const updates=periodDraft.weeks;const all=Object.values(updates);if(!all.length)return;const issues=all.reduce((a,w)=>a+w.issues.length,0);if(issues&&!confirm(`Existem ${issues} alerta(s) nas semanas. Salvar como RASCUNHO PENDENTE de revisão?`))return;
+ const saved=state.weeks;const next={...saved};const now=new Date().toISOString();for(const w of all)next[weekKey(STORE,w.week)]={...w,savedAt:now,status:w.issues.length?'pendente':'planejada'};state.weeks=next;
+ if(!await savePersistent({offerPicker:false})){state.weeks=saved;return $('periodNotice').innerHTML='<div class="error">NÃO SALVO: armazenamento indisponível. Seus dados anteriores foram preservados.</div>'}
+ $('periodNotice').innerHTML=`<div class="ok"><strong>${all.length} semana(s) gravada(s)</strong> no dispositivo, ${issues} alerta(s). Acesse Calendário mensal para conferir os nomes de quem folga.</div>`;
+ periodDraft=null;renderPeriodDraft();loadWeek();
+};
 
+let current=null;
 function loadWeek(){
  const chosen=getSelectedDate();
  if(!chosen){current=null;$('weekTitle').textContent='Corrija a data';$('scheduleBody').innerHTML='<tr><td>Digite uma data válida em DD/MM/AAAA.</td></tr>';$('alerts').innerHTML='';$('coverage').innerHTML='';$('history').innerHTML='';$('scheduleMetrics').innerHTML='';return}
@@ -581,8 +574,8 @@ function applyMobileDayView(){
 $('mobileScheduleDay').onchange=e=>{mobileDayIndex=Number(e.target.value);applyMobileDayView()};
 $('mobilePrevDay').onclick=()=>{mobileDayIndex=(mobileDayIndex+6)%7;applyMobileDayView()};
 $('mobileNextDay').onclick=()=>{mobileDayIndex=(mobileDayIndex+1)%7;applyMobileDayView()};
-function draw(){if(!current)return;let {rows,store,week}=current,emps=state.employees.filter(e=>e.store===store),res=evaluate(rows,store,week);$('weekTitle').textContent=`${brDate(week)} a ${brDate(move(week,6))}`;$('scheduleHead').innerHTML='<tr><th>Colaborador / cargo</th>'+DAYS.map((d,i)=>`<th class="schedule-day-cell" data-weekday="${i}">${d}<div class="muted">${move(week,i).slice(5).split('-').reverse().join('/')}</div></th>`).join('')+'<th>Horas</th></tr>';$('scheduleBody').innerHTML=emps.map(e=>{let a=rows[e.id]||Array(7).fill('F'),worked=a.filter(x=>x==='T').length,mins=worked*workMinutes(e);return `<tr><td>${esc(e.name)}<div class="muted">${esc(e.role)} · ${e.days} dias</div></td>${a.map((v,d)=>`<td data-weekday="${d}" class="schedule-day-cell ${v==='T'?'work':'off'}"><select aria-label="${esc(e.name)}: ${DAYS[d]}" data-id="${esc(e.id)}" data-d="${d}"><option value="T" ${v==='T'?'selected':''}>Trabalha</option><option value="F" ${v==='F'?'selected':''}>Folga</option></select></td>`).join('')}<td>${Math.floor(mins/60)}h${String(mins%60).padStart(2,'0')}</td></tr>`}).join('');document.querySelectorAll('#scheduleBody select').forEach(el=>el.onchange=()=>{current.rows[el.dataset.id][Number(el.dataset.d)]=el.value;draw()});applyMobileDayView();$('alerts').innerHTML=res.issues.length?`<div class="error"><strong>${res.issues.length} alerta(s) • escala requer revisão</strong>${res.issues.map(i=>`<div>• ${esc(i)}</div>`).join('')}</div>`:'<div class="ok">Nenhum conflito detectado pelas regras configuradas. Conferência jurídica e de horários ainda necessária.</div>';$('coverage').innerHTML=res.coverage.map((x,d)=>`<div class="daycard"><strong>${DAYS[d]}</strong><p>${x.working.length} trabalhando</p>${ROLES.filter(r=>state.configs[store].minimum[r]).map(r=>`<div>${r}: ${x.counts[r]}/${state.configs[store].minimum[r]}</div>`).join('')}<div style="margin-top:7px">${x.errors.length?'⚠ Conflito':'✓ Coberto'}</div></div>`).join('');let h=stats(store,week);$('history').innerHTML='<div class="table-scroll"><table><thead><tr><th>Colaborador</th><th>Domingos anteriores</th><th>Segundas anteriores</th><th>Duplas anteriores</th><th>Dupla atual</th><th>Domingo atual</th><th>Segunda atual</th></tr></thead><tbody>'+emps.map(e=>`<tr><td>${esc(e.name)}</td><td>${h[e.id].sun}</td><td>${h[e.id].mon}</td><td>${h[e.id].double}</td><td>${rows[e.id]?.[0]==='F'&&rows[e.id]?.[6]==='F'?'Sim':'Não'}</td><td>${rows[e.id]?.[6]==='F'?'Folga':'Trabalha'}</td><td>${rows[e.id]?.[0]==='F'?'Folga':'Trabalha'}</td></tr>`).join('')+'</tbody></table></div>';$('scheduleMetrics').innerHTML=`<div class="metric">Funcionários<strong>${emps.length}</strong></div><div class="metric">Dias abertos<strong>${state.configs[store].open.filter(Boolean).length}</strong></div><div class="metric">Alertas<strong>${res.issues.length}</strong></div><div class="metric">Status<strong>${res.issues.length?'Revisar':'Verificada'}</strong></div>`}
-$('generate').onclick=()=>{if(current&&state.weeks[weekKey(current.store,current.week)]&& !confirm('Recalcular substituirá a escala exibida. A semana salva só será alterada ao clicar em Salvar. Continuar?'))return;generate()};$('saveWeek').onclick=async()=>{const selected=getSelectedDate();if(!selected)return alert('Corrija a data antes de salvar.');if(!current||current.week!==mon(selected))return alert('Gere a escala da data selecionada antes de salvar.');let res=evaluate(current.rows,current.store,current.week);if(res.issues.length&&!confirm(`A escala possui ${res.issues.length} alerta(s). Salvar mesmo assim como rascunho com pendências?`))return;const wkKey=weekKey(current.store,current.week),prev=state.weeks[wkKey];state.weeks[wkKey]={...current,issues:res.issues,savedAt:new Date().toISOString(),rosterSnapshot:state.employees.filter(e=>e.store===STORE).map((e,i)=>({...e,code:codeForIndex(i)})),openSnapshot:[...config().open]};if(!await savePersistent()){if(prev)state.weeks[wkKey]=prev;else delete state.weeks[wkKey];return alert('Semana NÃO SALVA. Verifique o armazenamento.')}renderMonthly();draw();alert(res.issues.length?'Rascunho salvo com pendências.':'Semana salva com sucesso.')};$('weekStart').addEventListener('input',e=>{
+function draw(){if(!current)return;let {rows,store,week}=current,emps=state.employees.filter(e=>e.store===store),res=evaluate(rows,store,week);$('weekTitle').textContent=`${brDate(week)} a ${brDate(move(week,6))}`;$('scheduleHead').innerHTML='<tr><th>Colaborador / cargo</th>'+DAYS.map((d,i)=>`<th class="schedule-day-cell" data-weekday="${i}">${d}<div class="muted">${move(week,i).slice(5).split('-').reverse().join('/')}</div></th>`).join('')+'<th>Horas</th></tr>';$('scheduleBody').innerHTML=emps.map(e=>{let a=rows[e.id]||Array(7).fill('F'),worked=a.filter(x=>x==='T').length,mins=worked*workMinutes(e);return `<tr><td>${esc(e.name)}<div class="muted">${esc(e.role)} · ${e.days} dias</div></td>${a.map((v,d)=>`<td data-weekday="${d}" class="schedule-day-cell ${v==='T'?'work':'off'}"><select aria-label="${esc(e.name)}: ${DAYS[d]}" data-id="${esc(e.id)}" data-d="${d}"><option value="T" ${v==='T'?'selected':''}>Trabalha</option><option value="F" ${v==='F'?'selected':''}>Folga</option></select></td>`).join('')}<td>${Math.floor(mins/60)}h${String(mins%60).padStart(2,'0')}</td></tr>`}).join('');document.querySelectorAll('#scheduleBody select').forEach(el=>el.onchange=()=>{current.rows[el.dataset.id][Number(el.dataset.d)]=el.value;if(periodDraft&&periodDraft.weeks[weekKey(STORE,current.week)]){const proposal=periodDraft.weeks[weekKey(STORE,current.week)];proposal.rows=JSON.parse(JSON.stringify(current.rows));proposal.issues=evaluate(proposal.rows,STORE,current.week).issues;renderPeriodDraft()}draw()});applyMobileDayView();$('alerts').innerHTML=res.issues.length?`<div class="error"><strong>${res.issues.length} alerta(s) • escala requer revisão</strong>${res.issues.map(i=>`<div>• ${esc(i)}</div>`).join('')}</div>`:'<div class="ok">Nenhum conflito detectado pelas regras configuradas. Conferência jurídica e de horários ainda necessária.</div>';$('coverage').innerHTML=res.coverage.map((x,d)=>`<div class="daycard"><strong>${DAYS[d]}</strong><p>${x.working.length} trabalhando</p>${ROLES.filter(r=>state.configs[store].minimum[r]).map(r=>`<div>${r}: ${x.counts[r]}/${state.configs[store].minimum[r]}</div>`).join('')}<div style="margin-top:7px">${x.errors.length?'⚠ Conflito':'✓ Coberto'}</div></div>`).join('');let h=stats(store,week);$('history').innerHTML='<div class="table-scroll"><table><thead><tr><th>Colaborador</th><th>Domingos anteriores</th><th>Segundas anteriores</th><th>Duplas anteriores</th><th>Domingo anterior + segunda atual</th><th>Domingo atual</th><th>Segunda atual</th></tr></thead><tbody>'+emps.map(e=>`<tr><td>${esc(e.name)}</td><td>${h[e.id].sun}</td><td>${h[e.id].mon}</td><td>${h[e.id].double}</td><td>${rows[e.id]?.[0]==='F'&&state.weeks[weekKey(STORE,move(week,-7))]?.rows?.[e.id]?.[6]==='F'?'Sim':'Não'}</td><td>${rows[e.id]?.[6]==='F'?'Folga':'Trabalha'}</td><td>${rows[e.id]?.[0]==='F'?'Folga':'Trabalha'}</td></tr>`).join('')+'</tbody></table></div>';$('scheduleMetrics').innerHTML=`<div class="metric">Funcionários<strong>${emps.length}</strong></div><div class="metric">Dias abertos<strong>${state.configs[store].open.filter(Boolean).length}</strong></div><div class="metric">Alertas<strong>${res.issues.length}</strong></div><div class="metric">Status<strong>${res.issues.length?'Revisar':'Verificada'}</strong></div>`}
+$('generate').onclick=()=>{if(current&&state.weeks[weekKey(current.store,current.week)]&& !confirm('Recalcular substituirá a escala exibida. A semana salva só será alterada ao clicar em Salvar. Continuar?'))return;generate()};$('saveWeek').onclick=async()=>{const selected=getSelectedDate();if(!selected)return alert('Corrija a data antes de salvar.');if(!current||current.week!==mon(selected))return alert('Gere a escala da data selecionada antes de salvar.');let res=evaluate(current.rows,current.store,current.week);if(res.issues.length&&!confirm(`A escala possui ${res.issues.length} alerta(s). Salvar mesmo assim como rascunho com pendências?`))return;const previousWeek=state.weeks[weekKey(current.store,current.week)];state.weeks[weekKey(current.store,current.week)]={...current,issues:res.issues,savedAt:new Date().toISOString(),rosterSnapshot:current.rosterSnapshot||state.employees.filter(e=>e.store===STORE).map(e=>({...e})),openSnapshot:current.openSnapshot||[...config().open]};if(!await savePersistent()){if(previousWeek)state.weeks[weekKey(current.store,current.week)]=previousWeek;else delete state.weeks[weekKey(current.store,current.week)];return alert('Semana NÃO SALVA. Verifique o armazenamento.')}draw();if(!$('month').classList.contains('hidden'))drawMonth();alert(res.issues.length?'Rascunho salvo com pendências.':'Semana salva com sucesso.')};$('weekStart').addEventListener('input',e=>{
  const formatted=maskDateText(e.target.value);if(e.target.value!==formatted)e.target.value=formatted;
  const day=parseDateInput(formatted);if(day){$('weekPicker').value=day;showDateFeedback(day)}else if(formatted.length===10)showDateFeedback(null);else{$('weekDateNotice').textContent='Complete a data no formato DD/MM/AAAA.';$('weekDateNotice').classList.remove('invalid');e.target.removeAttribute('aria-invalid')}
 });
@@ -622,7 +615,101 @@ $('openDataFile').onclick=async()=>{
 };
 $('dataFileInput').onchange=async e=>{try{const file=e.target.files&&e.target.files[0];if(!file)return;await loadExternalData(JSON.parse(await file.text()),null)}catch(err){alert('Arquivo inválido: '+err.message)}finally{e.target.value=''}};
 $('quickBackup').onclick=()=>download('Escala_Rotativa_Dados_backup.json',JSON.stringify(state,null,2),'application/json');
-let today=mon(iso(new Date()));setSelectedDate(today);calendarMonth=today.slice(0,7);
+
+// Calendário mensal: usa APENAS semanas salvas no banco local; células vazias não são inventadas.
+let monthShown=iso(new Date()).slice(0,7);
+let selectedMonthDay=iso(new Date());
+const MONTH_NAMES=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+function monthBounds(month){const [y,m]=month.split('-').map(Number);return {year:y,month:m,first:`${y}-${String(m).padStart(2,'0')}-01`,length:new Date(y,m,0).getDate()}}
+function moveMonth(n){const b=monthBounds(monthShown);const d=new Date(b.year,b.month-1+n,1,12);monthShown=iso(d).slice(0,7);selectedMonthDay=monthShown+'-01';drawMonth()}
+function getMonthWeek(date){return state.weeks[weekKey(STORE,mon(date))]||null}
+function getDaySchedule(date){const w=getMonthWeek(date);const idx=(dateAt(date).getDay()+6)%7;
+ const employees=w?.rosterSnapshot?.length?w.rosterSnapshot.filter(e=>Object.hasOwn(w.rows||{},String(e.id))):state.employees.filter(x=>x.store===STORE);
+ const opened=!!(Array.isArray(w?.openSnapshot)?w.openSnapshot[idx]:config().open[idx]);
+ if(!w||!w.rows)return {saved:false,opened,working:[],off:[],week:mon(date),issues:[]};
+ const working=[],off=[];
+ for(const emp of employees){const status=w.rows[emp.id]?.[idx];if(status==='T')working.push(emp);else if(status==='F')off.push(emp)}
+ return {saved:true,opened,working,off,week:mon(date),issues:w.issues||[]};
+}
+function peopleInMonth(month){const people=new Map(state.employees.filter(e=>e.store===STORE).map(e=>[String(e.id),e]));
+ for(const w of Object.values(state.weeks||{})){if(w.store!==STORE||!w.week||move(w.week,6)<month+'-01'||w.week>month+'-31')continue;
+ for(const emp of (w.rosterSnapshot||[]))if(!people.has(String(emp.id)))people.set(String(emp.id),emp)}return [...people.values()]}
+function getInitials(){const map={};let index=0;for(const emp of peopleInMonth(monthShown)){let symbol='';let n=index++;do{symbol=String.fromCharCode(65+n%26)+symbol;n=Math.floor(n/26)-1}while(n>=0);map[emp.id]=symbol;}return map}
+function displayOffNames(emps,initials){return emps.map(e=>initials[e.id]||'?').join(', ')}
+function renderMonthDetails(initials){const date=selectedMonthDay, info=getDaySchedule(date), special=state.specialDays?.[date];$('monthSpecialName').value=special||'';const title=new Intl.DateTimeFormat('pt-BR',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(dateAt(date));
+ const infoBlock=!info.saved?'<p>Esta semana ainda não tem escala salva. Abra a escala inteligente para gerar e salvar.</p>':`<div class="detail-columns"><div><div class="detail-label">${info.working.length} trabalhando</div><p>${info.working.length?info.working.map(e=>esc(e.name)).join(', '):'Ninguém escalado'}</p></div><div><div class="detail-label">${info.off.length} de folga</div><p>${info.off.length?info.off.map(e=>esc(e.name)).join(', '):'Ninguém de folga'}</p></div></div>`;
+ $('monthDayDetails').innerHTML=`<h3>${esc(title)}${special?' · ⚑ '+esc(special):''}</h3>${!info.opened?'<p class="detail-alert"><strong>Estabelecimento fechado neste dia.</strong></p>':''}${infoBlock}<div class="actions no-print"><button type="button" id="editMonthWeek">Abrir esta semana na Escala inteligente</button></div>`;
+ $('editMonthWeek').onclick=()=>{setSelectedDate(date);showTab('scale')};
+}
+function drawMonth(){
+ if(!/^\d{4}-\d{2}$/.test(monthShown))return;
+ const b=monthBounds(monthShown);$('monthInput').value=monthShown;$('monthTitle').textContent=MONTH_NAMES[b.month-1]+' '+b.year;
+ if(!selectedMonthDay.startsWith(monthShown))selectedMonthDay=b.first;
+ const initials=getInitials(),emps=peopleInMonth(monthShown);const gap=dateAt(b.first).getDay();const html=[];let savedDays=0,plannedPeopleDays=0,events=0;
+ for(let i=0;i<gap;i++)html.push('<div class="month-day empty" aria-hidden="true"></div>');
+ for(let day=1;day<=b.length;day++){
+  const date=monthShown+'-'+String(day).padStart(2,'0');const inf=getDaySchedule(date);const special=state.specialDays?.[date]||'';
+  if(inf.saved){savedDays++;plannedPeopleDays+=inf.working.length}if(special)events++;
+  const sub=inf.saved?(!inf.opened?'Fechado':inf.off.length?'Folga: '+inf.off.map(e=>e.name).join(', '):'Todos trabalham'):(inf.opened?'Sem escala':'Fechado');
+  const main=inf.saved?String(inf.working.length):'—';
+  const summary=inf.saved?`${inf.working.length} trabalhando, ${inf.off.length} de folga`:'sem escala salva';
+  html.push(`<button type="button" class="month-day ${!inf.opened?'is-closed':!inf.saved?'is-pending':''} ${special?'is-special':''} ${selectedMonthDay===date?'is-selected':''}" data-month-day="${date}" aria-label="${brDate(date)}, ${esc(summary)}, ${esc(sub)}" title="${esc(brDate(date)+' • '+summary+(special?' • '+special:''))}"><span class="date-num">${day}</span><strong class="staff-num">${main}</strong><span class="staff-label">presentes</span><span class="day-sub ${inf.saved?'is-off':''}">${esc(sub)}</span></button>`);
+ }
+ $('monthDays').innerHTML=html.join('');
+ $('monthStats').innerHTML=`<span class="month-stat">Equipe cadastrada<b>${emps.length}</b></span><span class="month-stat">Dias com escala salva<b>${savedDays} / ${b.length}</b></span><span class="month-stat">Jornadas programadas no mês<b>${plannedPeopleDays}</b></span><span class="month-stat">Datas especiais<b>${events}</b></span>`;
+ document.querySelectorAll('[data-month-day]').forEach(btn=>btn.onclick=()=>{selectedMonthDay=btn.dataset.monthDay;drawMonth()});
+ renderMonthPeople(initials,b);renderMonthDetails(initials);
+}
+function renderMonthPeople(initials,b){
+ const people=peopleInMonth(monthShown);if(!people.length){$('monthPeopleCards').innerHTML='<p>Cadastre funcionários na aba Equipe e cargos para visualizar o quadro individual.</p>';return}
+ const firstSunday=move(b.first,-dateAt(b.first).getDay());const last=b.first.slice(0,7)+'-'+String(b.length).padStart(2,'0');
+ let sundays=[];for(let d=firstSunday;d<=last;d=move(d,7))sundays.push(d);
+ $('monthPeopleCards').innerHTML=people.map(emp=>{
+  const label=initials[emp.id];const days='<div class="person-row"><span class="person-date"></span>'+['D','S','T','Q','Q','S','S'].map(l=>`<span class="person-day person-dow">${l}</span>`).join('')+'</div>';
+  const weeks=sundays.map(sun=>{const cells=[];for(let d=0;d<7;d++){
+   const date=move(sun,d),currentMonth=date.startsWith(monthShown),info=getDaySchedule(date);const index=(dateAt(date).getDay()+6)%7, raw=getMonthWeek(date)?.rows?.[emp.id]?.[index];
+   const special=state.specialDays?.[date];const cls=raw==='T'?'is-work':raw==='F'?'is-off':'is-empty';
+   cells.push(`<span title="${esc(brDate(date))} • ${raw==='T'?'Trabalha':raw==='F'?'Folga':'Sem escala salva'}${special?' • '+esc(special):''}" class="person-day ${cls} ${special?'is-special':''} ${date===selectedMonthDay?'day-selected':''}" style="${currentMonth?'':'opacity:.45'}">${raw==='T'?'T':raw==='F'?'F':'—'}</span>`);
+  }return `<div class="person-row"><span class="person-date">${sun.slice(8)}/${sun.slice(5,7)}</span>${cells.join('')}</div>`}).join('');
+  return `<div class="month-person"><div class="person-head"><span class="person-symbol">${esc(label)}</span><div><strong>${esc(emp.name)}</strong><small>${esc(emp.role)} • intervalo ${formatMinutes(Number(emp.break))} • ${Number(emp.hours)}h/semana</small></div></div>${days}${weeks}</div>`;
+ }).join('')
+}
+function reportData(start,end){
+ const emps=new Map(state.employees.filter(e=>e.store===STORE).map(e=>[String(e.id),e]));for(let wk=mon(start);wk<=end;wk=move(wk,7))for(const e of (getMonthWeek(wk)?.rosterSnapshot||[]))if(!emps.has(String(e.id)))emps.set(String(e.id),e);const months=[];let ym=start.slice(0,7);const last=end.slice(0,7);
+ while(ym<=last){const b=monthBounds(ym),pad=dateAt(b.first).getDay(),days=[];for(let i=0;i<pad;i++)days.push(null);
+  for(let n=1;n<=b.length;n++){const date=ym+'-'+String(n).padStart(2,'0');const info=getDaySchedule(date);days.push({date,n,info,inside:date>=start&&date<=end})}
+  const headings=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(d=>`<div class="report-weekday">${d}</div>`).join('');
+  const dayBoxes=days.map(obj=>{if(!obj)return '<div class="report-cell empty"></div>';const {date,n,info,inside}=obj;const names=info.saved?info.off.map(e=>e.name).join(', '):'Sem escala';
+   return `<div class="report-cell ${!info.opened?'closed':''}" style="${inside?'':'opacity:.35'}"><div class="report-day">${n} ${esc(state.specialDays?.[date]?'⚑':'')}</div><div class="report-staff">${info.saved?info.working.length:'—'} <small>presentes</small></div><div class="report-off">${info.opened?'Folgas: ':'Fechado • folgas: '}${esc(names||'nenhuma')}</div></div>`}).join('');
+  months.push(`<div class="report-page"><div class="report-title">Calendário de folgas — ${MONTH_NAMES[b.month-1]} de ${b.year}</div><div class="report-sub">Relatório de ${brDate(start)} a ${brDate(end)} • Quantidade presente e nomes em folga • Fonte: escalas salvas localmente</div><div class="report-month-grid">${headings}${dayBoxes}</div></div>`);
+  const next=new Date(b.year,b.month,1,12);ym=iso(next).slice(0,7)
+ }
+ const rec=[...emps.values()].map(e=>{let offs=[],worked=0,missing=0,duplas=[];for(let date=start;date<=end;date=move(date,1)){const w=getMonthWeek(date);const idx=(dateAt(date).getDay()+6)%7;const status=w?.rows?.[e.id]?.[idx];if(status==='F'){offs.push(brDate(date));const next=move(date,1);if(dateAt(date).getDay()===0&&next<=end){const nw=getMonthWeek(next);if(nw?.rows?.[e.id]?.[0]==='F')duplas.push(`${brDate(date)} + ${brDate(next)}`)}}else if(status==='T')worked++;else missing++}return `<tr><td>${esc(e.name)}</td><td>${esc(e.role)}</td><td>${offs.length}</td><td>${esc(offs.join(', ')||'Nenhuma')}</td><td>${worked}</td><td>${esc(duplas.join('; ')||'—')}</td><td>${missing?'Faltam '+missing+' dia(s)':'Completa'}</td></tr>`}).join('');
+ const table=`<div class="report-page"><div class="report-title">Relação individual de folgas</div><div class="report-sub">De ${brDate(start)} a ${brDate(end)} • Dados efetivamente salvos</div><table class="report-table"><thead><tr><th>Funcionário</th><th>Cargo</th><th>Folgas</th><th>Datas de folga</th><th>Dias trabalhados</th><th>Domingo + segunda consecutivos</th><th>Integridade</th></tr></thead><tbody>${rec}</tbody></table></div>`;
+ return months.join('')+table;
+}
+function printScheduleReport(start,end){if(!start||!end)return alert('Informe um período válido.');$('printReport').innerHTML=reportData(start,end);document.body.classList.add('report-mode');const cleanup=()=>{document.body.classList.remove('report-mode');window.removeEventListener('afterprint',cleanup)};window.addEventListener('afterprint',cleanup);window.print()}
+$('printMonthReport').onclick=()=>{const b=monthBounds(monthShown);printScheduleReport(b.first,monthShown+'-'+String(b.length).padStart(2,'0'))};
+$('printRangeReport').onclick=()=>{const p=periodDates();if(!p){showTab('scale');return}printScheduleReport(p.start,p.end)};
+$('monthPrev').onclick=()=>moveMonth(-1);
+$('monthNext').onclick=()=>moveMonth(1);
+$('monthInput').onchange=e=>{if(!/^\d{4}-\d{2}$/.test(e.target.value))return;monthShown=e.target.value;selectedMonthDay=monthShown+'-01';drawMonth()};
+$('monthJump').oninput=e=>{e.target.value=maskDateText(e.target.value);$('monthJumpMsg').textContent=''};
+$('monthGo').onclick=()=>{const date=parseDateInput($('monthJump').value);if(!date){$('monthJumpMsg').textContent='Data inválida. Informe uma data real no formato DD/MM/AAAA.';return}selectedMonthDay=date;monthShown=date.slice(0,7);$('monthJumpMsg').textContent='';drawMonth()};
+$('monthJump').onkeydown=e=>{if(e.key==='Enter'){$('monthGo').click()}};
+$('saveSpecialDate').onclick=async()=>{
+ const name=$('monthSpecialName').value.trim();if(!name)return $('monthSpecialFeedback').textContent='Informe a descrição antes de salvar.';
+ if(!state.specialDays||typeof state.specialDays!=='object')state.specialDays={};const previous=state.specialDays[selectedMonthDay];state.specialDays[selectedMonthDay]=name;
+ if(!await savePersistent({offerPicker:false})){if(previous)state.specialDays[selectedMonthDay]=previous;else delete state.specialDays[selectedMonthDay];$('monthSpecialFeedback').textContent='Não foi possível salvar a data especial. Verifique o armazenamento.';return}
+ $('monthSpecialFeedback').textContent='Data especial salva localmente.';drawMonth();
+};
+$('removeSpecialDate').onclick=async()=>{
+ if(!state.specialDays?.[selectedMonthDay])return;$('monthSpecialFeedback').textContent='';const prev=state.specialDays[selectedMonthDay];delete state.specialDays[selectedMonthDay];
+ if(!await savePersistent({offerPicker:false})){state.specialDays[selectedMonthDay]=prev;$('monthSpecialFeedback').textContent='Não foi possível remover; verifique o armazenamento.';return}
+ drawMonth();
+};
+
+let today=mon(iso(new Date()));setSelectedDate(today);const _now=new Date();$('periodStart').value=brDate(iso(new Date(_now.getFullYear(),_now.getMonth(),1,12)));$('rangeEnd').value=brDate(iso(new Date(_now.getFullYear(),_now.getMonth()+1,0,12)));periodDates();
 async function initialize(){
  try{
   const snapshot=await readLocalDb();dbSupported=true;
@@ -632,7 +719,7 @@ async function initialize(){
    if(dbTs>=localTs){state=snapshot;migrateOneStore()}
   }
  }catch(e){dbSupported=false;console.warn('Banco local indisponível:',e)}
- rebuildUI();renderEmployeePreview();calculate();refreshStorageStatus();await recallFileHandle();renderMonthly();
+ rebuildUI();renderEmployeePreview();calculate();refreshStorageStatus();await recallFileHandle();
 }
 initialize();
 </script></body></html>
