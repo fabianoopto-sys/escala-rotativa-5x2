@@ -1075,7 +1075,7 @@ function renderPeriodMonths(){
   const b=monthBounds(ym),cells=[];for(let i=0;i<dateAt(b.first).getDay();i++)cells.push('<div class="period-cell blank"></div>');
   for(let n=1;n<=b.length;n++){
    const date=ym+'-'+String(n).padStart(2,'0'),info=getDaySchedule(date),holiday=getHolidayLabel(date),inside=date>=p.start&&date<=p.end;
-   const names=info.saved?(info.off.map(e=>'<span class="period-off">'+esc(e.name)+' <small>'+esc(e.role||'')+' • folga</small></span>').join('')+(info.holidayRest||[]).map(e=>'<span class="period-off">'+esc(e.name)+' <small>'+esc(e.role||'')+' • feriado</small></span>').join('')||(info.opened?'Todos trabalham':'Sem expediente')):(holidayClosed(date)?'Feriado • aguardando escala':'Sem escala válida');
+   const names=info.saved?(info.off.map(e=>'<span class="period-off">'+esc(e.name)+' <small>'+esc(e.role||'')+' • folga</small></span>').join('')+(info.holidayRest||[]).map(e=>'<span class="period-off">'+esc(e.name)+' <small>'+esc(e.role||'')+' • feriado</small></span>').join('')||(info.opened?'Todos trabalham':'Sem expediente')):(noWorkSpecial(date)?'NINGUÉM TRABALHA • aguardando escala':holidayClosed(date)?'FERIADO • aguardando escala':'Sem escala válida');
    cells.push('<button type="button" class="period-cell '+(inside?'':'out-range ')+(allWorkSpecial(date)?'all-work':noWorkSpecial(date)?'no-work':holiday?'holiday':'')+'" data-period-date="'+date+'"><b>'+n+'</b>'+(holiday?'<span class="period-holiday">'+esc(autoHolidayName(date)?'FERIADO — '+holiday:specialMode(date)==='holiday'?'FERIADO LOCAL — '+holiday:holiday)+'</span>':'')+'<strong>'+(info.saved?info.working.length:'—')+' presentes</strong><span>'+names+'</span></button>');
   }
   return '<section class="period-month-block"><h3>'+esc(MONTH_NAMES[b.month-1])+' de '+b.year+'</h3><div class="period-month-grid">'+['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(x=>'<span class="period-dow">'+x+'</span>').join('')+cells.join('')+'</div></section>';
@@ -1161,10 +1161,10 @@ $('monthJump').onkeydown=e=>{if(e.key==='Enter'){$('monthGo').click()}};
 $('saveSpecialDate').onclick=async()=>{
  const date=parseDateInput($('monthSpecialDate').value),name=$('monthSpecialName').value.trim(),mode=$('monthSpecialMode').value;
  if(!date)return $('monthSpecialFeedback').textContent='Data inválida. Informe uma data real em DD/MM/AAAA.';
- if(mode==='all'&&(holidayClosed(date)||!config().open[(dateAt(date).getDay()+6)%7]))return $('monthSpecialFeedback').textContent='Esta data já é feriado ou dia fechado. Revise a configuração antes de exigir presença de todos.';
+ if(mode==='all'&&((isNationalHoliday(date)&&!config().allowNationalHolidayWork)||!config().open[(dateAt(date).getDay()+6)%7]))return $('monthSpecialFeedback').textContent='Esta data já é feriado ou dia fechado. Revise a configuração antes de exigir presença de todos.';
  if(!name&&mode==='info')return $('monthSpecialFeedback').textContent='Informe uma descrição.';
  if(!window.confirm('Salvar '+brDate(date)+' como '+({all:'TODOS TRABALHAM',none:'NINGUÉM TRABALHA',holiday:'FERIADO LOCAL',info:'DATA INFORMATIVA'}[mode])+'?'))return;
- const before=JSON.stringify({specialDays:state.specialDays,localHolidays:state.localHolidays,specialModes:state.specialModes});
+ const before=JSON.stringify({specialDays:state.specialDays||{},localHolidays:state.localHolidays||{},specialModes:state.specialModes||{}});
  state.specialDays={...(state.specialDays||{}),[date]:name||({all:'Todos trabalham',none:'Ninguém trabalha',holiday:'Feriado local'}[mode])};
  state.specialModes={...(state.specialModes||{}),[date]:mode};
  state.localHolidays={...(state.localHolidays||{})};
@@ -1177,7 +1177,7 @@ $('saveSpecialDate').onclick=async()=>{
  $('monthSpecialFeedback').textContent='Salvo em '+brDate(date)+'. Recalcule as semanas afetadas antes de utilizar a escala.';drawMonth();
 };
 $('removeSpecialDate').onclick=async()=>{
- const date=parseDateInput($('monthSpecialDate').value),before=JSON.stringify({specialDays:state.specialDays,localHolidays:state.localHolidays,specialModes:state.specialModes});
+ const date=parseDateInput($('monthSpecialDate').value),before=JSON.stringify({specialDays:state.specialDays||{},localHolidays:state.localHolidays||{},specialModes:state.specialModes||{}});
  if(!date)return $('monthSpecialFeedback').textContent='Informe uma data válida para remover a marcação.';
  if(state.specialDays)delete state.specialDays[date];if(state.localHolidays)delete state.localHolidays[date];if(state.specialModes)delete state.specialModes[date];
  if(!await savePersistent({offerPicker:false})){const old=JSON.parse(before);state.specialDays=old.specialDays;state.localHolidays=old.localHolidays;state.specialModes=old.specialModes;$('monthSpecialFeedback').textContent='Falha ao remover.';return}
