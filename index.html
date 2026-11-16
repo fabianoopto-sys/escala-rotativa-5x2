@@ -8,7 +8,7 @@
 <html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="author" content="Fabiano Inoue - SICOV - Cornélio Procópio - PR">
 <meta name="copyright" content="© 2026 Fabiano Inoue - SICOV - Cornélio Procópio - PR">
-<meta name="application-name" content="Escala Rotativa 5×2"><title>Gestão de Escalas 5×2 • Versão 2.29</title><style>
+<meta name="application-name" content="Escala Rotativa 5×2"><meta name="version" content="2.30"><meta name="theme-color" content="#111c30"><title>Gestão de Escalas 5×2 • Versão 2.30</title><style>
 :root{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;color:#e5ebf5;background:#0b1220}*{box-sizing:border-box}body{margin:0}header{padding:22px max(18px,calc((100vw - 1320px)/2));background:#111c30;border-bottom:1px solid #29364b}h1{font-size:23px;margin:0}h2{font-size:17px;margin:0 0 14px}p{color:#9fb0c9}small,.muted{color:#93a5bf}.wrap{max-width:1320px;margin:auto;padding:22px 18px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}button,.btn{border:0;border-radius:9px;background:#33445e;color:white;padding:10px 13px;font-weight:650;cursor:pointer}button:hover{filter:brightness(1.15)}button.primary{background:#5466e9}button.good{background:#158464}button.danger{background:#8b3342}.tabs button.active{background:#5466e9}.panel{background:#17243a;border:1px solid #2c3a52;border-radius:15px;padding:18px;margin-bottom:16px}.layout{display:grid;grid-template-columns:2fr 1fr;gap:16px}.grid{display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));gap:12px}.grid.two{grid-template-columns:repeat(2,minmax(130px,1fr))}.field label{display:block;color:#aec0d7;font-size:12px;margin:0 0 6px}.field input,.field select{width:100%;background:#0c1729;color:#eff4ff;border:1px solid #41526b;border-radius:9px;padding:10px;min-height:40px}.field input[type=checkbox]{width:auto;min-height:0}.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}.table-scroll{overflow:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:10px;border-bottom:1px solid #314059;text-align:left;white-space:nowrap}th{color:#abc0da;background:#101b2d}td:first-child{font-weight:600}td select{background:#1c2b43;color:#fff;border:1px solid #485c79;border-radius:7px;padding:6px;min-width:93px}td.work{background:#12392f}td.off{background:#303658}.badge{display:inline-block;border-radius:50px;padding:5px 9px;font-size:12px;background:#304361}.warn{background:#423225;border:1px solid #9c6f34;border-radius:10px;padding:11px;margin:6px 0}.error{background:#4b2632;border:1px solid #ad485b;border-radius:10px;padding:11px;margin:6px 0}.ok{background:#174034;border:1px solid #368468;border-radius:10px;padding:11px;margin:6px 0}.cards{display:grid;grid-template-columns:repeat(7,minmax(110px,1fr));gap:8px}.daycard{background:#0f1c30;padding:10px;border:1px solid #33445d;border-radius:10px;font-size:12px}.daycard strong{font-size:15px}.hidden{display:none!important}.checkdays{display:flex;gap:13px;flex-wrap:wrap}.checkdays label{font-size:13px}.foot{font-size:12px;border-top:1px solid #34445b;padding-top:12px;margin-top:16px}input[type=number]{max-width:150px}.metrics{display:flex;gap:10px;flex-wrap:wrap}.metric{background:#0e1b2f;border-radius:9px;padding:12px;min-width:155px}.metric strong{display:block;font-size:21px;margin:5px 0}.pill{font-size:11px;color:#a7c6ff}.narrow{max-width:680px}.allow-wrap{white-space:normal} @media(max-width:900px){.layout{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(120px,1fr))}.cards{grid-template-columns:repeat(2,1fr)}}@media print{body{background:white;color:black}header,.tabs,.no-print,.panel.settings{display:none!important}.panel{border:1px solid #aaa;background:white;color:black}th{background:#eee;color:black}td{color:black}td.work{background:#daf4e4}td.off{background:#e9e9ef}.wrap{max-width:100%;padding:0}.hidden{display:none!important}}
 
 .role-form{display:flex;gap:14px;align-items:end;flex-wrap:wrap;margin:12px 0}
@@ -218,7 +218,7 @@ body{padding-bottom:calc(var(--copyright-height) + env(safe-area-inset-bottom,0p
  .copyright-line{position:fixed;bottom:0}
 }
 
-<style>
+/* v2.30: removida a tag style solta que invalidava esta regra */
 .month-planning{margin:10px 0 15px;border:1px solid #5466e9;background:rgba(84,102,233,.09);padding:14px;border-radius:12px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
 .month-planning p{margin:3px 0 0;font-size:13px;color:inherit}
 .month-planning button{min-height:42px;white-space:normal;max-width:100%}
@@ -227,7 +227,6 @@ body{padding-bottom:calc(var(--copyright-height) + env(safe-area-inset-bottom,0p
 #monthActionStatus{margin-bottom:12px}
 @media(max-width:630px){.month-planning{display:block}.month-planning button{display:block;width:100%;margin-top:10px}}
 @media print{.month-planning,#monthActionStatus{display:none!important}}
-<style>
 /* Confirmação legível no calendário claro. */
 #monthActionStatus .ok{color:#effff8;background:#135c43}
 #monthActionStatus .warn{color:#fff1cf;background:#62441a}
@@ -269,26 +268,122 @@ button{min-height:40px}
 .month-day .staff-num{font-size:20px!important}
 .month-day .staff-label{font-size:10px!important;font-weight:700}
 .month-day .day-sub{font-weight:700}
+
+/* v2.30 — conformidade com a EC 141/2026, painel legal e modelos de jornada */
+.legal-banner{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;background:linear-gradient(135deg,#1d2c4f,#172a3d);border:1px solid #4b63b8;border-radius:14px;padding:12px 16px;margin:0 0 16px;font-size:13px;line-height:1.45}
+.legal-banner .lb-icon{font-size:22px}
+.legal-banner .lb-main{flex:1 1 260px;min-width:0}
+.legal-banner .lb-main strong{color:#fff}
+.legal-banner .lb-steps{display:flex;flex-wrap:wrap;gap:6px}
+.lb-step{display:inline-flex;flex-direction:column;border:1px solid #415479;border-radius:10px;padding:5px 10px;background:#0f1b30;font-size:11px;color:#b8c7e2;min-width:104px}
+.lb-step b{font-size:15px;color:#e8eeff}
+.lb-step.now{border-color:#4ade80;background:#0f3b31;color:#d6ffe9}
+.lb-step.next{border-color:#fbbf24}
+.legal-banner button{min-height:38px;font-size:12px;padding:8px 12px;background:#2563eb}
+.timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0}
+.tl-card{background:#0f1c30;border:1px solid #33465f;border-radius:13px;padding:14px;position:relative}
+.tl-card.now{border:2px solid #4ade80}.tl-card.next{border:2px solid #fbbf24}
+.tl-card .tl-date{font-size:12px;color:#9fb3d1;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.tl-card .tl-hours{font-size:30px;font-weight:850;margin:4px 0;color:#fff}
+.tl-card p{font-size:12.5px;line-height:1.5;margin:6px 0 0;color:#c3d0e4}
+.tl-card .tl-tag{position:absolute;top:10px;right:10px;font-size:10px;font-weight:800;border-radius:20px;padding:3px 8px;background:#4ade80;color:#06281d}
+.tl-card.next .tl-tag{background:#fbbf24;color:#3b2603}
+.legal-list{margin:8px 0 0;padding-left:20px;line-height:1.65;font-size:13.5px;color:#d3ddec}
+.legal-list li{margin:3px 0}
+.legal-source{font-size:11.5px;color:#8fa3c0;line-height:1.55;margin-top:10px}
+.stf-status{border-left:4px solid #fbbf24;background:#2a2617;border-radius:10px;padding:12px 14px;margin:12px 0;font-size:13px;line-height:1.6;color:#f6ecd0}
+.compliance-table td,.compliance-table th{white-space:normal;vertical-align:top}
+.compliance-table td:first-child{min-width:140px}
+.c-ok{color:#86efac;font-weight:750}.c-warn{color:#fcd34d;font-weight:750}.c-bad{color:#fca5a5;font-weight:750}
+.model-chips{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 4px}
+.model-chips button{background:#1d3352;border:1px solid #4b6a95;font-size:12.5px;padding:8px 11px;min-height:40px;text-align:left;line-height:1.3}
+.model-chips button small{display:block;font-weight:500;color:#a9bfdc;font-size:11px}
+.model-chips button.is-current{background:#0f493d;border-color:#4ade80}
+.quick-periods{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 2px}
+.quick-periods button{background:#22324b;border:1px solid #4c5f7e;font-size:12.5px;padding:8px 12px;min-height:40px}
+.legal-alerts{background:#3a3020;border:1px solid #a17a2b;border-radius:10px;padding:11px;margin:6px 0;color:#fdf1d6}
+.legal-alerts strong{color:#ffe7a8}
+.settings-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.settings-grid .field small{display:block;color:#8ea2c1;font-size:11.5px;line-height:1.45;margin-top:5px}
+.check-line{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.5;margin:12px 0;color:#d6e0ef}
+.check-line input{width:20px;height:20px;flex-shrink:0;margin-top:1px}
+@media(max-width:1060px){.timeline{grid-template-columns:1fr}.settings-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.legal-banner{padding:11px 12px;font-size:12px}.lb-step{min-width:0;flex:1 1 30%}.lb-steps{display:none!important}.legal-banner .lb-icon{display:none}.legal-banner button{width:auto;min-height:36px;padding:6px 12px}.model-chips button,.quick-periods button{flex:1 1 100%}.compliance-table thead{display:none}.compliance-table,.compliance-table tbody,.compliance-table tr,.compliance-table td{display:block;width:100%}.compliance-table tr{border:1px solid #344664;border-radius:11px;margin-bottom:10px;padding:8px;background:#0f1c30}.compliance-table td{border:0;padding:5px 4px}.compliance-table td::before{content:attr(data-label);display:block;font-size:11px;color:#9cb1cf;font-weight:600}}
+@media print{.legal-banner{display:none!important}}
+
+/* v2.30 — calendário compacto (grade e lista) */
+#monthDays.cal2,.period-month-grid.cal2{gap:6px}
+.cal-cell{display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:4px;min-height:92px;height:auto;padding:7px;border:1px solid #d9e4ea;border-radius:10px;background:#fff;color:#1d3441;text-align:left;font-size:12px;min-width:0;overflow:hidden;cursor:pointer;line-height:1.25;font-weight:500}
+.cal-cell:hover{border-color:#94b4c4;filter:none}
+.cal-cell.empty{visibility:hidden;pointer-events:none;min-height:0;border:0}
+.cal-top{display:flex;justify-content:space-between;align-items:center;gap:4px;min-width:0}
+.cal-date{font-size:13px;font-weight:700;color:#5b7080}
+.cal-count{display:inline-flex;align-items:center;gap:3px;background:#dcfce7;color:#14532d;border:1px solid #86efac;border-radius:20px;padding:1px 7px;font-weight:800;font-size:12px;white-space:nowrap}
+.cal-count i{font-style:normal;font-size:10px}
+.cal-names{display:flex;flex-direction:column;gap:3px;min-width:0}
+.cal-name{display:block;background:#fff1e6;color:#9a3412;border:1px solid #fed7aa;border-radius:6px;padding:2px 6px;font-weight:700;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cal-more{font-size:11px;color:#6b7f8e;font-weight:700;padding-left:4px}
+.cal-holiday{font-size:10.5px;font-weight:800;color:#b91c1c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cal-holiday.info{color:#7c3aed}
+.cal-status{font-size:11px;color:#64748b;font-weight:650}
+.cal-cell.k-closed{background:#eef1f4;border-color:#e2e8ee}.cal-cell.k-closed .cal-date{color:#9aa8b4}
+.cal-cell.k-holiday,.cal-cell.k-none{background:#fdecec;border-color:#f3b4b4}.k-none .cal-status{color:#b91c1c}
+.cal-cell.k-all{border:2px solid #2563eb;background:#eef4ff}.k-all .cal-status{color:#1d4ed8}
+.cal-cell.k-pending,.cal-cell.k-stale{background:#f6f8fa;border-style:dashed}.k-stale .cal-status{color:#b45309}
+.cal-cell.is-selected,.ag-row.is-selected{outline:3px solid #4f46e5;outline-offset:-2px}
+.cal-cell.out-range{opacity:.35}
+.view-toggle{display:inline-flex;border:1px solid #c7d9e5;border-radius:10px;overflow:hidden;margin-right:6px}
+.view-toggle button{background:#fff!important;color:#264455!important;border:0!important;border-radius:0;font-size:13px!important;min-width:0!important;padding:8px 12px;min-height:40px}
+.view-toggle button.active{background:#264455!important;color:#fff!important}
+.month-agenda{display:flex;flex-direction:column;gap:6px}
+.ag-row{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:#fff;border:1px solid #dbe5ec;border-radius:11px;padding:8px 12px;color:#1d3441;min-height:52px;font-weight:500}
+.ag-date{display:flex;flex-direction:column;align-items:center;min-width:40px;line-height:1.1}
+.ag-date b{font-size:19px;color:#1d3441}.ag-date small{font-size:10px;color:#64748b;font-weight:800;letter-spacing:.04em}
+.ag-body{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1}
+.ag-line{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ag-offs{font-size:12.5px;color:#475569;line-height:1.45}.ag-offs b{color:#9a3412}.ag-offs small{color:#64748b}
+.ag-row.k-closed{background:#f1f4f7;min-height:36px;padding:4px 12px}.ag-row.k-closed .ag-date b{font-size:14px;color:#8796a3}
+.ag-row.k-holiday,.ag-row.k-none{background:#fdecec;border-color:#f3b4b4}
+.ag-row.k-all{border:2px solid #2563eb;background:#eef4ff}
+.ag-row.k-pending,.ag-row.k-stale{border-style:dashed;background:#f6f8fa}
+.month-legend .cal-count,.month-legend .cal-name{display:inline-flex;font-size:10.5px;padding:0 6px}
+.period-details{border:1px solid #c9d7e0;border-radius:12px;padding:10px 12px;background:#f8fbfd}
+.period-details summary{cursor:pointer;font-weight:800;font-size:14px;color:#223a47;padding:4px 0;min-height:32px}
+.period-details .period-month-block{border-color:#d4e0e7;background:#fff}
+.period-details .period-dow{color:#486274}
+@media(max-width:700px){
+ #monthDays.cal2,.period-month-grid.cal2{gap:3px}
+ .cal-cell{min-height:64px;padding:4px 3px;border-radius:7px;gap:3px}
+ .cal-top{flex-direction:column;align-items:flex-start;gap:2px}
+ .cal-date{font-size:11px}
+ .cal-count{font-size:10.5px;padding:0 5px}.cal-count i{display:none}
+ .cal-name{font-size:9px;letter-spacing:-.25px;padding:1px 2px;border-radius:4px;text-overflow:clip;text-align:center}
+ .cal-holiday,.cal-more{font-size:9px}
+ .cal-status{font-size:8.5px;line-height:1.15;white-space:normal;overflow-wrap:break-word;letter-spacing:-.2px}
+ .month-navigation{flex-wrap:wrap}.view-toggle{width:100%;margin:0 0 6px}.view-toggle button{flex:1}
+ .month-legend{gap:6px 10px}
+}
+@media print{.view-toggle,.period-details{display:none!important}}
 </style></head><body>
-<dialog id="legalDisclaimer" class="legal-dialog" aria-labelledby="legalDisclaimerTitle" aria-describedby="legalDisclaimerText"><h2 id="legalDisclaimerTitle">Atenção: orientação sobre o uso da escala</h2><p id="legalDisclaimerText">Esta aplicação oferece <strong>sugestões de organização e distribuição de jornadas e folgas</strong>, com base nas informações e regras cadastradas pelo usuário.</p><p class="legal-note"><strong>O uso desta ferramenta não substitui a análise, a orientação ou a validação por profissional legalmente habilitado e competente</strong>, especialmente nas áreas trabalhista, jurídica e de gestão de pessoal.</p><p>Antes de adotar a escala, confira a legislação vigente, as convenções e acordos coletivos aplicáveis, as regras da categoria profissional, os descansos e os horários efetivamente praticados. O responsável pela empresa deve revisar e aprovar a escala antes de colocá-la em prática.</p><div class="legal-actions"><button id="legalCancel" type="button">Voltar e revisar</button><button id="legalConfirm" type="button" class="primary-confirm">Li o aviso. Gerar escala</button></div></dialog><header><h1>▦ Gestão de Escalas 5×2 <span class="pill">versão 2.29 • Edição de funcionários e horas sincronizadas</span></h1><div class="muted">Escala 5×2 com dois descansos semanais, rodízio flexível e calendário com nomes e funções • dados locais</div></header>
-<main class="wrap"><nav class="tabs no-print" aria-label="Seções da aplicação"><button class="active" data-tab="team">Equipe e cargos</button><button data-tab="scale">Escala inteligente</button><button data-tab="month">Calendário mensal</button><button data-tab="hours">Simulador de jornada</button><button data-tab="rules">Regras & orientações</button></nav>
-<section id="team"><div class="panel storage-panel no-print"><h2>Dados locais neste dispositivo</h2><p>O sistema grava automaticamente no armazenamento local deste navegador, quando disponível. <strong>Nada é enviado para a internet.</strong> Cada celular, tablet ou computador mantém seus próprios dados. Faça cópias JSON para proteger seus cadastros ou transportá-los entre aparelhos.</p><div id="storageStatus" class="storage-state" role="status" aria-live="polite">Verificando armazenamento…</div><div class="storage-bar"><button class="primary" type="button" id="connectDataFile">💾 Vincular arquivo (Chrome/Edge no PC)</button><button type="button" id="openDataFile">📂 Abrir dados já salvos</button><button type="button" id="quickBackup">⬇ Baixar cópia de segurança</button></div><div class="storage-details">No celular/tablet, use <b>Baixar cópia de segurança</b> e <b>Abrir dados já salvos</b>. O arquivo JSON fica no aparelho. Evite modo anônimo/privado e não limpe os dados do navegador. Em navegadores móveis, o vínculo automático a um arquivo pode não estar disponível; não é necessário para usar o armazenamento local.</div><input id="dataFileInput" type="file" accept=".json,application/json" class="hidden"></div><div class="layout"><div><div class="panel"><h2>Cadastrar cargos e funções</h2><p>Crie seus próprios cargos antes de adicionar colaboradores. Cadastre o nome de cada função. Depois clique em <strong>Salvar cargo</strong>. Os cargos aparecerão automaticamente na lista e no cadastro dos funcionários.</p><form id="roleForm" class="role-form"><div class="field"><label for="newRoleName">Nome do cargo</label><input id="newRoleName" name="cargo" required maxlength="70" autocomplete="off" placeholder="Ex.: Gerente, Caixa, Vendedor, Consultor..."></div><div class="actions"><button class="good" id="saveRoleBtn" type="submit">💾 Salvar cargo</button></div></form><div id="roleNotice" role="status" aria-live="polite"></div><div class="role-list-title">Cargos salvos <span id="roleCount" class="badge">0</span></div><div id="roleList" class="role-list"></div></div><div class="panel"><h2 id="employeeFormHeading">Cadastro de colaborador</h2><p class="muted" id="employeeEditHint">Altere os horários, o intervalo ou a meta semanal. A conferência mostra as horas efetivamente calculadas.</p><form id="employeeForm" class="grid"><div class="field"><label>Nome</label><input id="empName" required placeholder="Nome completo" maxlength="90"></div><div class="field"><label>Cargo</label><select id="empRole" required><option value="">Cadastre um cargo primeiro</option></select></div><div class="field"><label>Horas contratuais por semana</label><input id="empHours" type="number" min="1" max="44" step="0.5" value="42"></div><div class="field"><label>Dias trabalhados / semana</label><input id="empDays" type="number" min="1" max="7" value="5"></div><div class="field"><label>Entrada</label><input id="empIn" type="time" value="08:00"></div><div class="field"><label>Saída</label><input id="empOut" type="time" value="18:00"></div><div class="field"><label>Intervalo (minutos)</label><input id="empBreak" type="number" min="0" max="240" value="96"></div><div id="empHoursPreview" class="field" style="grid-column:1/-1"></div><div class="actions"><button class="primary" type="submit" id="saveEmployeeBtn">💾 Adicionar funcionário</button><button type="button" id="cancelEmployeeEdit" class="hidden">Cancelar edição</button><button type="button" id="fitEmployeeHours">Ajustar intervalo para meta semanal</button></div></form><div id="empNotice" role="status" aria-live="polite"></div></div><div class="panel"><h2>Quadro de funcionários <span id="headcount" class="badge">0</span></h2><p class="muted">Clique em <strong>Editar</strong> para alterar nome, cargo, carga horária, entrada, saída ou intervalo. As horas serão recalculadas e as escalas futuras sincronizadas.</p><div class="table-scroll"><table class="employee-table"><thead><tr><th>Funcionário</th><th>Cargo</th><th>Regime</th><th>Rodízio</th><th>Ações</th></tr></thead><tbody id="rosterBody"></tbody></table></div></div></div>
-<div><div class="panel settings"><h2>Funcionamento e cobertura mínima</h2><p>Selecione os dias em que o estabelecimento abre:</p><div class="checkdays" id="openDays"></div><p>Quantidade mínima obrigatória em serviço por dia aberto (0 = sem exigência):</p><div id="minimumFields" class="grid two"></div><p class="muted">Informe um mínimo apenas quando for obrigatório manter pessoas daquele cargo presentes. <strong>Zero é válido</strong> e significa que não há exigência mínima para essa função. O calendário e a geração da escala continuam funcionando normalmente com os funcionários cadastrados, jornadas, dias de funcionamento e rodízio de folgas.</p><div class="field"><label>Limite de funcionários simultaneamente de folga (0 = sem limite)</label><input type="number" min="0" max="99" id="maxOff" value="0"></div><label><input type="checkbox" id="holidayWorkAllowed"> Permitir expediente em feriados nacionais somente quando autorizado pela legislação e negociação coletiva aplicável</label><p class="muted">Padrão: feriados nacionais sem expediente, inclusive 20 de novembro. Carnaval e Corpus Christi são destacados, mas não são automaticamente tratados como feriados nacionais.</p><div class="actions"><button id="saveConfig" class="primary">💾 Salvar funcionamento e cobertura</button></div><div id="configNotice" role="status" aria-live="polite"></div></div><div id="staffDiagnostic" class="panel"></div></div></div></section>
-<section id="scale" class="hidden"><div class="panel"><h2>Gerar e salvar escala</h2><div class="grid period-fields"><div class="field"><label for="periodStart">Data inicial (DD/MM/AAAA)</label><input id="periodStart" type="text" inputmode="numeric" maxlength="10" autocomplete="off" placeholder="Ex.: 01/11/2026"></div><div class="field"><label for="rangeEnd">Data final (DD/MM/AAAA)</label><input id="rangeEnd" type="text" inputmode="numeric" maxlength="10" autocomplete="off" placeholder="Ex.: 30/11/2026" aria-describedby="rangeDateNotice"><div id="rangeDateNotice" class="date-notice" role="status" aria-live="polite">Informe as duas datas. O sistema organizará e salvará as semanas correspondentes.</div></div><div class="field"><label>Carga máxima de referência (h/semana)</label><select id="weekLimit"><option value="44">44 h • histórico</option><option value="42" selected>42 h • transição 2026</option><option value="40">40 h • etapa 2027</option></select></div></div><div class="actions no-print"><button class="good" id="generatePeriod" type="button">✓ Gerar e salvar período</button><button id="printBtn" type="button">Imprimir</button><button id="csvBtn" type="button">Exportar CSV</button></div><div class="period-box no-print"><h3>Quais dias da semana PODEM ter folguistas?</h3><p>Marque os dias em que a empresa permite o rodízio de folgas. <strong>Marcado = pode ter folga; desmarcado = todos trabalham</strong> quando a empresa estiver aberta. Ex.: permitir de segunda a quinta e desmarcar sexta e sábado; ou permitir terça e domingo. Os dias em que o estabelecimento estiver fechado continuam sendo descanso obrigatório.</p><div id="noOffWeekdays" class="checkdays permitted-days"></div><div id="doubleFeasibilityNotice" role="status" aria-live="polite"></div><div id="folgaCapacityNotice" role="status" aria-live="polite"></div><div class="actions"><div class="field"><label for="noOffExactDate">Não permitir folga em data específica (DD/MM/AAAA)</label><input id="noOffExactDate" placeholder="20/11/2026" inputmode="numeric" maxlength="10"></div><button id="addNoOffDate" type="button">Adicionar data</button></div><div id="noOffDateList" class="blocked-dates"></div><p class="muted">Os dias marcados acima são salvos automaticamente.</p><div id="noOffFeedback" role="status" aria-live="polite"></div></div><div id="rotationModelNote" class="ok" style="margin-top:10px">Modelo flexível 5×2: cada pessoa trabalha cinco dias e descansa dois, distribuídos exclusivamente nos dias autorizados e nos dias de fechamento. O rodízio favorece folgas consecutivas e alterna os beneficiados conforme o histórico. Se as restrições tornarem isso impossível, a aplicação não salvará uma escala inválida. Jornadas de 40h ou 42h são verificadas conforme o cadastro e os horários efetivos.</div><div id="periodNotice" role="status" aria-live="polite"></div><p class="muted">Alterações na equipe são refletidas nas semanas futuras quando a distribuição continuar válida. Se houver conflito, o calendário sinalizará a necessidade de recalcular. Informe somente as datas de início e término e clique em <strong>Gerar e salvar período</strong>. O calendário será preenchido automaticamente com os nomes de quem folga. A escala distribui as folgas entre os dias autorizados; o domingo será descanso de todos somente quando o estabelecimento estiver fechado. Se o período não atender às regras, a aplicação não salva escalas inválidas. Você pode consultar ou ajustar uma semana na tabela, com salvamento automático dos ajustes.</p></div><div class="panel"><h2>Detalhamento da escala: <span id="weekTitle">Selecione um período</span></h2><div class="metrics" id="scheduleMetrics"></div><div id="alerts"></div><div class="mobile-day-toolbar no-print"><button type="button" id="mobilePrevDay" aria-label="Dia anterior">‹</button><label for="mobileScheduleDay">Dia</label><select id="mobileScheduleDay" aria-label="Selecionar dia da semana"><option value="0">Segunda</option><option value="1">Terça</option><option value="2">Quarta</option><option value="3">Quinta</option><option value="4">Sexta</option><option value="5">Sábado</option><option value="6">Domingo</option></select><button type="button" id="mobileNextDay" aria-label="Dia seguinte">›</button></div><p class="small-device-tip">No celular, veja e altere um dia por vez. As sete jornadas continuam na escala e aparecem juntas na impressão.</p><div class="table-scroll schedule-matrix"><table><thead id="scheduleHead"></thead><tbody id="scheduleBody"></tbody></table></div></div><div class="panel"><h2>Cobertura por dia e cargo</h2><div id="coverage" class="cards"></div></div><div class="panel"><h2>Histórico de folgas consecutivas</h2><div id="history"></div></div></section>
+<dialog id="legalDisclaimer" class="legal-dialog" aria-labelledby="legalDisclaimerTitle" aria-describedby="legalDisclaimerText"><h2 id="legalDisclaimerTitle">Atenção: orientação sobre o uso da escala</h2><p id="legalDisclaimerText">Esta aplicação oferece <strong>sugestões de organização e distribuição de jornadas e folgas</strong>, com base nas informações e regras cadastradas pelo usuário.</p><p class="legal-note"><strong>O uso desta ferramenta não substitui a análise, a orientação ou a validação por profissional legalmente habilitado e competente</strong>, especialmente nas áreas trabalhista, jurídica e de gestão de pessoal.</p><p>Antes de adotar a escala, confira a legislação vigente, as convenções e acordos coletivos aplicáveis, as regras da categoria profissional, os descansos e os horários efetivamente praticados. O responsável pela empresa deve revisar e aprovar a escala antes de colocá-la em prática.</p><div class="legal-actions"><button id="legalCancel" type="button">Voltar e revisar</button><button id="legalConfirm" type="button" class="primary-confirm">Li o aviso. Gerar escala</button></div></dialog><header><h1>▦ Gestão de Escalas 5×2 <span class="pill">versão 2.30 • Conformidade EC 141/2026</span></h1><div class="muted">Escala 5×2 com dois descansos semanais, limites de 44 → 42 → 40 h aplicados pela data, rodízio flexível e calendário com nomes e funções • dados locais</div></header>
+<main class="wrap"><nav class="tabs no-print" aria-label="Seções da aplicação"><button class="active" data-tab="team">Equipe e cargos</button><button data-tab="scale">Escala inteligente</button><button data-tab="month">Calendário mensal</button><button data-tab="hours">Simulador de jornada</button><button data-tab="rules">Lei 5×2 & conformidade</button></nav><div id="legalBanner" class="legal-banner no-print" role="note" aria-live="polite"></div>
+<section id="team"><div class="panel storage-panel no-print"><h2>Dados locais neste dispositivo</h2><p>O sistema grava automaticamente no armazenamento local deste navegador, quando disponível. <strong>Nada é enviado para a internet.</strong> Cada celular, tablet ou computador mantém seus próprios dados. Faça cópias JSON para proteger seus cadastros ou transportá-los entre aparelhos.</p><div id="storageStatus" class="storage-state" role="status" aria-live="polite">Verificando armazenamento…</div><div class="storage-bar"><button class="primary" type="button" id="connectDataFile">💾 Vincular arquivo (Chrome/Edge no PC)</button><button type="button" id="openDataFile">📂 Abrir dados já salvos</button><button type="button" id="quickBackup">⬇ Baixar cópia de segurança</button></div><div class="storage-details">No celular/tablet, use <b>Baixar cópia de segurança</b> e <b>Abrir dados já salvos</b>. O arquivo JSON fica no aparelho. Evite modo anônimo/privado e não limpe os dados do navegador. Em navegadores móveis, o vínculo automático a um arquivo pode não estar disponível; não é necessário para usar o armazenamento local.</div><input id="dataFileInput" type="file" accept=".json,application/json" class="hidden"></div><div class="layout"><div><div class="panel"><h2>Cadastrar cargos e funções</h2><p>Crie seus próprios cargos antes de adicionar colaboradores. Cadastre o nome de cada função. Depois clique em <strong>Salvar cargo</strong>. Os cargos aparecerão automaticamente na lista e no cadastro dos funcionários.</p><form id="roleForm" class="role-form"><div class="field"><label for="newRoleName">Nome do cargo</label><input id="newRoleName" name="cargo" required maxlength="70" autocomplete="off" placeholder="Ex.: Gerente, Caixa, Vendedor, Consultor..."></div><div class="actions"><button class="good" id="saveRoleBtn" type="submit">💾 Salvar cargo</button></div></form><div id="roleNotice" role="status" aria-live="polite"></div><div class="role-list-title">Cargos salvos <span id="roleCount" class="badge">0</span></div><div id="roleList" class="role-list"></div></div><div class="panel"><h2 id="employeeFormHeading">Cadastro de colaborador</h2><p class="muted" id="employeeEditHint">Altere os horários, o intervalo ou a meta semanal. A conferência mostra as horas efetivamente calculadas.</p><form id="employeeForm" class="grid"><div class="field" style="grid-column:1/-1"><label>Modelos de jornada (um toque preenche horários, intervalo e meta)</label><div class="model-chips" id="jornadaModels"></div></div><div class="field"><label>Nome</label><input id="empName" required placeholder="Nome completo" maxlength="90"></div><div class="field"><label>Cargo</label><select id="empRole" required><option value="">Cadastre um cargo primeiro</option></select></div><div class="field"><label>Horas contratuais por semana</label><input id="empHours" type="number" min="1" max="44" step="0.5" value="40"></div><div class="field"><label>Dias trabalhados / semana</label><input id="empDays" type="number" min="1" max="7" value="5"></div><div class="field"><label>Entrada</label><input id="empIn" type="time" value="08:00"></div><div class="field"><label>Saída</label><input id="empOut" type="time" value="18:00"></div><div class="field"><label>Intervalo (minutos)</label><input id="empBreak" type="number" min="0" max="240" value="120"></div><div id="empHoursPreview" class="field" style="grid-column:1/-1"></div><div class="actions"><button class="primary" type="submit" id="saveEmployeeBtn">💾 Adicionar funcionário</button><button type="button" id="cancelEmployeeEdit" class="hidden">Cancelar edição</button><button type="button" id="fitEmployeeHours">Ajustar intervalo para meta semanal</button></div></form><div id="empNotice" role="status" aria-live="polite"></div></div><div class="panel"><h2>Quadro de funcionários <span id="headcount" class="badge">0</span></h2><p class="muted">Clique em <strong>Editar</strong> para alterar nome, cargo, carga horária, entrada, saída ou intervalo. As horas serão recalculadas e as escalas futuras sincronizadas.</p><div class="table-scroll"><table class="employee-table"><thead><tr><th>Funcionário</th><th>Cargo</th><th>Regime</th><th>Rodízio</th><th>Ações</th></tr></thead><tbody id="rosterBody"></tbody></table></div></div></div>
+<div><div class="panel settings"><h2>Funcionamento e cobertura mínima</h2><p>Selecione os dias em que o estabelecimento abre:</p><div class="quick-periods no-print" id="openPresets"><button type="button" data-open-preset="mon-sat">Segunda a sábado <small>(domingo fechado)</small></button><button type="button" data-open-preset="mon-fri">Segunda a sexta <small>(sábado e domingo fechados)</small></button></div><div class="checkdays" id="openDays"></div><p class="muted" style="margin-top:6px">Os modelos acima apenas marcam as caixas; clique em <strong>Salvar funcionamento e cobertura</strong> para gravar.</p><p>Quantidade mínima obrigatória em serviço por dia aberto (0 = sem exigência):</p><div id="minimumFields" class="grid two"></div><p class="muted">Informe um mínimo apenas quando for obrigatório manter pessoas daquele cargo presentes. <strong>Zero é válido</strong> e significa que não há exigência mínima para essa função. O calendário e a geração da escala continuam funcionando normalmente com os funcionários cadastrados, jornadas, dias de funcionamento e rodízio de folgas.</p><div class="field"><label>Limite de funcionários simultaneamente de folga (0 = sem limite)</label><input type="number" min="0" max="99" id="maxOff" value="0"></div><label><input type="checkbox" id="holidayWorkAllowed"> Permitir expediente em feriados nacionais somente quando autorizado pela legislação e negociação coletiva aplicável</label><p class="muted">Padrão: feriados nacionais sem expediente, inclusive 20 de novembro. Carnaval, Páscoa e Corpus Christi são apenas <strong>exibidos</strong> no calendário; não fecham a loja automaticamente. Para fechar nesses dias, marque-os como “Feriado local” no calendário mensal.</p><div class="actions"><button id="saveConfig" class="primary">💾 Salvar funcionamento e cobertura</button></div><div id="configNotice" role="status" aria-live="polite"></div></div><div id="staffDiagnostic" class="panel"></div></div></div></section>
+<section id="scale" class="hidden"><div class="panel"><h2>Gerar e salvar escala</h2><div class="grid period-fields"><div class="field"><label for="periodStart">Data inicial (DD/MM/AAAA)</label><input id="periodStart" type="text" inputmode="numeric" maxlength="10" autocomplete="off" placeholder="Ex.: 01/11/2026"></div><div class="field"><label for="rangeEnd">Data final (DD/MM/AAAA)</label><input id="rangeEnd" type="text" inputmode="numeric" maxlength="10" autocomplete="off" placeholder="Ex.: 30/11/2026" aria-describedby="rangeDateNotice"><div id="rangeDateNotice" class="date-notice" role="status" aria-live="polite">Informe as duas datas. O sistema organizará e salvará as semanas correspondentes.</div></div><div class="field"><label for="weekLimit">Limite semanal aplicado</label><select id="weekLimit"><option value="auto" selected>Automático pela data (EC 141/2026)</option><option value="44">Fixo 44 h • regra anterior</option><option value="42">Fixo 42 h • transição</option><option value="40">Fixo 40 h • regra final</option></select></div></div><div class="quick-periods no-print" aria-label="Atalhos de período"><button type="button" data-quick-period="this">Mês atual</button><button type="button" data-quick-period="next">Próximo mês</button><button type="button" data-quick-period="three">Próximos 3 meses</button><button type="button" data-quick-period="transition">A partir de 16/12/2026 (até 31/01/2027)</button></div><div class="actions no-print"><button class="good" id="generatePeriod" type="button">✓ Gerar e salvar período</button><button id="printBtn" type="button">Imprimir</button><button id="csvBtn" type="button">Exportar CSV</button></div><div class="period-box no-print"><h3>Quais dias da semana PODEM ter folguistas?</h3><p>Marque os dias em que a empresa permite o rodízio de folgas. <strong>Marcado = pode ter folga; desmarcado = todos trabalham</strong> quando a empresa estiver aberta. Ex.: permitir de segunda a quinta e desmarcar sexta e sábado; ou permitir terça e domingo. Os dias em que o estabelecimento estiver fechado continuam sendo descanso obrigatório.</p><div id="noOffWeekdays" class="checkdays permitted-days"></div><div id="doubleFeasibilityNotice" role="status" aria-live="polite"></div><div id="folgaCapacityNotice" role="status" aria-live="polite"></div><div class="actions"><div class="field"><label for="noOffExactDate">Não permitir folga em data específica (DD/MM/AAAA)</label><input id="noOffExactDate" placeholder="20/11/2026" inputmode="numeric" maxlength="10"></div><button id="addNoOffDate" type="button">Adicionar data</button></div><div id="noOffDateList" class="blocked-dates"></div><p class="muted">Os dias marcados acima são salvos automaticamente.</p><div id="noOffFeedback" role="status" aria-live="polite"></div></div><div id="rotationModelNote" class="ok" style="margin-top:10px">Modelo flexível 5×2: cada pessoa trabalha cinco dias e descansa dois, distribuídos exclusivamente nos dias autorizados e nos dias de fechamento. O rodízio favorece folgas consecutivas e alterna os beneficiados conforme o histórico. Se as restrições tornarem isso impossível, a aplicação não salvará uma escala inválida. O limite semanal (44 h até 15/12/2026, 42 h a partir de 16/12/2026 e 40 h a partir de 16/12/2027), o limite diário, os intervalos e a regra do domingo são conferidos semana a semana.</div><div id="periodNotice" role="status" aria-live="polite"></div><p class="muted">Alterações na equipe são refletidas nas semanas futuras quando a distribuição continuar válida. Se houver conflito, o calendário sinalizará a necessidade de recalcular. Informe somente as datas de início e término e clique em <strong>Gerar e salvar período</strong>. O calendário será preenchido automaticamente com os nomes de quem folga. A escala distribui as folgas entre os dias autorizados; o domingo será descanso de todos somente quando o estabelecimento estiver fechado. Se o período não atender às regras, a aplicação não salva escalas inválidas. Você pode consultar ou ajustar uma semana na tabela, com salvamento automático dos ajustes.</p></div><div class="panel"><h2>Detalhamento da escala: <span id="weekTitle">Selecione um período</span></h2><div class="metrics" id="scheduleMetrics"></div><div id="alerts"></div><div class="mobile-day-toolbar no-print"><button type="button" id="mobilePrevDay" aria-label="Dia anterior">‹</button><label for="mobileScheduleDay">Dia</label><select id="mobileScheduleDay" aria-label="Selecionar dia da semana"><option value="0">Segunda</option><option value="1">Terça</option><option value="2">Quarta</option><option value="3">Quinta</option><option value="4">Sexta</option><option value="5">Sábado</option><option value="6">Domingo</option></select><button type="button" id="mobileNextDay" aria-label="Dia seguinte">›</button></div><p class="small-device-tip">No celular, veja e altere um dia por vez. As sete jornadas continuam na escala e aparecem juntas na impressão.</p><div class="table-scroll schedule-matrix"><table><thead id="scheduleHead"></thead><tbody id="scheduleBody"></tbody></table></div></div><div class="panel"><h2>Cobertura por dia e cargo</h2><div id="coverage" class="cards"></div></div><div class="panel"><h2>Histórico de folgas consecutivas</h2><div id="history"></div></div></section>
 
 <section id="month" class="hidden">
   <div class="panel month-board">
     <div class="month-head">
       <div><h2>Calendário mensal da equipe</h2><p>Os dias de folga seguem a configuração da empresa. <strong>Nomes e funções</strong> indicam quem descansa em cada data; o número grande mostra a equipe trabalhando. Os feriados continuam destacados em vermelho.</p></div>
-      <div class="month-navigation no-print"><button id="monthPrev" type="button" aria-label="Mês anterior">‹</button><input id="monthInput" type="month" aria-label="Mês do calendário"><button id="monthNext" type="button" aria-label="Próximo mês">›</button></div>
+      <div class="month-navigation no-print"><div class="view-toggle" role="group" aria-label="Forma de exibição"><button type="button" data-month-view="grid">▦ Grade</button><button type="button" data-month-view="list">☰ Lista</button></div><button id="monthPrev" type="button" aria-label="Mês anterior">‹</button><input id="monthInput" type="month" aria-label="Mês do calendário"><button id="monthNext" type="button" aria-label="Próximo mês">›</button></div>
     </div>
     <div class="month-stats" id="monthStats"></div><div id="monthPlanningNotice" class="month-planning no-print" role="status" aria-live="polite"></div><div id="monthActionStatus" role="status" aria-live="polite"></div><div class="actions no-print"><button type="button" class="primary" id="printMonthReport">🖨 Relatório do mês: calendário + folgas</button><button type="button" id="printRangeReport">🖨 Relatório do período selecionado</button></div>
     <div id="periodMonths" class="period-months"></div><div class="month-layout">
       <div class="month-main">
         <h3 id="monthTitle" class="month-title">Calendário</h3>
-        <div class="month-weekdays" aria-hidden="true"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
+        <div class="month-weekdays" id="monthWeekdays" aria-hidden="true"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
         <div class="month-days" id="monthDays" aria-label="Calendário mensal"></div>
-        <div class="month-legend"><span><i class="legend-dot work-dot"></i> Equipe presente</span><span><i class="legend-dot off-dot"></i> Fechado/folga</span><span><i class="legend-dot special-dot"></i> Data especial cadastrada</span></div>
+        <div class="month-legend"><span><span class="cal-count"><i aria-hidden="true">👥</i>5</span> pessoas trabalhando</span><span><span class="cal-name">Nome</span> quem está de folga</span><span><i class="legend-dot" style="background:#fdecec;border-color:#f3b4b4"></i> feriado / ninguém trabalha</span><span><i class="legend-dot" style="background:#eef4ff;border:2px solid #2563eb"></i> todos trabalham</span><span><i class="legend-dot" style="background:#eef1f4"></i> fechado</span></div>
         <div class="month-date-lookup no-print"><div class="field"><label for="monthJump">Ir para data (DD/MM/AAAA)</label><input id="monthJump" inputmode="numeric" maxlength="10" placeholder="01/11/2026" autocomplete="off"></div><button id="monthGo" type="button">Ir para data</button></div>
         <div id="monthJumpMsg" class="month-jump-msg" role="status" aria-live="polite"></div>
         <div id="monthDayDetails" class="month-detail" aria-live="polite"></div>
@@ -298,8 +393,40 @@ button{min-height:40px}
     <div class="month-special no-print"><h3>Identificação de feriados e datas especiais</h3><p>Selecione um dia no calendário e informe o nome da data especial. Os feriados nacionais e móveis são marcados automaticamente em vermelho. Você ainda pode adicionar datas especiais locais manualmente.</p><div class="month-special-actions"><div class="field"><label for="monthSpecialDate">Data da marcação (DD/MM/AAAA)</label><input id="monthSpecialDate" type="text" inputmode="numeric" maxlength="10" placeholder="DD/MM/AAAA" aria-describedby="specialSelectedDate"></div><div class="field"><label for="monthSpecialName">Descrição</label><input id="monthSpecialName" maxlength="75" placeholder="Ex.: Feriado municipal"></div><div class="field"><label for="monthSpecialMode">Tipo de data especial</label><select id="monthSpecialMode"><option value="info">Somente informativa</option><option value="all">🔵 Todos trabalham</option><option value="none">🔴 Ninguém trabalha</option><option value="holiday">🔴 Feriado local (ninguém trabalha)</option></select></div><p class="muted" id="specialSelectedDate" aria-live="polite"></p><button type="button" id="saveSpecialDate">Salvar data especial</button><button type="button" id="removeSpecialDate">Remover destaque</button></div><div id="monthSpecialFeedback" role="status" aria-live="polite"></div></div>
   </div>
 </section>
-<section id="hours" class="hidden"><div class="panel narrow"><h2>Simulador de jornada</h2><div class="grid two"><div class="field"><label>Entrada</label><input type="time" id="calcIn" value="08:00"></div><div class="field"><label>Saída</label><input type="time" id="calcOut" value="18:00"></div><div class="field"><label>Intervalo (min)</label><input type="number" id="calcBreak" min="0" max="240" value="96"></div><div class="field"><label>Dias trabalhados</label><input type="number" id="calcDays" min="1" max="7" value="5"></div><div class="field"><label>Meta semanal (horas)</label><select id="calcTarget"><option>44</option><option selected>42</option><option>40</option></select></div></div><div class="actions"><button id="autoBreak" type="button" class="good">Calcular intervalo para atingir a meta</button><button id="apply42" type="button">Sugestão 42h • 8h às 18h</button><button id="apply40" type="button">Sugestão 40h • 8h às 18h</button></div><p class="muted">Para 42h em cinco dias, das 8h às 18h: intervalo de 96 minutos (1h36). Para 40h: 120 minutos (2h). São horários sugeridos e sujeitos às normas e acordos aplicáveis.</p><div id="calcResult" class="panel" style="margin-top:15px"></div><p class="muted">Simulação aritmética, não constitui validação jurídica. Horas efetivamente trabalhadas e intervalos precisam ser conferidos na execução da escala.</p></div></section>
-<section id="rules" class="hidden"><div class="panel"><h2>Regras de gestão e conformidade</h2><p>A aplicação organiza cinco dias de trabalho e duas folgas semanais; a empresa define quais dias abertos podem receber folguistas. Dias fechados são descanso obrigatório, e a escala acusa restrições incompatíveis ou impossibilidade de conceder folgas consecutivas. O modelo de rodízio depende de conferência da convenção coletiva. O planejamento toma como referência as etapas de 42 h em dezembro de 2026 e 40 h em dezembro de 2027. Exemplo de 42h em cinco dias: entrada 8h, saída 18h, intervalo 1h36; na fase de 40h, intervalo 2h. Confirme a convenção coletiva e os limites diários. Escolha o limite aplicável à semana e confira as regras coletivas específicas.</p><p>Na geração automática, a cobertura mínima por função, as restrições entre gerência e caixa e a distribuição de folgas são objetivos de otimização. Quando incompatíveis, os conflitos permanecem visíveis e a escala não é marcada como aprovada.</p><p>O domingo de folga, as segundas-feiras, as cargas horárias e a igualdade do rodízio são monitorados; feriados, domingos efetivamente autorizados, acordos coletivos, descanso interjornada e regras especiais devem passar por conferência do RH/contador antes da publicação.</p><p class="warn">Importante: há armazenamento local neste dispositivo (IndexedDB e/ou armazenamento do navegador), além de backup JSON ou arquivo vinculado, quando compatível. Sem arquivo vinculado, dados de diferentes cópias do HTML podem não ser compartilhados. Não há servidor, sincronização de rede nem controle de login. Faça backups regularmente.</p><div class="actions no-print"><button id="exportBackup">Exportar backup JSON</button><button id="importBackupBtn">Importar backup JSON</button><input type="file" id="importBackup" accept="application/json,.json" class="hidden"><button id="resetData" class="danger">Limpar dados locais</button></div></div></section></main>
+<section id="hours" class="hidden"><div class="panel narrow"><h2>Simulador de jornada</h2><div class="grid two"><div class="field"><label>Entrada</label><input type="time" id="calcIn" value="08:00"></div><div class="field"><label>Saída</label><input type="time" id="calcOut" value="18:00"></div><div class="field"><label>Intervalo (min)</label><input type="number" id="calcBreak" min="0" max="240" value="96"></div><div class="field"><label>Dias trabalhados</label><input type="number" id="calcDays" min="1" max="7" value="5"></div><div class="field"><label>Meta semanal (horas)</label><select id="calcTarget"><option>44</option><option>42</option><option selected>40</option></select></div></div><div class="actions"><button id="autoBreak" type="button" class="good">Calcular intervalo para atingir a meta</button><button id="apply40" type="button">40h • 8h às 18h, 2h de almoço</button><button id="apply40b" type="button">40h • 9h às 18h, 1h de almoço</button><button id="apply42" type="button">42h • 8h às 18h, 1h36</button></div><p class="muted">Em cinco dias: 8h às 18h com 2h de intervalo = 8h/dia e 40h/semana; 9h às 18h com 1h = 8h/dia e 40h/semana. Ambos atendem às duas etapas da EC 141/2026. A opção de 42h (8h24/dia) depende da regra de transição descrita na aba “Lei 5×2 & conformidade”.</p><div id="calcResult" class="panel" style="margin-top:15px"></div><p class="muted">Simulação aritmética, não constitui validação jurídica. Horas efetivamente trabalhadas e intervalos precisam ser conferidos na execução da escala.</p></div></section>
+<section id="rules" class="hidden">
+<div class="panel"><h2>Nova jornada: fim da escala 6×1 (EC 141/2026)</h2>
+<p>Resumo operacional atualizado em <strong>16/11/2026</strong>. A aplicação aplica estes marcos automaticamente pela data de cada semana; confira sempre a convenção coletiva da sua categoria.</p>
+<div id="legalTimeline" class="timeline"></div>
+<div class="stf-status"><strong>Situação no STF (16/11/2026):</strong> nas ADIs 8041 (CNC) e 8042 (CNI), o relator, ministro Flávio Dino, concedeu liminar em 12/11/2026 que <strong>manteve as datas</strong> da emenda e não suspendeu nenhum prazo. Até 15/12/2027, sem acordo ou convenção coletiva celebrados até 15/12/2026, as 42 h podem ser distribuídas em cinco dias de até <strong>8h24</strong>, sem adicional sobre os 24 minutos. Em 14/11/2026 o ministro Luiz Fux pediu destaque: o caso irá ao plenário físico, em data a definir, e a liminar continua valendo até lá. <em>Por estar pendente de referendo, a aplicação trata as 8h24 como alerta, não como regra definitiva.</em></div>
+<h3 style="font-size:15px;margin:16px 0 6px">O que a aplicação confere em cada semana</h3>
+<ul class="legal-list">
+<li><strong>Dois descansos semanais</strong> (5 dias de expediente + 2 folgas próprias); feriado dispensado (H) não substitui folga (F).</li>
+<li><strong>Limite semanal pela data:</strong> 44 h até 15/12/2026, 42 h de 16/12/2026 a 15/12/2027 e 40 h a partir de 16/12/2027. Semanas que atravessam a mudança usam o limite mais novo.</li>
+<li><strong>Limite diário:</strong> até 8 h sem alerta; até 8h24 na transição (liminar do STF); acima disso somente com acordo/convenção de compensação; acima de 10 h a escala é bloqueada.</li>
+<li><strong>Intervalo para refeição</strong> (CLT, art. 71): jornada acima de 6 h exige de 1 h a 2 h; fora disso gera alerta para conferência do acordo escrito/convenção.</li>
+<li><strong>Descanso entre jornadas</strong> (CLT, art. 66): mínimo de 11 h; horários que não permitem isso bloqueiam a escala.</li>
+<li><strong>Domingo no comércio</strong> (Lei 10.101/2000, art. 6º): quando a loja abre aos domingos, o descanso deve coincidir com o domingo ao menos uma vez a cada três semanas (configurável abaixo).</li>
+</ul>
+<h3 style="font-size:15px;margin:16px 0 6px">O que continua dependendo do RH/contador</h3>
+<ul class="legal-list">
+<li>Trabalho em <strong>feriados no comércio</strong> depende de autorização em convenção coletiva (Lei 10.101/2000, art. 6º-A; Portaria MTE 1.316/2026), salvo atividades com autorização permanente.</li>
+<li><strong>Salário mensal não pode ser reduzido</strong> com a diminuição das horas; o valor da hora aumenta.</li>
+<li>Cláusulas coletivas incompatíveis com a emenda perdem efeito em 16/12/2026; contrapartidas podem ser renegociadas até 16/03/2027.</li>
+<li>Regimes compensatórios com média de 2 descansos no mês, banco de horas e jornadas especiais dependem de norma coletiva e não são gerados por esta aplicação.</li>
+</ul>
+<p class="legal-source">Fontes: Emenda Constitucional 141, de 16/10/2026 (art. 7º, XIII e XV, da Constituição); liminar nas ADIs 8041 e 8042 (STF, 12/11/2026); Lei 10.101/2000, arts. 6º e 6º-A; CLT, arts. 59, 66 e 71; Portaria MTE 1.316/2026. Este resumo organiza regras para uso da ferramenta e não substitui orientação jurídica.</p>
+</div>
+<div class="panel"><h2>Parâmetros legais da escala</h2><div class="settings-grid">
+<div class="field"><label for="legalLimitSetting">Limite semanal</label><select id="legalLimitSetting"><option value="auto">Automático pela data (recomendado)</option><option value="44">Fixo 44 h</option><option value="42">Fixo 42 h</option><option value="40">Fixo 40 h</option></select><small>No modo automático cada semana recebe o limite da etapa vigente.</small></div>
+<div class="field"><label for="sundayRuleSetting">Domingo de descanso (loja aberta aos domingos)</label><select id="sundayRuleSetting"><option value="3">1 a cada 3 semanas — comércio (Lei 10.101)</option><option value="2">1 a cada 2 semanas — revezamento quinzenal</option><option value="0">Não verificar</option></select><small>Sem efeito quando o domingo é dia fechado: todos já descansam.</small></div>
+<div class="field"><label for="dailyToleranceSetting">Jornada diária acima de 8 h</label><select id="dailyToleranceSetting"><option value="transition">Aceitar até 8h24 na transição (liminar STF)</option><option value="strict">Alertar sempre que passar de 8 h</option></select><small>Acima de 8h24 é necessário acordo ou convenção de compensação.</small></div>
+</div>
+<label class="check-line"><input type="checkbox" id="cctCompensation"> <span>Existe <strong>acordo ou convenção coletiva vigente</strong> que autoriza compensação de horários acima de 8 h diárias (máximo de 10 h).</span></label>
+<div class="actions"><button type="button" class="primary" id="saveLegalSettings">💾 Salvar parâmetros legais</button></div><div id="legalSettingsNotice" role="status" aria-live="polite"></div></div>
+<div class="panel"><h2>Diagnóstico de transição da equipe</h2><p class="muted">Confere o horário cadastrado de cada colaborador com as três etapas. Use “Editar” na aba Equipe para ajustar quem não estiver compatível.</p><div id="transitionDiagnostic"></div></div>
+<div class="panel"><h2>Dados e segurança</h2><p class="warn">Importante: há armazenamento local neste dispositivo (IndexedDB e/ou armazenamento do navegador), além de backup JSON ou arquivo vinculado, quando compatível. Sem arquivo vinculado, dados de diferentes cópias do HTML podem não ser compartilhados. Não há servidor, sincronização de rede nem controle de login. Faça backups regularmente.</p><div class="actions no-print"><button id="exportBackup">Exportar backup JSON</button><button id="importBackupBtn">Importar backup JSON</button><input type="file" id="importBackup" accept="application/json,.json" class="hidden"><button id="resetData" class="danger">Limpar dados locais</button></div><p class="muted">Ao limpar os dados, uma cópia de segurança é baixada automaticamente antes da exclusão.</p></div>
+</section></main>
 <section id="printReport" class="print-report" aria-label="Relatório de escalas"></section>
 <footer class="copyright-line" id="copyrightNotice" aria-label="Aviso de direitos autorais">© 2026 Fabiano Inoue - SICOV - Cornélio Procópio - PR • Todos os direitos reservados.</footer>
 <script>
@@ -432,7 +559,7 @@ async function recallFileHandle(){
  }catch(e){console.warn('Não foi possível reabrir automaticamente o arquivo:',e);refreshStorageStatus()}
 }
 function validImportedState(data){return data&&Array.isArray(data.employees)&&data.configs&&typeof data.configs==='object'&&data.weeks&&typeof data.weeks==='object'&&(!data.roles||Array.isArray(data.roles))}
-function rebuildUI(){if(!Array.isArray(state.roles))state.roles=[];for(const e of state.employees)if(e.role&&!state.roles.some(r=>r.name===e.role))state.roles.push({name:e.role,group:'individual'});syncRoles();renderRoles();renderRoster();renderConfig();loadWeek();drawNoOff();if(!$('month').classList.contains('hidden'))drawMonth()}
+function rebuildUI(){if(!Array.isArray(state.roles))state.roles=[];renderLegalSettings();renderLegalBanner();renderModelChips();for(const e of state.employees)if(e.role&&!state.roles.some(r=>r.name===e.role))state.roles.push({name:e.role,group:'individual'});syncRoles();renderRoles();renderRoster();renderConfig();loadWeek();drawNoOff();renderTransitionDiagnostic();if(!$('month').classList.contains('hidden'))drawMonth()}
 async function loadExternalData(data,handle){
  if(!validImportedState(data))throw Error('Arquivo inválido. Escolha um backup JSON gerado pela aplicação.');
  if((state.employees.length||state.roles.length||Object.keys(state.weeks).length)&&!confirm('Abrir este arquivo substituirá os dados atualmente exibidos. Deseja continuar?'))return false;
@@ -480,6 +607,57 @@ function holidayClosed(date){return noWorkSpecial(date)||((isNationalHoliday(dat
 function effectiveOpen(week){return DAYS.map((_,d)=>config().open[d]&&!holidayClosed(move(week,d)))}
 function autoHolidayName(date){const year=Number(String(date).slice(0,4)); if(!Number.isFinite(year)) return ''; const map=holidayMapForYear(year); return map[date]||''}
 function getHolidayLabel(date){const manual=state.specialDays?.[date]||''; const auto=autoHolidayName(date); if(manual&&auto&&manual!==auto) return auto+' • '+manual; return manual||auto||''}
+
+// ===== v2.30 — Motor de conformidade: EC 141/2026 + liminar STF (ADIs 8041/8042, 12/11/2026) =====
+// Etapas aplicadas pela data. A semana que atravessa uma mudança usa a etapa do domingo (limite mais novo).
+const LEGAL_PHASES=[
+ {id:'clt44',from:'0000-01-01',to:'2026-12-15',weekly:44,label:'Regra anterior',period:'até 15/12/2026',rest:'1 descanso semanal (o modelo 5×2 já concede 2)'},
+ {id:'ec42',from:'2026-12-16',to:'2027-12-15',weekly:42,label:'Transição da EC 141/2026',period:'16/12/2026 a 15/12/2027',rest:'2 descansos semanais remunerados, um preferencialmente no domingo'},
+ {id:'ec40',from:'2027-12-16',to:'9999-12-31',weekly:40,label:'Regra definitiva da EC 141/2026',period:'a partir de 16/12/2027',rest:'2 descansos semanais remunerados; até 8 h por dia'}
+];
+const DAILY_BASE=480,DAILY_TRANSITION=504,DAILY_MAX=600;
+function legalPhaseFor(date){return LEGAL_PHASES.find(p=>date>=p.from&&date<=p.to)||LEGAL_PHASES[LEGAL_PHASES.length-1]}
+function weekPhase(week){return legalPhaseFor(move(week,6))}
+function legalSettings(){
+ const c=(state&&state.configs&&state.configs[STORE])||{},sw=Number(c.sundayRuleWeeks);
+ return {limit:['44','42','40'].includes(String(c.legalLimit))?String(c.legalLimit):'auto',
+  sundayWeeks:[0,2,3].includes(sw)&&c.sundayRuleWeeks!==undefined&&c.sundayRuleWeeks!==null&&c.sundayRuleWeeks!==''?sw:3,
+  tolerance:c.dailyTolerance==='strict'?'strict':'transition',cct:!!c.cctCompensation};
+}
+function weeklyLimitMinutes(week){const s=legalSettings();return (s.limit==='auto'?weekPhase(week).weekly:Number(s.limit))*60}
+// Bloqueios impedem salvar a escala; alertas ficam visíveis para conferência do RH/contador.
+function dailyCompliance(daily,span,rest,phase){
+ const s=legalSettings(),block=[],warn=[];
+ if(!Number.isFinite(daily))return {block:['horários ou intervalo inválidos'],warn};
+ if(daily>DAILY_MAX)block.push(`jornada diária de ${formatMinutes(daily)} ultrapassa 10 h (CLT, art. 59)`);
+ else if(daily>DAILY_BASE){
+  if(phase.id==='ec42'&&s.tolerance==='transition'&&daily<=DAILY_TRANSITION)warn.push(`${formatMinutes(daily)} por dia: admitido até 8h24 na transição pela liminar do STF (ADIs 8041/8042), ainda pendente de referendo do Plenário`);
+  else if(s.cct)warn.push(`${formatMinutes(daily)} por dia: acima de 8 h, apoiado no acordo/convenção de compensação informado nos parâmetros legais`);
+  else if(phase.id==='clt44')warn.push(`${formatMinutes(daily)} por dia: acima de 8 h depende de acordo de compensação de horas`);
+  else block.push(`${formatMinutes(daily)} por dia excede ${phase.id==='ec42'&&s.tolerance==='transition'?'8h24 (tolerância da transição)':'8 h'} sem acordo ou convenção de compensação`);
+ }
+ if(Number.isFinite(span)&&span>0&&Number.isFinite(rest)){
+  if(1440-span<660)block.push(`descanso entre jornadas de ${formatMinutes(1440-span)}, inferior a 11 h (CLT, art. 66)`);
+  if(daily>360&&rest<60)warn.push(`intervalo de ${formatMinutes(rest)} em jornada acima de 6 h: mínimo de 1 h, salvo convenção coletiva (CLT, art. 71)`);
+  if(rest>120)warn.push(`intervalo de ${formatMinutes(rest)} supera 2 h: exige acordo escrito ou convenção coletiva (CLT, art. 71)`);
+  if(daily>240&&daily<=360&&rest<15)warn.push('jornada entre 4 h e 6 h exige intervalo de 15 min (CLT, art. 71, §1º)');
+ }
+ return {block,warn};
+}
+function employeeCompliance(e,phase){
+ const span=spanMinutes(e.in,e.out),rest=Number(e.break),daily=workMinutes(e),r=dailyCompliance(daily,span,rest,phase);
+ const weekly=5*daily;if(Number.isFinite(weekly)&&weekly>phase.weekly*60)r.block.unshift(`${formatMinutes(weekly)} semanais excedem ${phase.weekly} h`);
+ return r;
+}
+// Domingos trabalhados em sequência imediatamente antes da semana (somente escalas válidas ou rascunhos).
+function sundayWorkStreakBefore(empId,week,plans={}){
+ let streak=0;for(let k=1;k<=6;k++){const key=weekKey(STORE,move(week,-7*k)),w=plans[key]||state.weeks[key];
+  if(!w||w.needsRegeneration||!Array.isArray(w.rows?.[empId]))break;if(w.rows[empId][6]==='T')streak++;else break}
+ return streak;
+}
+// Cache usado apenas durante um desenho de tela (o estado não muda no meio da renderização).
+let renderCache=null,renderDayCache=null;
+function withRenderCache(fn){const prev=renderCache,prevDay=renderDayCache;renderCache=renderCache||new WeakMap();renderDayCache=renderDayCache||new Map();try{return fn()}finally{renderCache=prev;renderDayCache=prevDay}}
 
 // Migração segura: preservar cargos de colaboradores já existentes.
 if(!Array.isArray(state.roles))state.roles=[];
@@ -539,7 +717,8 @@ function renderEmployeePreview(){
  const span=spanMinutes($('empIn').value,$('empOut').value),rest=Number($('empBreak').value),days=Number($('empDays').value),target=Number($('empHours').value)*60,el=$('empHoursPreview');
  if(!Number.isFinite(span)||!validBreak(span,rest)||!Number.isInteger(days)||days!==5||!Number.isFinite(target)||target<=0){el.innerHTML='<div class="error">Para a escala 5×2 informe cinco dias trabalhados, horários válidos, intervalo menor que a permanência e carga semanal positiva.</div>';return}
  const daily=span-rest,week=daily*days,diff=week-target;
- el.innerHTML=`<div class="${Math.abs(diff)<.01?'ok':'warn'}"><strong>Horas efetivas calculadas: ${formatMinutes(week)}</strong> por semana (${formatMinutes(daily)} por dia).<div>Permanência ${formatMinutes(span)} − intervalo ${formatMinutes(rest)} = ${formatMinutes(daily)} × ${days} dias. <strong>Meta: ${formatMinutes(target)}</strong>. ${Math.abs(diff)<.01?'✓ Jornada coincide com a meta.':'Diferença: '+(diff>0?'+':'−')+formatMinutes(Math.abs(diff))+'. Ajuste o intervalo para cumprir a meta antes de salvar.'}</div></div>`;
+ el.innerHTML=`<div class="${Math.abs(diff)<.01?'ok':'warn'}"><strong>Horas efetivas calculadas: ${formatMinutes(week)}</strong> por semana (${formatMinutes(daily)} por dia).<div>Permanência ${formatMinutes(span)} − intervalo ${formatMinutes(rest)} = ${formatMinutes(daily)} × ${days} dias. <strong>Meta: ${formatMinutes(target)}</strong>. ${Math.abs(diff)<.01?'✓ Jornada coincide com a meta.':'Diferença: '+(diff>0?'+':'−')+formatMinutes(Math.abs(diff))+'. Ajuste o intervalo para cumprir a meta antes de salvar.'}</div></div>`+phaseBadgesHtml({in:$('empIn').value,out:$('empOut').value,break:rest});
+ renderModelChips();
 }
 function fitEmployeeInterval(showFeedback=false){
  const span=spanMinutes($('empIn').value,$('empOut').value),target=Number($('empHours').value)*60,days=Number($('empDays').value);
@@ -558,7 +737,7 @@ $('fitEmployeeHours').onclick=()=>fitEmployeeInterval(true);
 function resetEmployeeEditor(){
  editingEmployeeId=null;$('employeeForm').reset();
  $('employeeFormHeading').textContent='Cadastro de colaborador';$('saveEmployeeBtn').textContent='💾 Adicionar funcionário';$('cancelEmployeeEdit').classList.add('hidden');
- $('empHours').value=42;$('empDays').value=5;$('empIn').value='08:00';$('empOut').value='18:00';$('empBreak').value=96;renderEmployeePreview();
+ $('empHours').value=40;$('empDays').value=5;$('empIn').value='08:00';$('empOut').value='18:00';$('empBreak').value=120;renderEmployeePreview();renderModelChips();
 }
 function editEmployee(id){
  const emp=state.employees.find(x=>String(x.id)===String(id));if(!emp)return;
@@ -571,7 +750,7 @@ function editEmployee(id){
  renderEmployeePreview();$('employeeForm').scrollIntoView({behavior:'smooth',block:'start'});$('empName').focus();
 }
 $('cancelEmployeeEdit').onclick=()=>{resetEmployeeEditor();$('empNotice').innerHTML=''};
-const showTab=id=>{document.querySelectorAll('main > section').forEach(x=>x.classList.toggle('hidden',x.id!==id));document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));if(id==='scale')loadWeek();if(id==='hours')calculate();if(id==='month')drawMonth()};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+const showTab=id=>{document.querySelectorAll('main > section').forEach(x=>x.classList.toggle('hidden',x.id!==id));document.querySelectorAll('.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));if(id==='scale')loadWeek();if(id==='hours')calculate();if(id==='month')drawMonth();if(id==='rules'){renderLegalTimeline();renderLegalSettings();renderTransitionDiagnostic()}};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
 
 // Não alterar histórico já encerrado. Atualizar automaticamente semanas planejadas ainda em andamento/futuras.
 // Validar e corrigir semanas futuras sem perder os registros anteriores.
@@ -581,9 +760,13 @@ function weekMatchesCurrentTeam(week){
  return people.length===existingIds.length&&people.every(e=>Array.isArray(week?.rows?.[e.id])&&week.rows[e.id].length===7);
 }
 function weekIsValidNow(week){
+ if(renderCache&&week&&typeof week==='object'&&renderCache.has(week))return renderCache.get(week);
+ let valid;
  if(!week||!weekMatchesCurrentTeam(week)||!Array.isArray(week.openSnapshot)||
-    week.openSnapshot.some((open,i)=>open!==config().open[i]))return false;
- try{return evaluate(week.rows,STORE,week.week).issues.length===0}catch{return false}
+    week.openSnapshot.some((open,i)=>open!==config().open[i]))valid=false;
+ else{try{valid=evaluate(week.rows,STORE,week.week).issues.length===0}catch{valid=false}}
+ if(renderCache&&week&&typeof week==='object')renderCache.set(week,valid);
+ return valid;
 }
 function backupWeekBeforeRepair(key,week){
  if(!state.weekRepairBackups||typeof state.weekRepairBackups!=='object')state.weekRepairBackups={};
@@ -647,7 +830,7 @@ function renderRoster(){
  $('headcount').textContent=state.employees.length;
  $('rosterBody').innerHTML=state.employees.map(e=>{
   const effective=e.days*workMinutes(e),target=e.hours*60,ok=Number.isFinite(effective)&&Math.abs(effective-target)<.01;
-  return `<tr><td data-label="Nome">${esc(e.name)}</td><td data-label="Cargo">${esc(e.role)}</td><td data-label="Jornada">${e.days} dias · meta ${formatMinutes(target)}<div class="${ok?'muted':'warn'}">Efetiva: <strong>${Number.isFinite(effective)?formatMinutes(effective):'inválida'}</strong> (${esc(e.in)}–${esc(e.out)}, intervalo ${formatMinutes(Number(e.break))})${ok?'':' ⚠ Divergência'}</div></td><td data-label="Rodízio">Automático</td><td data-label="Ações"><button type="button" data-edit="${esc(e.id)}" class="primary">Editar</button> <button type="button" data-remove="${esc(e.id)}" class="danger">Excluir</button></td></tr>`;
+  return `<tr><td data-label="Nome">${esc(e.name)}</td><td data-label="Cargo">${esc(e.role)}</td><td data-label="Jornada">${Number(e.days)||0} dias · meta ${formatMinutes(target)}<div class="${ok?'muted':'warn'}">Efetiva: <strong>${Number.isFinite(effective)?formatMinutes(effective):'inválida'}</strong> (${esc(e.in)}–${esc(e.out)}, intervalo ${formatMinutes(Number(e.break))})${ok?'':' ⚠ Divergência'}</div></td><td data-label="Rodízio">Automático</td><td data-label="Ações"><button type="button" data-edit="${esc(e.id)}" class="primary">Editar</button> <button type="button" data-remove="${esc(e.id)}" class="danger">Excluir</button></td></tr>`;
  }).join('')||'<tr><td colspan="5">Cadastre colaboradores para começar.</td></tr>';
  document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>editEmployee(b.dataset.edit));
  document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=async()=>{
@@ -705,21 +888,25 @@ function diagnostic(){
  $('staffDiagnostic').innerHTML=`<h2>Dimensionamento da equipe</h2><p>${people.length} colaboradores | ${open} dias abertos | ${capacity} jornadas disponíveis | ${demand} exigidas pela cobertura mínima</p>${note}`;
 }
 const stats=(store,excludeWeek)=>fairTotals(excludeWeek,{});
-function evaluate(rows,store,week){let c=state.configs[store],emps=state.employees.filter(x=>x.store===store),issues=[],coverage=[];for(let e of emps){
+function evaluate(rows,store,week,plans={}){let c=state.configs[store],emps=state.employees.filter(x=>x.store===store),issues=[],coverage=[],alerts=[];const phase=weekPhase(week),legal=legalSettings();for(let e of emps){
  let arr=rows[e.id]||[],worked=arr.filter(x=>x==='T').length,holiday=arr.filter(x=>x==='H').length,n=worked+holiday,plannedDays=targetDaysFor(e),off=arr.filter(x=>x==='F').length,neededOff=7-plannedDays;
  if(n!==plannedDays)issues.push(`${e.name}: ${n} dias de expediente previsto (incluindo feriados dispensados), esperado ${plannedDays}.`);
  if(off!==neededOff)issues.push(`${e.name}: precisa de ${neededOff} folga(s) próprias na semana; feriado dispensado não substitui folga.`);
  for(let d=0;d<7;d++){const date=move(week,d),v=arr[d];if(!['T','F','H'].includes(v))issues.push(`${e.name}: dia ${brDate(date)} sem programação válida.`);if(holidayClosed(date)&&c.open[d]&&v==='T')issues.push(`${e.name}: expediente em feriado ou dia sem expediente.`);if(allWorkSpecial(date)&&v!=='T')issues.push(`${e.name}: presença obrigatória não atendida em ${brDate(date)}.`);if(v==='H'&&(!holidayClosed(date)||!c.open[d]))issues.push(`${e.name}: dispensa por feriado indevida em ${brDate(date)}.`);if(!c.open[d]&&v!=='F')issues.push(`${e.name}: deve folgar em dia de fechamento.`)}
- const mins=worked*workMinutes(e),planned=n*workMinutes(e),limit=Number($('weekLimit').value)*60,target=targetHoursMinutesFor(e);
+ const mins=worked*workMinutes(e),planned=n*workMinutes(e),limit=weeklyLimitMinutes(week),target=targetHoursMinutesFor(e);
  if(!Number.isFinite(mins)){issues.push(`${e.name}: horários ou intervalo inválidos; corrija o cadastro.`);continue}
  if(mins>limit)issues.push(`${e.name}: ${formatMinutes(mins)} excedem o limite de ${limit/60}h.`);
+ // v2.30: limite diário, intervalo e interjornada conforme a etapa legal da semana.
+ if(worked>0){const daily=dailyCompliance(workMinutes(e),spanMinutes(e.in,e.out),Number(e.break),phase);daily.block.forEach(m=>issues.push(`${e.name}: ${m}.`));daily.warn.forEach(m=>alerts.push(`${e.name}: ${m}.`));}
+ // v2.30: descanso dominical no comércio (Lei 10.101/2000, art. 6º) quando a loja abre aos domingos.
+ if(legal.sundayWeeks>0&&c.open[6]&&arr[6]==='T'){const streak=sundayWorkStreakBefore(e.id,week,plans)+1;if(streak>=legal.sundayWeeks)issues.push(`${e.name}: ${streak} domingos seguidos trabalhados; o descanso deve coincidir com o domingo ao menos 1 vez a cada ${legal.sundayWeeks} semanas.`);}
  if(target>0&&planned!==target)issues.push(`${e.name}: jornada-base ${formatMinutes(planned)} difere das ${Number(e.hours)}h contratuais (sem confundir feriado dispensado com hora trabalhada).`);
 }
 for(let d=0;d<7;d++){let working=emps.filter(e=>rows[e.id]?.[d]==='T'),off=emps.filter(e=>rows[e.id]?.[d]==='F').length,counts={};ROLES.forEach(r=>counts[r]=working.filter(e=>roleOf(e)===r).length);let errors=[];
  if(effectiveOpen(week)[d]){for(let r of ROLES)if(counts[r]<(c.minimum[r]||0))errors.push(`${r}: ${counts[r]}/${c.minimum[r]}`);if(isNoOffDay(move(week,d))&&off>0)errors.push(`Folgas proibidas neste dia: ${off} colaborador(es) de folga`);}
  else if(working.length)errors.push(`${working.length} trabalhando em dia fechado/feriado`);
  if(c.maxOff&&off>c.maxOff&&effectiveOpen(week)[d])errors.push(`${off} folgas excedem máximo de ${c.maxOff}`);
- if(errors.length)issues.push(DAYS[d]+': '+errors.join('; '));coverage.push({working,counts,errors})}return {issues,coverage}}
+ if(errors.length)issues.push(DAYS[d]+': '+errors.join('; '));coverage.push({working,counts,errors})}return {issues,coverage,alerts:[...new Set(alerts)],phase}}
 // Regras locais: dias sem folga e datas específicas de maior movimento.
 function assureNoOff(){if(!Array.isArray(state.noOffWeekdays))state.noOffWeekdays=Array(7).fill(false);if(!state.noOffDates||typeof state.noOffDates!=='object')state.noOffDates={}}
 function isNoOffDay(date){assureNoOff();const d=(dateAt(date).getDay()+6)%7;return !!(allWorkSpecial(date)||state.noOffWeekdays[d]||state.noOffDates[date])}
@@ -754,7 +941,7 @@ function drawNoOff(){assureNoOff();$('noOffWeekdays').innerHTML=DAYS.map((d,i)=>
   ?'<div class="ok" style="margin-top:10px">Há pelo menos um par de dias consecutivos em que a empresa permite descansos. O rodízio priorizará distribuir essas folgas dobradas entre os funcionários ao longo do tempo, respeitando a cobertura.</div>'
   :'<div class="warn" style="margin-top:10px"><strong>Atenção:</strong> esses dias não permitem folgas consecutivas. Para todos usufruírem de folga dobrada, autorize dias vizinhos (por exemplo segunda + terça, sábado + domingo ou domingo + segunda, conforme o funcionamento).</div>';
  renderFolgaCapacityNotice();
- $('noOffDateList').innerHTML=Object.keys(state.noOffDates).filter(x=>state.noOffDates[x]).sort().map(x=>`<button type="button" data-remove-nooff="${x}" title="Remover bloqueio">${brDate(x)} ×</button>`).join('')||'<span class="muted">Nenhuma data específica bloqueada</span>';
+ $('noOffDateList').innerHTML=Object.keys(state.noOffDates).filter(x=>state.noOffDates[x]).sort().map(x=>`<button type="button" data-remove-nooff="${esc(x)}" title="Remover bloqueio">${esc(brDate(x))} ×</button>`).join('')||'<span class="muted">Nenhuma data específica bloqueada</span>';
  document.querySelectorAll('[data-remove-nooff]').forEach(b=>b.onclick=async()=>{const before={...state.noOffDates};delete state.noOffDates[b.dataset.removeNooff];if(!await savePersistent({offerPicker:false})){state.noOffDates=before;return $('noOffFeedback').textContent='Não foi possível salvar o desbloqueio.'}drawNoOff();$('noOffFeedback').textContent='Bloqueio removido e salvo.'})}
 $('noOffExactDate').addEventListener('input',e=>{e.target.value=maskDateText(e.target.value)});
 $('addNoOffDate').onclick=async()=>{const date=parseDateInput($('noOffExactDate').value);if(!date)return $('noOffFeedback').textContent='Data inválida. Use DD/MM/AAAA.';assureNoOff();const old={...state.noOffDates};state.noOffDates[date]=true;if(!await savePersistent({offerPicker:false})){state.noOffDates=old;return $('noOffFeedback').textContent='NÃO SALVO. Verifique o armazenamento.'}$('noOffExactDate').value='';drawNoOff();$('noOffFeedback').textContent='Data bloqueada e salva: '+brDate(date)};
@@ -802,6 +989,8 @@ function makeWeek(week,previousPlans={}){
  if(compulsory.length>2)preliminary.push(`A empresa fecha ${compulsory.length} dias na semana. Este modelo exige exatamente duas folgas semanais; reveja os dias de funcionamento.`);
  for(const e of emps){if(Number(e.days)!==5)preliminary.push(`${e.name}: o regime 5×2 exige cinco dias trabalhados; no cadastro consta ${e.days}.`);
   if(!Number.isFinite(workMinutes(e))||Math.round(5*workMinutes(e))!==targetHoursMinutesFor(e))preliminary.push(`${e.name}: horários não completam ${e.hours}h em cinco dias.`);
+  else{const lim=weeklyLimitMinutes(week),wk=5*workMinutes(e);if(wk>lim)preliminary.push(`${e.name}: ${formatMinutes(wk)} excedem o limite de ${lim/60}h.`);
+   dailyCompliance(workMinutes(e),spanMinutes(e.in,e.out),Number(e.break),weekPhase(week)).block.forEach(m=>preliminary.push(`${e.name}: ${m}.`));}
  }
  const extra=2-compulsory.length;
  if(extra>openAllowed.length)preliminary.push(`Há somente ${openAllowed.length} dia(s) aberto(s) com folguistas permitidos, mas são necessários ${extra} dia(s) adicionais de descanso por pessoa.`);
@@ -810,14 +999,18 @@ function makeWeek(week,previousPlans={}){
   return n+Math.max(0,Math.min(c.maxOff||emps.length,maxByRole));
  },0);
  if(extra>0&&allowedCap<extra*emps.length)preliminary.push(`Capacidade total de folguistas insuficiente: ${allowedCap} vagas permitidas para ${extra*emps.length} folgas necessárias.`);
- if(preliminary.length){const z=evaluate(rows,store,week);return {store,week,rows,issues:[...new Set([...preliminary,...z.issues])],savedAt:null,rosterSnapshot:emps.map(e=>({...e})),openSnapshot:[...opens]};}
+ if(preliminary.length){const z=evaluate(rows,store,week,previousPlans);return {store,week,rows,issues:[...new Set([...preliminary,...z.issues])],savedAt:null,rosterSnapshot:emps.map(e=>({...e})),openSnapshot:[...opens]};}
  const past=historicalPlans(week,previousPlans);
  const previous=past[weekKey(STORE,move(week,-7))];
  const serial=rotationWeekSerial(week);
+ // v2.30: quem já trabalhou domingos seguidos no limite da regra recebe o domingo como folga.
+ const sundayRule=legalSettings().sundayWeeks,sundayAllowed=openAllowed.includes(6);
+ const sundayTarget=sundayRule>0&&opens[6]&&sundayAllowed?Math.ceil(emps.length/sundayRule):0;
+ const sundayStreak={},mustSunday={};for(const e of emps){sundayStreak[e.id]=sundayRule>0&&opens[6]&&sundayAllowed?sundayWorkStreakBefore(e.id,week,previousPlans):0;mustSunday[e.id]=sundayRule>0&&opens[6]&&sundayAllowed&&sundayStreak[e.id]>=sundayRule-1;}
  // A ordem de cadastro é a referência visual do rodízio; a cobertura tem prioridade.
  const ordered=[...emps].sort((a,b)=>{
   const slack=x=>emps.filter(e=>e.role===x.role).length-(Number(c.minimum[x.role])||0);
-  return slack(a)-slack(b)||hist[a.id].double-hist[b.id].double||emps.indexOf(a)-emps.indexOf(b);
+  return (mustSunday[b.id]?1:0)-(mustSunday[a.id]?1:0)||slack(a)-slack(b)||sundayStreak[b.id]-sundayStreak[a.id]||hist[a.id].double-hist[b.id].double||emps.indexOf(a)-emps.indexOf(b);
  });
  const profiles={};for(const e of emps){
   const need=Math.max(0,2-compulsory.length),pool=openAllowed;
@@ -835,7 +1028,8 @@ function makeWeek(week,previousPlans={}){
   const seq=attempt===0?ordered:[...ordered.slice(attempt%Math.max(ordered.length,1)),...ordered.slice(0,attempt%Math.max(ordered.length,1))];
   for(const e of seq){
    const h=hist[e.id],candidates=[];
-   for(const combo of profiles[e.id]){
+   let pool=profiles[e.id];if(mustSunday[e.id]){const withSunday=pool.filter(cb=>cb.includes(6));if(withSunday.length)pool=withSunday}
+   for(const combo of pool){
     if(combo.some(d=>offs[d]>=(c.maxOff||emps.length)))continue;
     if(combo.some(d=>emps.filter(p=>p.role===e.role).length-byRole[e.role][d]-1<Number(c.minimum[e.role]||0)))continue;
     const allOff=[...compulsory,...combo].sort((a,b)=>a-b);
@@ -859,6 +1053,9 @@ function makeWeek(week,previousPlans={}){
     }
     // Respeita rodízio dominical se domingos estiverem abertos e permitidos.
     if(combo.includes(6))score+=h.sun*18;
+    // v2.30: quanto mais domingos seguidos trabalhados, maior a prioridade de folgar no domingo.
+    // Meta semanal de folgas no domingo = equipe ÷ semanas da regra; prioridade para quem acumula mais domingos.
+    if(sundayTarget&&combo.includes(6)&&offs[6]<sundayTarget)score-=600+300*sundayStreak[e.id];
     score+=(attempt%8)*((emps.indexOf(e)*13+combo.reduce((a,b)=>a+b*7,0))%5);
     candidates.push({combo,score});
    }
@@ -871,7 +1068,7 @@ function makeWeek(week,previousPlans={}){
  if(best){for(const e of emps)rows[e.id]=best.rows[e.id]}
  // Folga previamente escalada permanece F; somente o expediente previsto vira H (feriado dispensado).
  for(let d=0;d<7;d++)if(holidayClosed(move(week,d)))for(const e of emps)if(rows[e.id][d]==='T')rows[e.id][d]='H';
- const result=evaluate(rows,store,week);
+ const result=evaluate(rows,store,week,previousPlans);
  if(!best)result.issues.unshift('Não foi possível distribuir as folgas entre os dias permitidos respeitando simultaneamente a cobertura por função. Ajuste os dias permitidos, os mínimos ou o limite de folguistas.');
  // Se as possibilidades nunca incluírem uma dupla, avisar no calendário de configuração,
  // sem supor que exista direito a duas folgas consecutivas em toda semana.
@@ -912,7 +1109,7 @@ async function generateAndSavePeriod(period){
   const items=Object.values(drafts),issues=items.reduce((a,w)=>a+(w.issues?.length||0),0);
   if(issues){
    const problems=items.flatMap(w=>(w.issues||[]).map(msg=>`${brDate(w.week)}: ${msg}`));
-   const causes=problems.filter(msg=>/Capacidade total de folguistas|Há somente|A empresa fecha|não completam|Folgas proibidas|Não foi possível distribuir|dias de funcionamento/i.test(msg));
+   const causes=problems.filter(msg=>/Capacidade total de folguistas|Há somente|A empresa fecha|não completam|excede|ultrapassa|descanso entre jornadas|domingos seguidos|Folgas proibidas|Não foi possível distribuir|dias de funcionamento/i.test(msg));
    const unique=[...new Set((causes.length?causes:problems).map(msg=>msg.replace(/^\d{2}\/\d{2}\/\d{4}: /,'')))];
    const capacity=folgaCapacity(list[0]);
    const summary=!capacity.feasible?`Há ${capacity.capacity} vagas para ${capacity.required} folgas adicionais. Verifique os dias permitidos, o limite de folguistas e a cobertura mínima. `:'';
@@ -972,7 +1169,7 @@ function applyMobileDayView(){
 $('mobileScheduleDay').onchange=e=>{mobileDayIndex=Number(e.target.value);applyMobileDayView()};
 $('mobilePrevDay').onclick=()=>{mobileDayIndex=(mobileDayIndex+6)%7;applyMobileDayView()};
 $('mobileNextDay').onclick=()=>{mobileDayIndex=(mobileDayIndex+1)%7;applyMobileDayView()};
-function draw(){if(!current)return;let {rows,store,week}=current,emps=state.employees.filter(e=>e.store===store),res=evaluate(rows,store,week);$('weekTitle').textContent=`${brDate(week)} a ${brDate(move(week,6))}`;$('scheduleHead').innerHTML='<tr><th>Colaborador / cargo</th>'+DAYS.map((d,i)=>`<th class="schedule-day-cell" data-weekday="${i}">${d}<div class="muted">${move(week,i).slice(5).split('-').reverse().join('/')}</div></th>`).join('')+'<th>Horas</th></tr>';$('scheduleBody').innerHTML=emps.map(e=>{let a=rows[e.id]||Array(7).fill('F'),worked=a.filter(x=>x==='T').length,mins=worked*workMinutes(e);return `<tr><td>${esc(e.name)}<div class="muted">${esc(e.role)} · ${e.days} dias</div></td>${a.map((v,d)=>`<td data-weekday="${d}" class="schedule-day-cell ${v==='T'?'work':'off'}"><select aria-label="${esc(e.name)}: ${DAYS[d]}" data-id="${esc(e.id)}" data-d="${d}"><option value="T" ${v==='T'?'selected':''}>Trabalha</option><option value="F" ${v==='F'?'selected':''}>Folga</option>${v==='H'?'<option value="H" selected>Feriado • dispensado</option>':''}</select></td>`).join('')}<td>${Math.floor(mins/60)}h${String(mins%60).padStart(2,'0')}</td></tr>`}).join('');document.querySelectorAll('#scheduleBody select').forEach(el=>el.onchange=async()=>{
+function draw(){if(!current)return;let {rows,store,week}=current,emps=state.employees.filter(e=>e.store===store),res=evaluate(rows,store,week);$('weekTitle').textContent=`${brDate(week)} a ${brDate(move(week,6))}`;$('scheduleHead').innerHTML='<tr><th>Colaborador / cargo</th>'+DAYS.map((d,i)=>`<th class="schedule-day-cell" data-weekday="${i}">${d}<div class="muted">${move(week,i).slice(5).split('-').reverse().join('/')}</div></th>`).join('')+'<th>Horas</th></tr>';$('scheduleBody').innerHTML=emps.map(e=>{let a=rows[e.id]||Array(7).fill('F'),worked=a.filter(x=>x==='T').length,mins=worked*workMinutes(e);return `<tr><td>${esc(e.name)}<div class="muted">${esc(e.role)} · ${Number(e.days)||0} dias</div></td>${a.map((v,d)=>`<td data-weekday="${d}" class="schedule-day-cell ${v==='T'?'work':'off'}"><select aria-label="${esc(e.name)}: ${DAYS[d]}" data-id="${esc(e.id)}" data-d="${d}"><option value="T" ${v==='T'?'selected':''}>Trabalha</option><option value="F" ${v==='F'?'selected':''}>Folga</option>${v==='H'?'<option value="H" selected>Feriado • dispensado</option>':''}</select></td>`).join('')}<td>${Math.floor(mins/60)}h${String(mins%60).padStart(2,'0')}</td></tr>`}).join('');document.querySelectorAll('#scheduleBody select').forEach(el=>el.onchange=async()=>{
  const id=el.dataset.id,day=Number(el.dataset.d),key=weekKey(STORE,current.week),oldWeek=state.weeks[key];
  if(!oldWeek){alert('Gere e salve o período antes de fazer ajustes manuais.');draw();return}
  const replacement=JSON.parse(JSON.stringify(oldWeek));replacement.rows[id][day]=holidayClosed(move(replacement.week,day))&&el.value==='T'?'H':el.value;
@@ -986,9 +1183,9 @@ function draw(){if(!current)return;let {rows,store,week}=current,emps=state.empl
  }
  current=JSON.parse(JSON.stringify(replacement));draw();
  $('periodNotice').innerHTML='<div class="ok">✓ Alteração da semana salva automaticamente. '+assessment.issues.length+' alerta(s) encontrados.</div>';
- });applyMobileDayView();$('alerts').innerHTML=res.issues.length?`<div class="error"><strong>${res.issues.length} alerta(s) • escala requer revisão</strong>${res.issues.map(i=>`<div>• ${esc(i)}</div>`).join('')}</div>`:'<div class="ok">Nenhum conflito detectado pelas regras configuradas. Conferência jurídica e de horários ainda necessária.</div>';$('coverage').innerHTML=res.coverage.map((x,d)=>`<div class="daycard"><strong>${DAYS[d]}</strong><p>${x.working.length} trabalhando</p>${ROLES.filter(r=>state.configs[store].minimum[r]).map(r=>`<div>${r}: ${x.counts[r]}/${state.configs[store].minimum[r]}</div>`).join('')}<div style="margin-top:7px">${x.errors.length?'⚠ Conflito':'✓ Coberto'}</div></div>`).join('');let h=stats(store,week);$('history').innerHTML='<div class="table-scroll"><table><thead><tr><th>Colaborador</th><th>Domingos anteriores</th><th>Segundas anteriores</th><th>Duplas anteriores</th><th>Domingo anterior + segunda atual</th><th>Domingo atual</th><th>Segunda atual</th></tr></thead><tbody>'+emps.map(e=>`<tr><td>${esc(e.name)}</td><td>${h[e.id].sun}</td><td>${h[e.id].mon}</td><td>${h[e.id].double}</td><td>${rows[e.id]?.[0]==='F'&&state.weeks[weekKey(STORE,move(week,-7))]?.rows?.[e.id]?.[6]==='F'?'Sim':'Não'}</td><td>${rows[e.id]?.[6]==='F'?'Folga':'Trabalha'}</td><td>${rows[e.id]?.[0]==='F'?'Folga':'Trabalha'}</td></tr>`).join('')+'</tbody></table></div>';$('scheduleMetrics').innerHTML=`<div class="metric">Funcionários<strong>${emps.length}</strong></div><div class="metric">Dias abertos<strong>${state.configs[store].open.filter(Boolean).length}</strong></div><div class="metric">Alertas<strong>${res.issues.length}</strong></div><div class="metric">Status<strong>${res.issues.length?'Revisar':'Verificada'}</strong></div>`}
+ });applyMobileDayView();const ph=res.phase||weekPhase(week);$('alerts').innerHTML=`<div class="muted" style="margin:4px 0 8px">Etapa legal desta semana: <strong>${esc(ph.label)}</strong> • limite de ${weeklyLimitMinutes(week)/60} h semanais${legalSettings().limit==='auto'?' (automático pela data)':' (fixado nos parâmetros)'}.</div>`+(res.issues.length?`<div class="error"><strong>${res.issues.length} bloqueio(s) • escala requer revisão</strong>${res.issues.map(i=>`<div>• ${esc(i)}</div>`).join('')}</div>`:'<div class="ok">Nenhum conflito detectado pelas regras configuradas. Conferência jurídica e de horários ainda necessária.</div>')+(res.alerts&&res.alerts.length?`<div class="legal-alerts"><strong>⚖ ${res.alerts.length} ponto(s) para conferência legal</strong> (não impedem salvar)${res.alerts.map(i=>`<div>• ${esc(i)}</div>`).join('')}</div>`:'');$('coverage').innerHTML=res.coverage.map((x,d)=>`<div class="daycard"><strong>${DAYS[d]}</strong><p>${x.working.length} trabalhando</p>${ROLES.filter(r=>state.configs[store].minimum[r]).map(r=>`<div>${esc(r)}: ${x.counts[r]}/${Number(state.configs[store].minimum[r])}</div>`).join('')}<div style="margin-top:7px">${x.errors.length?'⚠ Conflito':'✓ Coberto'}</div></div>`).join('');let h=stats(store,week);$('history').innerHTML='<div class="table-scroll"><table><thead><tr><th>Colaborador</th><th>Domingos anteriores</th><th>Segundas anteriores</th><th>Duplas anteriores</th><th>Domingo anterior + segunda atual</th><th>Domingo atual</th><th>Segunda atual</th></tr></thead><tbody>'+emps.map(e=>`<tr><td>${esc(e.name)}</td><td>${h[e.id].sun}</td><td>${h[e.id].mon}</td><td>${h[e.id].double}</td><td>${rows[e.id]?.[0]==='F'&&state.weeks[weekKey(STORE,move(week,-7))]?.rows?.[e.id]?.[6]==='F'?'Sim':'Não'}</td><td>${rows[e.id]?.[6]==='F'?'Folga':'Trabalha'}</td><td>${rows[e.id]?.[0]==='F'?'Folga':'Trabalha'}</td></tr>`).join('')+'</tbody></table></div>';$('scheduleMetrics').innerHTML=`<div class="metric">Funcionários<strong>${emps.length}</strong></div><div class="metric">Dias abertos<strong>${state.configs[store].open.filter(Boolean).length}</strong></div><div class="metric">Alertas<strong>${res.issues.length}</strong></div><div class="metric">Status<strong>${res.issues.length?'Revisar':'Verificada'}</strong></div>`}
 $('periodStart').addEventListener('change',()=>{selectedWeekDate=null;loadWeek()});
-$('weekLimit').onchange=()=>current&&draw();
+$('weekLimit').onchange=e=>applyLegalSettings({legalLimit:e.target.value},'periodNotice');
 $('printBtn').onclick=()=>{const p=periodDates();if(!p)return;printScheduleReport(p.start,p.end)};
 function download(name,content,type){let blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),500)}
 $('csvBtn').onclick=()=>{
@@ -1004,9 +1201,10 @@ $('csvBtn').onclick=()=>{
  if(!exported)return alert('Nenhuma escala salva para este período. Clique em Gerar e salvar período antes de exportar.');
  download(`escala-${p.start}-a-${p.end}.csv`,'\ufeff'+rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n'),'text/csv;charset=utf-8')
 };
-function applySuggestedSchedule(hours){$('calcIn').value='08:00';$('calcOut').value='18:00';$('calcDays').value=5;$('calcTarget').value=String(hours);$('calcBreak').value=hours===42?96:120;calculate()}
+function applySuggestedSchedule(hours,start='08:00',end='18:00',rest=null){$('calcIn').value=start;$('calcOut').value=end;$('calcDays').value=5;$('calcTarget').value=String(hours);$('calcBreak').value=rest??(hours===42?96:120);calculate()}
 $('apply42').onclick=()=>applySuggestedSchedule(42);
 $('apply40').onclick=()=>applySuggestedSchedule(40);
+$('apply40b').onclick=()=>applySuggestedSchedule(40,'09:00','18:00',60);
 $('autoBreak').onclick=()=>{let span=minute($('calcOut').value)-minute($('calcIn').value);if(span<0)span+=1440;let days=Number($('calcDays').value),target=Number($('calcTarget').value);if(!days||days<1)return alert('Defina dias trabalhados válidos.');let ideal=span-target*60/days;if(ideal<0||ideal>240)return alert('Não é possível atingir a meta com o expediente e intervalo permitidos nesta configuração.');if(!Number.isInteger(ideal))return alert('O intervalo ideal tem fração de minuto. Ajuste os horários ou a distribuição diária.');$('calcBreak').value=ideal;calculate()};
 function calculate(){
  const span=spanMinutes($('calcIn').value,$('calcOut').value),rest=Number($('calcBreak').value),days=Number($('calcDays').value),target=Number($('calcTarget').value)*60;
@@ -1015,10 +1213,10 @@ function calculate(){
  const daily=span-rest,weekly=daily*days,diff=weekly-target;
  const dailySplit=`${formatMinutes(span)} − ${formatMinutes(rest)} = ${formatMinutes(daily)}`;
  const restWeekly=rest*days,spanWeekly=span*days;
- el.innerHTML=`<h2>Conferência detalhada dos horários</h2><div class="metrics"><div class="metric">Permanência diária<strong>${formatMinutes(span)}</strong></div><div class="metric">Almoço / descanso diário<strong>${formatMinutes(rest)}</strong></div><div class="metric">Trabalho diário<strong>${formatMinutes(daily)}</strong></div><div class="metric">Permanência semanal<strong>${formatMinutes(spanWeekly)}</strong></div><div class="metric">Intervalos na semana<strong>${formatMinutes(restWeekly)}</strong></div><div class="metric">Trabalho na semana<strong>${formatMinutes(weekly)}</strong></div><div class="metric">Diferença para meta<strong>${diff>0?'+':diff<0?'-':''}${formatMinutes(diff)}</strong></div></div><div class="${diff===0?'ok':'warn'}" style="margin-top:12px"><strong>Conferência:</strong> ${dailySplit} por dia.<br>${formatMinutes(spanWeekly)} de permanência − ${formatMinutes(restWeekly)} de intervalos = <b>${formatMinutes(weekly)} efetivas</b> em ${days} dias.<br>Meta: ${formatMinutes(target)}. ${diff===0?'Total exato.':'Ajuste os horários ou intervalos para atingir a meta.'}</div>${daily>600?'<div class="warn">Alerta: mais de 10 horas efetivas no dia. Verifique limites legais e acordos.</div>':''}${rest<60&&daily>360?'<div class="warn">Alerta: intervalo inferior a 1h em jornada acima de 6h; depende das hipóteses legais aplicáveis.</div>':''}`;
+ el.innerHTML=`<h2>Conferência detalhada dos horários</h2><div class="metrics"><div class="metric">Permanência diária<strong>${formatMinutes(span)}</strong></div><div class="metric">Almoço / descanso diário<strong>${formatMinutes(rest)}</strong></div><div class="metric">Trabalho diário<strong>${formatMinutes(daily)}</strong></div><div class="metric">Permanência semanal<strong>${formatMinutes(spanWeekly)}</strong></div><div class="metric">Intervalos na semana<strong>${formatMinutes(restWeekly)}</strong></div><div class="metric">Trabalho na semana<strong>${formatMinutes(weekly)}</strong></div><div class="metric">Diferença para meta<strong>${diff>0?'+':diff<0?'-':''}${formatMinutes(diff)}</strong></div></div><div class="${diff===0?'ok':'warn'}" style="margin-top:12px"><strong>Conferência:</strong> ${dailySplit} por dia.<br>${formatMinutes(spanWeekly)} de permanência − ${formatMinutes(restWeekly)} de intervalos = <b>${formatMinutes(weekly)} efetivas</b> em ${days} dias.<br>Meta: ${formatMinutes(target)}. ${diff===0?'Total exato.':'Ajuste os horários ou intervalos para atingir a meta.'}</div>${phaseComplianceHtml(daily,span,rest,weekly,days)}`;
 }
 ['calcIn','calcOut','calcBreak','calcDays','calcTarget'].forEach(id=>$(id).oninput=calculate);
-$('exportBackup').onclick=()=>download('Escala_Rotativa_Dados_backup.json',JSON.stringify(state,null,2),'application/json');$('importBackupBtn').onclick=()=>$('importBackup').click();$('importBackup').onchange=async e=>{try{let data=JSON.parse(await e.target.files[0].text());if(!validImportedState(data))throw Error('Estrutura incompatível');if(!confirm('Substituir todos os dados locais pelo backup importado?'))return;state=data;migrateOneStore();rebuildUI();if(!await savePersistent())return alert('Backup aberto, mas não foi possível gravar. Vincule um arquivo de dados.');alert('Backup importado e gravado.')}catch(err){alert('Falha na importação: '+err.message)}};$('resetData').onclick=async()=>{if(confirm('Limpar os dados exibidos e o armazenamento deste navegador? O arquivo JSON externo, se existir, NÃO será apagado.')){activeDataFile=null;fileLabel='';state=defaultState();try{localStorage.removeItem(STORAGE_KEY)}catch{}await clearLocalDb();await forgetFileHandle();rebuildUI();refreshStorageStatus()}};
+$('exportBackup').onclick=()=>download('Escala_Rotativa_Dados_backup.json',JSON.stringify(state,null,2),'application/json');$('importBackupBtn').onclick=()=>$('importBackup').click();$('importBackup').onchange=async e=>{try{let data=JSON.parse(await e.target.files[0].text());if(!validImportedState(data))throw Error('Estrutura incompatível');if(!confirm('Substituir todos os dados locais pelo backup importado?'))return;state=data;migrateOneStore();rebuildUI();if(!await savePersistent())return alert('Backup aberto, mas não foi possível gravar. Vincule um arquivo de dados.');alert('Backup importado e gravado.')}catch(err){alert('Falha na importação: '+err.message)}};$('resetData').onclick=async()=>{if(confirm('Limpar os dados exibidos e o armazenamento deste navegador? Uma cópia de segurança será baixada antes. O arquivo JSON externo, se existir, NÃO será apagado.')){download('Escala_Rotativa_Dados_backup_antes_de_limpar_'+iso(new Date())+'.json',JSON.stringify(state,null,2),'application/json');activeDataFile=null;fileLabel='';state=defaultState();try{localStorage.removeItem(STORAGE_KEY)}catch{}await clearLocalDb();await forgetFileHandle();rebuildUI();refreshStorageStatus()}};
 // Controles explícitos para o arquivo de dados. Evita depender só do localStorage.
 $('connectDataFile').onclick=async()=>{
  if(typeof window.showSaveFilePicker!=='function'){
@@ -1042,7 +1240,8 @@ const MONTH_NAMES=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho'
 function monthBounds(month){const [y,m]=month.split('-').map(Number);return {year:y,month:m,first:`${y}-${String(m).padStart(2,'0')}-01`,length:new Date(y,m,0).getDate()}}
 function moveMonth(n){const b=monthBounds(monthShown);const d=new Date(b.year,b.month-1+n,1,12);monthShown=iso(d).slice(0,7);selectedMonthDay=monthShown+'-01';$('monthActionStatus').textContent='';drawMonth()}
 function getMonthWeek(date){return state.weeks[weekKey(STORE,mon(date))]||null}
-function getDaySchedule(date){const w=getMonthWeek(date);const idx=(dateAt(date).getDay()+6)%7;
+function getDaySchedule(date){if(renderDayCache){if(!renderDayCache.has(date))renderDayCache.set(date,computeDaySchedule(date));return renderDayCache.get(date)}return computeDaySchedule(date)}
+function computeDaySchedule(date){const w=getMonthWeek(date);const idx=(dateAt(date).getDay()+6)%7;
  // Priorizar o cadastro atual; usar o histórico apenas para IDs que não estão mais na equipe.
  const currentPeople=state.employees.filter(x=>x.store===STORE);
  const oldPeople=(w?.rosterSnapshot||[]).filter(e=>!currentPeople.some(p=>String(p.id)===String(e.id)));
@@ -1064,6 +1263,45 @@ function renderMonthDetails(){const date=selectedMonthDay, info=getDaySchedule(d
  $('monthDayDetails').innerHTML=`<h3>${esc(title)}${holiday?' · ⚑ '+esc(holiday):''}</h3>${holiday?'<p class="detail-alert"><strong>Feriado / data comemorativa:</strong> '+esc(holiday)+'</p>':''}${!info.opened?'<p class="detail-alert"><strong>Estabelecimento fechado neste dia.</strong></p>':''}${infoBlock}<div class="actions no-print"><button type="button" id="editMonthWeek">Abrir esta semana na Escala inteligente</button></div>`;
  $('editMonthWeek').onclick=()=>{setSelectedDate(date);showTab('scale')};
 }
+// ===== v2.30 — Calendário compacto: dia, presentes e folgas visualmente distintos =====
+let monthView=(window.matchMedia&&window.matchMedia('(max-width:700px)').matches)?'list':'grid',periodOpen=false;
+const WEEKDAY_SHORT=['DOM','SEG','TER','QUA','QUI','SEX','SÁB'];
+function shortNames(people){
+ const first=p=>String(p.name||'').trim().split(/\s+/)[0]||'?',count={},out={};
+ people.forEach(p=>{const f=first(p).toLocaleLowerCase('pt-BR');count[f]=(count[f]||0)+1});
+ people.forEach(p=>{const parts=String(p.name||'').trim().split(/\s+/);let n=parts[0]||'?';if(count[n.toLocaleLowerCase('pt-BR')]>1&&parts[1])n+=' '+parts[1][0]+'.';out[String(p.id)]=n});
+ return out;
+}
+function dayState(date,inf){
+ if(noWorkSpecial(date))return {kind:'none',label:specialMode(date)==='holiday'?'Feriado local':'Ninguém trabalha'};
+ if(holidayClosed(date))return {kind:'holiday',label:'Feriado'};
+ if(!inf.opened)return {kind:'closed',label:'Fechado'};
+ if(inf.rosterOutdated)return {kind:'stale',label:'⚠ Equipe incompleta'};
+ if(inf.stale)return {kind:'stale',label:'⚠ Atualizar'};
+ if(!inf.saved)return {kind:'pending',label:'Sem escala'};
+ if(allWorkSpecial(date))return {kind:'all',label:'Todos trabalham'};
+ return {kind:'open',label:inf.off.length?'':'Todos trabalham'};
+}
+function dayAria(date,inf,st){const h=getHolidayLabel(date);return brDate(date)+(h?', '+h:'')+', '+(st.label||'')+(inf.saved?`, ${inf.working.length} trabalhando`+(inf.off.length?', folga: '+inf.off.map(e=>e.name).join(', '):''):'')}
+function calCellHtml(date,{selected=false,outRange=false,attr='data-month-day',names={}}={}){
+ const inf=getDaySchedule(date),st=dayState(date,inf),holiday=getHolidayLabel(date),auto=autoHolidayName(date);
+ const closing=['holiday','none'].includes(st.kind),offs=inf.saved&&['open','all'].includes(st.kind)?inf.off:[];
+ const max=(window.matchMedia&&window.matchMedia('(max-width:700px)').matches)?2:4;
+ const chips=offs.slice(0,max).map(e=>`<span class="cal-name" title="${esc(e.name+' • '+(e.role||'')+' • folga')}">${esc(names[String(e.id)]||e.name)}</span>`).join('')+(offs.length>max?`<span class="cal-more">+${offs.length-max}</span>`:'');
+ const count=inf.saved&&!closing&&st.kind!=='closed'?`<span class="cal-count" title="${inf.working.length} pessoa(s) trabalhando"><i aria-hidden="true">👥</i>${inf.working.length}</span>`:'';
+ const tag=holiday?`<span class="cal-holiday ${closing?'':'info'}" title="${esc(holiday)}">${esc(auto||holiday)}</span>`:'';
+ const status=st.label&&!(st.kind==='holiday'&&tag)?`<span class="cal-status">${esc(st.label)}</span>`:'';
+ return `<button type="button" class="cal-cell k-${st.kind}${selected?' is-selected':''}${outRange?' out-range':''}" ${attr}="${date}" aria-label="${esc(dayAria(date,inf,st))}"><span class="cal-top"><span class="cal-date">${Number(date.slice(8))}</span>${count}</span>${tag}${status}${chips?`<span class="cal-names">${chips}</span>`:''}</button>`;
+}
+function agendaRowHtml(date,{selected=false}={}){
+ const inf=getDaySchedule(date),st=dayState(date,inf),holiday=getHolidayLabel(date),wd=WEEKDAY_SHORT[dateAt(date).getDay()];
+ const closing=['holiday','none','closed'].includes(st.kind);
+ const count=inf.saved&&!closing?`<span class="cal-count"><i aria-hidden="true">👥</i>${inf.working.length} trabalhando</span>`:'';
+ const tag=holiday?`<span class="cal-holiday ${['holiday','none'].includes(st.kind)?'':'info'}">${esc(holiday)}</span>`:'';
+ const status=st.label?`<span class="cal-status">${esc(st.label)}</span>`:'';
+ const offs=inf.saved&&!closing&&inf.off.length?`<span class="ag-offs">Folga: ${inf.off.map(e=>`<b>${esc(e.name)}</b> <small>(${esc(e.role||'')})</small>`).join(', ')}</span>`:'';
+ return `<button type="button" class="ag-row k-${st.kind}${selected?' is-selected':''}" data-month-day="${date}" aria-label="${esc(dayAria(date,inf,st))}"><span class="ag-date"><b>${date.slice(8)}</b><small>${wd}</small></span><span class="ag-body"><span class="ag-line">${count}${tag}${status}</span>${offs}</span></button>`;
+}
 function renderPeriodMonths(){
  const target=$('periodMonths');if(!target)return;
  const selectedStart=parseDateInput($('periodStart')?.value||'');
@@ -1071,33 +1309,30 @@ function renderPeriodMonths(){
  const p=selectedStart&&selectedEnd&&selectedEnd>=selectedStart?{start:selectedStart,end:selectedEnd}:state.lastPeriod;
  if(!p||!parseDateInput(p.start)||!parseDateInput(p.end)||p.end<p.start){target.innerHTML='';return}
  const months=[];for(let ym=p.start.slice(0,7);ym<=p.end.slice(0,7);){months.push(ym);const [y,m]=ym.split('-').map(Number);ym=iso(new Date(y,m,1,12)).slice(0,7)}
- target.innerHTML='<h3>Calendário de todo o período: '+brDate(p.start)+' a '+brDate(p.end)+'</h3><p>Todos os meses selecionados, com funcionários e funções de folga.</p>'+months.map(ym=>{
-  const b=monthBounds(ym),cells=[];for(let i=0;i<dateAt(b.first).getDay();i++)cells.push('<div class="period-cell blank"></div>');
-  for(let n=1;n<=b.length;n++){
-   const date=ym+'-'+String(n).padStart(2,'0'),info=getDaySchedule(date),holiday=getHolidayLabel(date),inside=date>=p.start&&date<=p.end;
-   const names=info.saved?(info.off.map(e=>'<span class="period-off">'+esc(e.name)+' <small>'+esc(e.role||'')+' • folga</small></span>').join('')+(info.holidayRest||[]).map(e=>'<span class="period-off">'+esc(e.name)+' <small>'+esc(e.role||'')+' • feriado</small></span>').join('')||(info.opened?'Todos trabalham':'Sem expediente')):(noWorkSpecial(date)?'NINGUÉM TRABALHA • aguardando escala':holidayClosed(date)?'FERIADO • aguardando escala':'Sem escala válida');
-   cells.push('<button type="button" class="period-cell '+(inside?'':'out-range ')+(allWorkSpecial(date)?'all-work':noWorkSpecial(date)?'no-work':holiday?'holiday':'')+'" data-period-date="'+date+'"><b>'+n+'</b>'+(holiday?'<span class="period-holiday">'+esc(autoHolidayName(date)?'FERIADO — '+holiday:specialMode(date)==='holiday'?'FERIADO LOCAL — '+holiday:holiday)+'</span>':'')+'<strong>'+(info.saved?info.working.length:'—')+' presentes</strong><span>'+names+'</span></button>');
-  }
-  return '<section class="period-month-block"><h3>'+esc(MONTH_NAMES[b.month-1])+' de '+b.year+'</h3><div class="period-month-grid">'+['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(x=>'<span class="period-dow">'+x+'</span>').join('')+cells.join('')+'</div></section>';
- }).join('');
+ const shorts=shortNames(peopleInMonth(p.start.slice(0,7)));
+ target.innerHTML='<details class="period-details"'+(periodOpen?' open':'')+'><summary>📅 Ver calendário de todo o período: '+brDate(p.start)+' a '+brDate(p.end)+' ('+months.length+' '+(months.length>1?'meses':'mês')+')</summary>'+months.map(ym=>{
+  const b=monthBounds(ym),cells=[];for(let i=0;i<dateAt(b.first).getDay();i++)cells.push('<div class="cal-cell empty"></div>');
+  for(let n=1;n<=b.length;n++){const date=ym+'-'+String(n).padStart(2,'0');cells.push(calCellHtml(date,{attr:'data-period-date',outRange:date<p.start||date>p.end,names:shorts}))}
+  return '<section class="period-month-block"><h3>'+esc(MONTH_NAMES[b.month-1])+' de '+b.year+'</h3><div class="period-month-grid cal2">'+['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map(x=>'<span class="period-dow">'+x+'</span>').join('')+cells.join('')+'</div></section>';
+ }).join('')+'</details>';
+ target.querySelector('details').addEventListener('toggle',e=>{periodOpen=e.target.open});
  target.querySelectorAll('[data-period-date]').forEach(btn=>btn.onclick=()=>{selectedMonthDay=btn.dataset.periodDate;monthShown=selectedMonthDay.slice(0,7);drawMonth();$('monthDayDetails').scrollIntoView({behavior:'smooth',block:'nearest'})});
 }
-function drawMonth(){
+function drawMonth(){return withRenderCache(drawMonthInner)}
+function drawMonthInner(){
  if(!/^\d{4}-\d{2}$/.test(monthShown))return;
  const b=monthBounds(monthShown);$('monthInput').value=monthShown;$('monthTitle').textContent=MONTH_NAMES[b.month-1]+' '+b.year;
  if(!selectedMonthDay.startsWith(monthShown))selectedMonthDay=b.first;
  const emps=peopleInMonth(monthShown);const gap=dateAt(b.first).getDay();const html=[];let savedDays=0,plannedPeopleDays=0,events=0;
- for(let i=0;i<gap;i++)html.push('<div class="month-day empty" aria-hidden="true"></div>');
+ const shorts=shortNames(emps),grid=monthView==='grid';
+ if(grid)for(let i=0;i<gap;i++)html.push('<div class="cal-cell empty" aria-hidden="true"></div>');
  for(let day=1;day<=b.length;day++){
   const date=monthShown+'-'+String(day).padStart(2,'0');const inf=getDaySchedule(date);const holiday=getHolidayLabel(date);
   if(inf.saved){savedDays++;plannedPeopleDays+=inf.working.length}if(holiday)events++;
-  const subBase=allWorkSpecial(date)?'TODOS TRABALHAM':noWorkSpecial(date)?'NINGUÉM TRABALHA':holidayClosed(date)?'FERIADO • dispensas e folgas separadas':inf.rosterOutdated?'⚠ Equipe incompleta':inf.stale?'⚠ Atualizar escala':inf.saved?(!inf.opened?'Estabelecimento fechado':inf.off.length?`${inf.off.length} de folga`:'Todos trabalham'):(inf.opened?'Sem escala':'Fechado');
-  const offRoster=inf.saved&&(inf.off.length||inf.holidayRest?.length)?`<span class="off-roster">${inf.off.map(e=>`<span class="off-person">${esc(e.name)}<small>${esc(e.role||'Função não informada')} • Folga</small></span>`).join('')+(inf.holidayRest||[]).map(e=>`<span class="off-person">${esc(e.name)}<small>${esc(e.role||'Função não informada')} • Feriado dispensado</small></span>`).join('')}</span>`:'';
-  const sub=(holiday?`<span class="holiday-name">${esc(autoHolidayName(date)?'FERIADO — '+holiday:specialMode(date)==='holiday'?'FERIADO LOCAL — '+holiday:holiday)}</span>`:'')+`<span class="day-sub ${inf.saved?'is-off':''}">${esc(subBase)}</span>`+offRoster;
-  const main=inf.saved?String(inf.working.length):'—';
-  const summary=inf.saved?`${inf.working.length} trabalhando, ${inf.off.length} de folga, ${(inf.holidayRest||[]).length} dispensados pelo feriado`:'sem escala salva';
-  html.push(`<button type="button" class="month-day ${!inf.opened?'is-closed':!inf.saved?'is-pending':''} ${allWorkSpecial(date)?'is-all-work':noWorkSpecial(date)?'is-no-work':holiday?'is-special':''} ${selectedMonthDay===date?'is-selected':''}" data-month-day="${date}" aria-label="${brDate(date)}, ${esc(summary)}, ${esc(subBase)}, ${esc(inf.off.map(e=>e.name+' - '+(e.role||'')).join('; '))}" title="${esc(brDate(date)+' • '+summary+(holiday?' • '+holiday:''))}"><span class="date-num">DIA ${day}</span><span class="staff-count"><strong class="staff-num">${main}</strong><span class="staff-label"> pessoas presentes</span></span>${sub}</button>`);
+  html.push(grid?calCellHtml(date,{selected:selectedMonthDay===date,names:shorts}):agendaRowHtml(date,{selected:selectedMonthDay===date}));
  }
+ $('monthDays').className=grid?'month-days cal2':'month-agenda';$('monthWeekdays').classList.toggle('hidden',!grid);
+ document.querySelectorAll('[data-month-view]').forEach(b=>{const on=b.dataset.monthView===monthView;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on))});
  $('monthDays').innerHTML=html.join('');
  $('monthStats').innerHTML=`<span class="month-stat">Equipe cadastrada<b>${emps.length}</b></span><span class="month-stat">Dias com escala salva<b>${savedDays} / ${b.length}</b></span><span class="month-stat">Jornadas programadas no mês<b>${plannedPeopleDays}</b></span><span class="month-stat">Datas especiais<b>${events}</b></span>`;
  const missing=b.length-savedDays,activeStaff=state.employees.filter(e=>e.store===STORE).length;
@@ -1116,7 +1351,7 @@ function drawMonth(){
   await generateAndSavePeriod({start:bounds.first,end});
  };
 
- document.querySelectorAll('[data-month-day]').forEach(btn=>btn.onclick=()=>{selectedMonthDay=btn.dataset.monthDay;drawMonth()});
+ document.querySelectorAll('[data-month-day]').forEach(btn=>btn.onclick=()=>{selectedMonthDay=btn.dataset.monthDay;drawMonth();if(monthView==='list'||window.innerWidth<700)$('monthDayDetails').scrollIntoView({behavior:'smooth',block:'nearest'})});
  renderMonthPeople(b);renderMonthDetails();renderPeriodMonths();
 }
 function renderMonthPeople(b){
@@ -1133,7 +1368,8 @@ function renderMonthPeople(b){
   return `<div class="month-person"><div class="person-head"><div><strong>${esc(emp.name)}</strong><small><b>${esc(emp.role)}</b> • intervalo ${formatMinutes(Number(emp.break))} • ${Number(emp.hours)}h/semana</small></div></div>${days}${weeks}</div>`;
  }).join('')
 }
-function reportData(start,end){
+function reportData(start,end){return withRenderCache(()=>reportDataInner(start,end))}
+function reportDataInner(start,end){
  const emps=new Map(state.employees.filter(e=>e.store===STORE).map(e=>[String(e.id),e]));for(let wk=mon(start);wk<=end;wk=move(wk,7))for(const e of (getMonthWeek(wk)?.rosterSnapshot||[]))if(!emps.has(String(e.id)))emps.set(String(e.id),e);const months=[];let ym=start.slice(0,7);const last=end.slice(0,7);
  while(ym<=last){const b=monthBounds(ym),pad=dateAt(b.first).getDay(),days=[];for(let i=0;i<pad;i++)days.push(null);
   for(let n=1;n<=b.length;n++){const date=ym+'-'+String(n).padStart(2,'0');const info=getDaySchedule(date);days.push({date,n,info,inside:date>=start&&date<=end})}
@@ -1150,6 +1386,7 @@ function reportData(start,end){
 function printScheduleReport(start,end){if(!start||!end)return alert('Informe um período válido.');$('printReport').innerHTML=reportData(start,end);document.body.classList.add('report-mode');const cleanup=()=>{document.body.classList.remove('report-mode');window.removeEventListener('afterprint',cleanup)};window.addEventListener('afterprint',cleanup);window.print()}
 $('printMonthReport').onclick=()=>{const b=monthBounds(monthShown);printScheduleReport(b.first,monthShown+'-'+String(b.length).padStart(2,'0'))};
 $('printRangeReport').onclick=()=>{const p=(parseDateInput($('periodStart').value)&&parseDateInput($('rangeEnd').value)?periodDates():null)||state.lastPeriod;if(!p){showTab('scale');return}printScheduleReport(p.start,p.end)};
+document.querySelectorAll('[data-month-view]').forEach(b=>b.onclick=()=>{monthView=b.dataset.monthView;drawMonth()});
 $('monthPrev').onclick=()=>moveMonth(-1);
 $('monthNext').onclick=()=>moveMonth(1);
 $('monthInput').onchange=e=>{if(!/^\d{4}-\d{2}$/.test(e.target.value))return;monthShown=e.target.value;selectedMonthDay=monthShown+'-01';$('monthActionStatus').textContent='';drawMonth()};
@@ -1174,15 +1411,114 @@ $('saveSpecialDate').onclick=async()=>{
   $('monthSpecialFeedback').textContent='Falha ao salvar. Os dados anteriores foram mantidos.';return;
  }
  selectedMonthDay=date;monthShown=date.slice(0,7);
- $('monthSpecialFeedback').textContent='Salvo em '+brDate(date)+'. Recalcule as semanas afetadas antes de utilizar a escala.';drawMonth();
+ const sync=await reconcileAfterRuleChange();
+ $('monthSpecialFeedback').textContent='Salvo em '+brDate(date)+'. '+sync;drawMonth();
 };
 $('removeSpecialDate').onclick=async()=>{
  const date=parseDateInput($('monthSpecialDate').value),before=JSON.stringify({specialDays:state.specialDays||{},localHolidays:state.localHolidays||{},specialModes:state.specialModes||{}});
  if(!date)return $('monthSpecialFeedback').textContent='Informe uma data válida para remover a marcação.';
  if(state.specialDays)delete state.specialDays[date];if(state.localHolidays)delete state.localHolidays[date];if(state.specialModes)delete state.specialModes[date];
  if(!await savePersistent({offerPicker:false})){const old=JSON.parse(before);state.specialDays=old.specialDays;state.localHolidays=old.localHolidays;state.specialModes=old.specialModes;$('monthSpecialFeedback').textContent='Falha ao remover.';return}
- selectedMonthDay=date;monthShown=date.slice(0,7);$('monthSpecialFeedback').textContent='Marcação removida de '+brDate(date);drawMonth();
+ selectedMonthDay=date;monthShown=date.slice(0,7);const sync=await reconcileAfterRuleChange();$('monthSpecialFeedback').textContent='Marcação removida de '+brDate(date)+'. '+sync;drawMonth();
 };
+
+// ===== v2.30 — Interface de conformidade, modelos de jornada e atalhos =====
+const fmtLong=d=>new Intl.DateTimeFormat('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'}).format(dateAt(d));
+const daysBetween=(a,b)=>Math.round((dateAt(b)-dateAt(a))/86400000);
+function renderLegalBanner(){
+ const el=$('legalBanner');if(!el)return;
+ const today=iso(new Date()),now=legalPhaseFor(today),idx=LEGAL_PHASES.indexOf(now),next=LEGAL_PHASES[idx+1];
+ const wait=next?daysBetween(today,next.from):0;
+ const steps=LEGAL_PHASES.map((p,i)=>`<span class="lb-step ${i===idx?'now':i===idx+1?'next':''}"><b>${p.weekly} h</b>${esc(p.period)}</span>`).join('');
+ el.innerHTML=`<span class="lb-icon" aria-hidden="true">⚖</span><div class="lb-main"><strong>Hoje vale: ${now.weekly} h semanais</strong> (${esc(now.label.toLowerCase())}).${next?` Faltam <strong>${wait} dia(s)</strong> para ${fmtLong(next.from)}: <strong>${next.weekly} h</strong> e ${esc(next.rest)}.`:''}</div><div class="lb-steps">${steps}</div><button type="button" id="openLegalTab">Ver regras e diagnóstico</button>`;
+ $('openLegalTab').onclick=()=>showTab('rules');
+}
+function renderLegalTimeline(){
+ const el=$('legalTimeline');if(!el)return;
+ const today=iso(new Date()),idx=LEGAL_PHASES.indexOf(legalPhaseFor(today));
+ const text={
+  clt44:'Duração máxima de 44 h semanais e 8 h diárias. Use este período para ajustar horários, contratos e convenções.',
+  ec42:'Máximo de 42 h semanais e dois descansos semanais remunerados. Sem acordo/convenção até 15/12/2026, a liminar do STF admite cinco dias de até 8h24.',
+  ec40:'Máximo de 40 h semanais e 8 h diárias, com dois descansos semanais remunerados. Compensação apenas por acordo ou convenção coletiva.'
+ };
+ el.innerHTML=LEGAL_PHASES.map((p,i)=>`<div class="tl-card ${i===idx?'now':i===idx+1?'next':''}">${i===idx?'<span class="tl-tag">EM VIGOR</span>':i===idx+1?'<span class="tl-tag">PRÓXIMA</span>':''}<div class="tl-date">${esc(p.period)}</div><div class="tl-hours">${p.weekly} h/semana</div><strong>${esc(p.label)}</strong><p>${esc(text[p.id])}</p></div>`).join('');
+}
+function renderLegalSettings(){
+ if(!$('legalLimitSetting'))return;const s=legalSettings();
+ $('legalLimitSetting').value=s.limit;$('sundayRuleSetting').value=String(s.sundayWeeks);$('dailyToleranceSetting').value=s.tolerance;$('cctCompensation').checked=s.cct;
+ if($('weekLimit'))$('weekLimit').value=s.limit;
+}
+async function reconcileAfterRuleChange(){
+ const r=synchronizeSavedWeeks();
+ if(!await savePersistent({offerPicker:false}))return 'Atenção: a conferência das semanas futuras não pôde ser gravada.';
+ notifyScheduleReconciliation(r);
+ return r.pending?`${r.pending} semana(s) futura(s) precisam ser geradas novamente.`:r.refreshed?`${r.refreshed} semana(s) futura(s) ajustada(s) automaticamente.`:'Semanas futuras conferidas.';
+}
+async function applyLegalSettings(patch,target){
+ const previous=JSON.parse(JSON.stringify(config())),priorWeeks=state.weeks,priorBackups=JSON.parse(JSON.stringify(state.weekRepairBackups||{}));
+ state.configs[STORE]={...previous,...patch};state.weeks={...priorWeeks};
+ const r=synchronizeSavedWeeks();
+ const el=$(target);
+ if(!await savePersistent({offerPicker:false})){
+  state.configs[STORE]=previous;state.weeks=priorWeeks;state.weekRepairBackups=priorBackups;renderLegalSettings();
+  if(el)el.innerHTML='<div class="feedback err">Não foi possível gravar os parâmetros legais. Nada foi alterado.</div>';return false;
+ }
+ renderLegalSettings();renderLegalBanner();renderTransitionDiagnostic();notifyScheduleReconciliation(r);loadWeek();if(!$('month').classList.contains('hidden'))drawMonth();
+ if(el)el.innerHTML=`<div class="feedback${r.pending?' err':''}">✓ Parâmetros legais salvos. ${r.pending?r.pending+' semana(s) futura(s) não atendem às novas regras e foram bloqueadas para nova geração.':'Semanas futuras conferidas'+(r.refreshed?' ('+r.refreshed+' ajustada(s) automaticamente)':'')+'.'}</div>`;
+ return true;
+}
+$('saveLegalSettings').onclick=()=>applyLegalSettings({legalLimit:$('legalLimitSetting').value,sundayRuleWeeks:Number($('sundayRuleSetting').value),dailyTolerance:$('dailyToleranceSetting').value,cctCompensation:$('cctCompensation').checked},'legalSettingsNotice');
+function complianceCell(e,phase){
+ const r=employeeCompliance(e,phase);
+ if(r.block.length)return `<span class="c-bad">✗ Ajustar</span><div class="muted">${r.block.map(esc).join('; ')}</div>`;
+ if(r.warn.length)return `<span class="c-warn">⚠ Conferir</span><div class="muted">${r.warn.map(esc).join('; ')}</div>`;
+ return '<span class="c-ok">✓ Compatível</span>';
+}
+function transitionSuggestion(e){
+ const final=LEGAL_PHASES[2],r=employeeCompliance(e,final);if(!r.block.length&&!r.warn.length)return 'Nenhum ajuste necessário.';
+ const span=spanMinutes(e.in,e.out),need=span-DAILY_BASE;
+ if(Number.isFinite(need)&&need>=60&&need<=120)return `Manter ${esc(e.in)}–${esc(e.out)} com intervalo de ${formatMinutes(need)} e meta de 40 h (8 h/dia).`;
+ return 'Usar um dos modelos de 40 h: 8h–18h com 2 h de intervalo, ou 9h–18h com 1 h.';
+}
+function renderTransitionDiagnostic(){
+ const el=$('transitionDiagnostic');if(!el)return;
+ const people=state.employees.filter(e=>e.store===STORE);
+ if(!people.length){el.innerHTML='<p class="muted">Cadastre colaboradores na aba Equipe e cargos para ver o diagnóstico.</p>';return}
+ const ready=people.filter(e=>!employeeCompliance(e,LEGAL_PHASES[1]).block.length).length,final=people.filter(e=>{const r=employeeCompliance(e,LEGAL_PHASES[2]);return !r.block.length&&!r.warn.length}).length;
+ el.innerHTML=`<div class="metrics" style="margin-bottom:12px"><div class="metric">Colaboradores<strong>${people.length}</strong></div><div class="metric">Prontos para 16/12/2026<strong>${ready}/${people.length}</strong></div><div class="metric">Prontos para 16/12/2027<strong>${final}/${people.length}</strong></div></div><div class="table-scroll"><table class="compliance-table"><thead><tr><th>Colaborador</th><th>Horário</th>${LEGAL_PHASES.map(p=>`<th>${p.weekly} h • ${esc(p.period)}</th>`).join('')}<th>Sugestão</th></tr></thead><tbody>${people.map(e=>`<tr><td data-label="Colaborador"><strong>${esc(e.name)}</strong><div class="muted">${esc(e.role)}</div></td><td data-label="Horário">${esc(e.in)}–${esc(e.out)} • intervalo ${formatMinutes(Number(e.break))}<div class="muted">${Number.isFinite(workMinutes(e))?formatMinutes(workMinutes(e))+'/dia • '+formatMinutes(5*workMinutes(e))+'/semana':'horário inválido'}</div></td>${LEGAL_PHASES.map(p=>`<td data-label="${p.weekly} h • ${esc(p.period)}">${complianceCell(e,p)}</td>`).join('')}<td data-label="Sugestão">${transitionSuggestion(e)}</td></tr>`).join('')}</tbody></table></div><p class="legal-source">O salário mensal deve ser mantido na redução de horas (EC 141/2026). A conferência considera cinco dias por semana com o horário cadastrado.</p>`;
+}
+function phaseBadgesHtml(e){
+ const daily=workMinutes(e);if(!Number.isFinite(daily))return '';
+ return '<div class="muted" style="margin-top:6px">Etapas legais: '+LEGAL_PHASES.map(p=>{const r=employeeCompliance(e,p);const cls=r.block.length?'c-bad':r.warn.length?'c-warn':'c-ok';const sym=r.block.length?'✗':r.warn.length?'⚠':'✓';return `<span class="${cls}" title="${esc([...r.block,...r.warn].join('; ')||'Compatível')}">${sym} ${p.weekly} h (${esc(p.period)})</span>`}).join(' • ')+'</div>';
+}
+function phaseComplianceHtml(daily,span,rest,weekly,days){
+ const rows=LEGAL_PHASES.map(p=>{const r=dailyCompliance(daily,span,rest,p);if(weekly>p.weekly*60)r.block.unshift(`${formatMinutes(weekly)} semanais excedem ${p.weekly} h`);if(days>5)r.block.push(`${days} dias trabalhados: a partir de 16/12/2026 são obrigatórios 2 descansos semanais`);
+  const st=r.block.length?'<span class="c-bad">✗ Não atende</span>':r.warn.length?'<span class="c-warn">⚠ Conferir</span>':'<span class="c-ok">✓ Atende</span>';
+  return `<tr><td data-label="Etapa"><strong>${p.weekly} h</strong><div class="muted">${esc(p.period)}</div></td><td data-label="Resultado">${st}${[...r.block,...r.warn].length?'<div class="muted">'+[...r.block,...r.warn].map(esc).join('; ')+'</div>':''}</td></tr>`}).join('');
+ return `<h3 style="font-size:15px;margin:16px 0 8px">Conferência com as etapas da EC 141/2026</h3><div class="table-scroll"><table class="compliance-table"><thead><tr><th>Etapa</th><th>Resultado</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+const JORNADA_MODELS=[
+ {label:'40 h • 8h às 18h',sub:'2 h de almoço • 8 h/dia • segunda a sábado com rodízio',in:'08:00',out:'18:00',brk:120,hours:40},
+ {label:'40 h • 9h às 18h',sub:'1 h de almoço • 8 h/dia • segunda a sexta',in:'09:00',out:'18:00',brk:60,hours:40},
+ {label:'42 h • 8h às 18h',sub:'1h36 de almoço • 8h24/dia • só na transição',in:'08:00',out:'18:00',brk:96,hours:42}
+];
+function renderModelChips(){
+ const el=$('jornadaModels');if(!el)return;
+ el.innerHTML=JORNADA_MODELS.map((m,i)=>{const cur=$('empIn').value===m.in&&$('empOut').value===m.out&&Number($('empBreak').value)===m.brk&&Number($('empHours').value)===m.hours;return `<button type="button" data-model="${i}" class="${cur?'is-current':''}" aria-pressed="${cur}">${esc(m.label)}<small>${esc(m.sub)}</small></button>`}).join('');
+ el.querySelectorAll('[data-model]').forEach(b=>b.onclick=()=>{const m=JORNADA_MODELS[Number(b.dataset.model)];$('empIn').value=m.in;$('empOut').value=m.out;$('empBreak').value=m.brk;$('empHours').value=m.hours;$('empDays').value=5;renderEmployeePreview();
+  if(m.in==='09:00'&&config().open[5])showNotice('Modelo segunda a sexta aplicado. Se a loja abrir aos sábados, este colaborador precisará folgar no sábado: confira “Funcionamento e cobertura”.',true,'empNotice');});
+}
+document.querySelectorAll('[data-open-preset]').forEach(b=>b.onclick=()=>{const preset=b.dataset.openPreset==='mon-fri'?[true,true,true,true,true,false,false]:[true,true,true,true,true,true,false];document.querySelectorAll('[data-day]').forEach(input=>{input.checked=preset[Number(input.dataset.day)]});$('configNotice').innerHTML='<div class="feedback">Dias marcados. Clique em <b>Salvar funcionamento e cobertura</b> para gravar.</div>'});
+function monthEnd(ym){const b=monthBounds(ym);return ym+'-'+String(b.length).padStart(2,'0')}
+function addMonths(ym,n){const [y,m]=ym.split('-').map(Number);return iso(new Date(y,m-1+n,1,12)).slice(0,7)}
+document.querySelectorAll('[data-quick-period]').forEach(b=>b.onclick=()=>{
+ const ym=iso(new Date()).slice(0,7),k=b.dataset.quickPeriod;let start,end;
+ if(k==='this'){start=ym+'-01';end=monthEnd(ym)}
+ else if(k==='next'){const n=addMonths(ym,1);start=n+'-01';end=monthEnd(n)}
+ else if(k==='three'){start=ym+'-01';end=monthEnd(addMonths(ym,2))}
+ else{start='2026-12-16';end='2027-01-31'}
+ $('periodStart').value=brDate(start);$('rangeEnd').value=brDate(end);periodDates();renderFolgaCapacityNotice();selectedWeekDate=null;loadWeek();
+});
 
 // Data informada exclusivamente pelo usuário; nenhum período ou semana é preenchido automaticamente.
 $('periodStart').value='';$('rangeEnd').value='';
@@ -1197,7 +1533,7 @@ async function initialize(){
    if(dbTs>=localTs){state=snapshot;migrateOneStore()}
   }
  }catch(e){dbSupported=false;console.warn('Banco local indisponível:',e)}
- rebuildUI();renderEmployeePreview();calculate();refreshStorageStatus();await recallFileHandle();
+ rebuildUI();renderEmployeePreview();calculate();refreshStorageStatus();renderLegalTimeline();await recallFileHandle();
  const before=JSON.stringify(state.weeks||{});const reconciled=synchronizeSavedWeeks();
  if(before!==JSON.stringify(state.weeks||{})){
   const persisted=await savePersistent({offerPicker:false});
