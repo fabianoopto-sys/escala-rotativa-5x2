@@ -6,6 +6,7 @@
 - Causa: o calendário segue o funcionamento gravado, mas a caixa marcada (ou o botão "Segunda a sábado") só era gravada depois de tocar em "Salvar", bem mais abaixo na tela.
 - Agora os dias de funcionamento são salvos na hora, as escalas futuras são refeitas automaticamente e aparece uma confirmação: "Funcionamento salvo: aberto Seg a Sáb • fechado: Dom".
 - O calendário mostra "🏪 Loja aberta: … • fechada: …", com um atalho "alterar".
+- O modelo de funcionamento gravado fica em destaque (fundo verde e “✓ Selecionado”). Nova opção “Segunda a domingo”. Cada dia vira um botão verde (“Abre”) ou cinza (“Fechado”).
 - Cobertura mínima, folguistas e feriados: o botão fica laranja ("Salvar alterações pendentes") enquanto houver mudança não salva.
 
 ## 2.30 — 16/11/2026
