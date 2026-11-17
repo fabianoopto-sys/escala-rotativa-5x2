@@ -64,7 +64,7 @@ with sync_playwright() as p:
     st["specialModes"] = {"2026-12-24": "all", "2026-12-26": "none"}
     load_state(page, st)
     check("A0 página carrega sem erros de JS", not errors, "; ".join(errors[:3]))
-    check("A0 versão 2.30 no título", "2.30" in page.title())
+    check("A0 versão 2.31 no título", "2.31" in page.title())
     banner = page.inner_text('#legalBanner')
     check("A0 banner legal mostra 44 h hoje e 42 h em 16/12/2026", "44 h" in banner and "16/12/2026" in banner, banner[:140])
     page.screenshot(path=f"{SHOTS}/desktop_equipe.png", full_page=False)

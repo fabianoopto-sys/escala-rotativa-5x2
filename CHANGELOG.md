@@ -1,5 +1,13 @@
 # Changelog — Escala Rotativa 5×2
 
+## 2.31 — 17/11/2026
+
+### Correção: sábado aparecia "Fechado" com a caixa marcada
+- Causa: o calendário segue o funcionamento gravado, mas a caixa marcada (ou o botão "Segunda a sábado") só era gravada depois de tocar em "Salvar", bem mais abaixo na tela.
+- Agora os dias de funcionamento são salvos na hora, as escalas futuras são refeitas automaticamente e aparece uma confirmação: "Funcionamento salvo: aberto Seg a Sáb • fechado: Dom".
+- O calendário mostra "🏪 Loja aberta: … • fechada: …", com um atalho "alterar".
+- Cobertura mínima, folguistas e feriados: o botão fica laranja ("Salvar alterações pendentes") enquanto houver mudança não salva.
+
 ## 2.30 — 16/11/2026
 
 Base: 2.29 (blob 97c50223498301c9d4883932aba18dea7d15b33f). Mesmas chaves de armazenamento (`mundial_escalas_v2` e `escala_rotativa_dados_local_2_8`): os dados já salvos continuam válidos.
